@@ -54,6 +54,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 1;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress_1);
             // 
             // label1
             // 
@@ -70,6 +71,7 @@
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox2.Location = new System.Drawing.Point(154, 65);
             this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(232, 20);
             this.textBox2.TabIndex = 3;
             // 
@@ -97,18 +99,18 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(17, 133);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 13);
+            this.label3.Size = new System.Drawing.Size(114, 13);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Размер подложки";
+            this.label3.Text = "Размер подложки a=";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(17, 181);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 13);
+            this.label4.Size = new System.Drawing.Size(120, 13);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Толщина подложки";
+            this.label4.Text = "Толщина подложки s=";
             // 
             // textBox3
             // 
@@ -122,9 +124,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(17, 229);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 13);
+            this.label5.Size = new System.Drawing.Size(109, 13);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Толщина пластин";
+            this.label5.Text = "Толщина пластин t=";
             // 
             // textBox4
             // 
@@ -138,27 +140,27 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(341, 133);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(131, 13);
+            this.label6.Size = new System.Drawing.Size(146, 13);
             this.label6.TabIndex = 11;
-            this.label6.Text = "Длина внешнего кольца";
+            this.label6.Text = "Длина внешнего кольца L=";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(341, 181);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(145, 13);
+            this.label7.Size = new System.Drawing.Size(161, 13);
             this.label7.TabIndex = 12;
-            this.label7.Text = "Длина внутреннего кольца";
+            this.label7.Text = "Длина внутреннего кольца K=";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(341, 229);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(167, 13);
+            this.label8.Size = new System.Drawing.Size(182, 13);
             this.label8.TabIndex = 13;
-            this.label8.Text = "Ширина внутреннего отверстия";
+            this.label8.Text = "Ширина внутреннего отверстия g=";
             // 
             // textBox5
             // 

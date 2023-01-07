@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,27 +29,40 @@ namespace MySystem
                 pictureBox1.Visible = true;
             }
         }
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void copyControl(TextBox sourceControl, TextBox targetControl)
         {
-            if (System.Text.RegularExpressions.Regex.IsMatch(textBox1.Text, "[^0-9]"))
+            // make sure these are the same
+            if (sourceControl.GetType() != targetControl.GetType())
             {
-                MessageBox.Show("Please enter only numbers.");
-                textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
+                throw new Exception("Incorrect control types");
+            }
+
+            foreach (PropertyInfo sourceProperty in sourceControl.GetType().GetProperties())
+            {
+                object newValue = sourceProperty.GetValue(sourceControl, null);
+
+                MethodInfo mi = sourceProperty.GetSetMethod(true);
+                if (mi != null)
+                {
+                    sourceProperty.SetValue(targetControl, newValue, null);
+                }
             }
         }
-        //private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-        //        (e.KeyChar != '.'))
-        //    {
-        //        e.Handled = true;
-        //    }
+        private void textBox1_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            // Проверка на ctrl и на букву
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
 
-        //    // only allow one decimal point
-        //    if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-        //    {
-        //        e.Handled = true;
-        //    }
-        //}
+            // Цифры с плавающей запятой
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+       
     }
 }

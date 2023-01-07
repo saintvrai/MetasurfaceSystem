@@ -124,7 +124,6 @@
             // 
             // ввестиДанныеОПараметрахToolStripMenuItem
             // 
-            this.ввестиДанныеОПараметрахToolStripMenuItem.Enabled = false;
             this.ввестиДанныеОПараметрахToolStripMenuItem.Name = "ввестиДанныеОПараметрахToolStripMenuItem";
             this.ввестиДанныеОПараметрахToolStripMenuItem.Size = new System.Drawing.Size(286, 22);
             this.ввестиДанныеОПараметрахToolStripMenuItem.Text = "Данные о параметрах метаэкрана";
