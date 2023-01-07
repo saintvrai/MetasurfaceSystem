@@ -16,6 +16,7 @@ namespace MySystem
         {
             InitializeComponent();
             textBox2.Text = Data.Value;
+
         }
         
     }
