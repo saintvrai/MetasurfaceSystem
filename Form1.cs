@@ -77,7 +77,7 @@ namespace MySystem
         }
 
 
-        //TODO: значения форм с одной на другую формы
+        //TODO: Настроить параметры метаэкрана
 
         private void timer1_Tick_1(object sender, EventArgs e)
         {
