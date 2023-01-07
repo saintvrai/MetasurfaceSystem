@@ -92,12 +92,14 @@
             // 
             // сохранитьToolStripMenuItem
             // 
+            this.сохранитьToolStripMenuItem.Enabled = false;
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
             this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.сохранитьToolStripMenuItem.Text = "Сохранить...";
             // 
             // переименоватьToolStripMenuItem
             // 
+            this.переименоватьToolStripMenuItem.Enabled = false;
             this.переименоватьToolStripMenuItem.Name = "переименоватьToolStripMenuItem";
             this.переименоватьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.переименоватьToolStripMenuItem.Text = "Удалить...";
@@ -114,6 +116,7 @@
             // 
             // ввестиЗначенияПараметровToolStripMenuItem
             // 
+            this.ввестиЗначенияПараметровToolStripMenuItem.Enabled = false;
             this.ввестиЗначенияПараметровToolStripMenuItem.Name = "ввестиЗначенияПараметровToolStripMenuItem";
             this.ввестиЗначенияПараметровToolStripMenuItem.Size = new System.Drawing.Size(286, 22);
             this.ввестиЗначенияПараметровToolStripMenuItem.Text = "Данные о структуре метаэкрана";
@@ -121,6 +124,7 @@
             // 
             // ввестиДанныеОПараметрахToolStripMenuItem
             // 
+            this.ввестиДанныеОПараметрахToolStripMenuItem.Enabled = false;
             this.ввестиДанныеОПараметрахToolStripMenuItem.Name = "ввестиДанныеОПараметрахToolStripMenuItem";
             this.ввестиДанныеОПараметрахToolStripMenuItem.Size = new System.Drawing.Size(286, 22);
             this.ввестиДанныеОПараметрахToolStripMenuItem.Text = "Данные о параметрах метаэкрана";
@@ -128,6 +132,7 @@
             // 
             // данныеОМатериалахToolStripMenuItem
             // 
+            this.данныеОМатериалахToolStripMenuItem.Enabled = false;
             this.данныеОМатериалахToolStripMenuItem.Name = "данныеОМатериалахToolStripMenuItem";
             this.данныеОМатериалахToolStripMenuItem.Size = new System.Drawing.Size(286, 22);
             this.данныеОМатериалахToolStripMenuItem.Text = "Данные об используемых материалах";
@@ -144,18 +149,21 @@
             // 
             // настройкаПараметровАнализаToolStripMenuItem
             // 
+            this.настройкаПараметровАнализаToolStripMenuItem.Enabled = false;
             this.настройкаПараметровАнализаToolStripMenuItem.Name = "настройкаПараметровАнализаToolStripMenuItem";
             this.настройкаПараметровАнализаToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
             this.настройкаПараметровАнализаToolStripMenuItem.Text = "Настройка параметров анализа";
             // 
             // анализToolStripMenuItem
             // 
+            this.анализToolStripMenuItem.Enabled = false;
             this.анализToolStripMenuItem.Name = "анализToolStripMenuItem";
             this.анализToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
             this.анализToolStripMenuItem.Text = "Настройка параметров синтеза";
             // 
             // синтезToolStripMenuItem
             // 
+            this.синтезToolStripMenuItem.Enabled = false;
             this.синтезToolStripMenuItem.Name = "синтезToolStripMenuItem";
             this.синтезToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
             this.синтезToolStripMenuItem.Text = "Выполнить проектную операцию";

@@ -15,14 +15,11 @@ namespace MySystem
 {
     public partial class FValuesStruct : Form
     {
-        public static FValuesStruct form1Instance;
         public FValuesStruct()
         {
             InitializeComponent();
-            form1Instance = this;
-            
         }
-
+        //Кнопка сохранить и обработка ошибок
         public void button1_Click(object sender, EventArgs e)
         {
             if (listBox2.SelectedItems.Count == 0)
@@ -38,13 +35,12 @@ namespace MySystem
                 MessageBox.Show("Успешно");
                 this.Close();
             }
-
         }
 
-
+        //Загрузка фото со структурой из файла
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string filepath = @"C:\CST_Files\temp\" + listBox2.SelectedIndex.ToString().Trim() + ".jpg";
+            string filepath = @"C:\CST_Files\structures\" + listBox2.SelectedItem.ToString().Trim() + ".jpg";
             if (File.Exists(filepath))
             {
                 pictureBox1.ImageLocation = filepath;
@@ -54,7 +50,5 @@ namespace MySystem
                 pictureBox1.Visible = true;
             }
         }
-
-        
     }
 }

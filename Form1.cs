@@ -77,7 +77,7 @@ namespace MySystem
         }
 
 
-        //TODO: Настроить параметры метаэкрана
+        //TODO: Настроить параметры метаэкрана а также посмотреть про материалы
 
         private void timer1_Tick_1(object sender, EventArgs e)
         {
