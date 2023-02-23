@@ -18,15 +18,6 @@ namespace MySystem
             txtMaterialColor.BackColor = colorDialog1.Color;
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void основныеToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -60,6 +51,11 @@ namespace MySystem
             Material material1 = new Material(materialName, type, electicConductivity, magneticConductivity, color);
             //FValuesMaterial f = new FValuesMaterial();
             //f.listBox1.Items.Add(Material);
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
