@@ -53,12 +53,25 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FAddNewMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FAddNewMaterial.Designer.cs">
+      <DependentUpon>FAddNewMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FValuesMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FValuesMaterial.Designer.cs">
+      <DependentUpon>FValuesMaterial.cs</DependentUpon>
+    </Compile>
     <Compile Include="FValuesParam.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FValuesParam.Designer.cs">
       <DependentUpon>FValuesParam.cs</DependentUpon>
     </Compile>
+    <Compile Include="Material.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FValuesStruct.cs">
@@ -67,8 +80,14 @@
     <Compile Include="FValuesStruct.Designer.cs">
       <DependentUpon>FValuesStruct.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FAddNewMaterial.resx">
+      <DependentUpon>FAddNewMaterial.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FValuesMaterial.resx">
+      <DependentUpon>FValuesMaterial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FValuesParam.resx">
       <DependentUpon>FValuesParam.cs</DependentUpon>

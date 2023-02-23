@@ -98,5 +98,16 @@ namespace MySystem
             
         }
 
+        private void данныеОМатериалахToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Создаём новую форму ввода данных о параметрах метаэкрана 
+            FValuesMaterial materialStruct = new FValuesMaterial();
+            materialStruct.StartPosition = FormStartPosition.CenterScreen;
+            DialogResult dr = materialStruct.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                данныеОМатериалахToolStripMenuItem.Enabled = true;
+            }
+        }
     }
 }

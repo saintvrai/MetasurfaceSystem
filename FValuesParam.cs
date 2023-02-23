@@ -48,7 +48,8 @@ namespace MySystem
                 }
             }
         }
-        private void textBox1_KeyPress_1(object sender, KeyPressEventArgs e)
+
+        private void check_buttuns(ref object sender,ref KeyPressEventArgs e)
         {
             // Проверка на ctrl и на букву
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
@@ -62,7 +63,34 @@ namespace MySystem
                 e.Handled = true;
             }
         }
+        private void textBox1_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            check_buttuns(ref sender, ref e);
+        }
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            check_buttuns(ref sender, ref e);
+        }
+      
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            check_buttuns(ref sender, ref e);
+        }
 
-       
+        private void textBox7_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            check_buttuns(ref sender, ref e);
+        }
+
+        private void textBox6_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            check_buttuns(ref sender, ref e);
+        }
+
+        private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            check_buttuns(ref sender, ref e);
+        }
+
     }
 }
