@@ -89,7 +89,7 @@ namespace MySystem
             }
                
         }
-
+        //Поиск по выбранному материалу и загрузка его параметров
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string folderPath = @"C:\CST_Files\Materials\";
@@ -99,10 +99,6 @@ namespace MySystem
             if (listView1.SelectedItems.Count > 0)
             {
                 string fileName = listView1.SelectedItems[0].SubItems[0].Text;
-                //foreach (var file in d.GetFiles("*.txt"))
-                //{
-                //    fileName = file.Name;
-                // TODO: сделать поиск файла в папке и добавить в лист вию
                     using (StreamReader reader = new StreamReader(folderPath + Path.GetFileName(fileName) +".txt"))
                     {
                         string line;
@@ -111,12 +107,6 @@ namespace MySystem
                             listBox1.Items.Add(line);
                         }
                     }
-               // }
-                 
-                // Get the selected item's filename from the first subitem
-                //string filename = listView1.SelectedItems[0].SubItems[0].Text;
-                // Load the file content
-
             }
         }
     }
