@@ -20,7 +20,7 @@ namespace MySystem
             InitializeComponent();
         }
         //Кнопка сохранить и обработка ошибок
-        public void button1_Click(object sender, EventArgs e)
+        public void btnSave_Click(object sender, EventArgs e)
         {
             if (listBox2.SelectedItems.Count == 0)
             {
@@ -49,6 +49,16 @@ namespace MySystem
                 pictureBox1.Refresh();
                 pictureBox1.Visible = true;
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void textBox1_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image = null;
         }
     }
 }

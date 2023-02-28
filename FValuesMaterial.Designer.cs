@@ -40,7 +40,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.listBox2 = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,16 +57,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(529, 520);
+            this.label1.Location = new System.Drawing.Point(12, 435);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(124, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
+            this.label1.Text = "Параметры материала";
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 438);
+            this.listBox1.Location = new System.Drawing.Point(12, 453);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(254, 134);
             this.listBox1.TabIndex = 2;
@@ -149,19 +149,24 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "Тип:";
             // 
-            // textBox2
+            // listBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(366, 62);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(198, 20);
-            this.textBox2.TabIndex = 12;
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Items.AddRange(new object[] {
+            "Normal",
+            "Annelead",
+            "Pure"});
+            this.listBox2.Location = new System.Drawing.Point(366, 62);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(201, 17);
+            this.listBox2.TabIndex = 13;
             // 
             // FValuesMaterial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 637);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.listBox2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox1);
@@ -188,10 +193,10 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ListBox listBox2;
     }
 }

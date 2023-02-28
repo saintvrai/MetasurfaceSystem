@@ -92,7 +92,7 @@ namespace MySystem
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string folderPath = @"C:\CST_Files\Materials";
+            string folderPath = @"C:\CST_Files\Materials\";
             DirectoryInfo d = new DirectoryInfo(folderPath);
             // Check if any item is selected in the listview
             listBox1.Items.Clear();
@@ -103,8 +103,7 @@ namespace MySystem
                 //{
                 //    fileName = file.Name;
                 // TODO: сделать поиск файла в папке и добавить в лист вию
-
-                    using (StreamReader reader = new StreamReader(fileName))
+                    using (StreamReader reader = new StreamReader(folderPath + Path.GetFileName(fileName) +".txt"))
                     {
                         string line;
                         while ((line = reader.ReadLine()) != null)
