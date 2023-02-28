@@ -57,7 +57,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(218, 528);
+            this.label1.Location = new System.Drawing.Point(529, 520);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 1;
@@ -66,9 +66,9 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 528);
+            this.listBox1.Location = new System.Drawing.Point(12, 438);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(143, 43);
+            this.listBox1.Size = new System.Drawing.Size(254, 134);
             this.listBox1.TabIndex = 2;
             // 
             // label2
@@ -86,7 +86,7 @@
             this.groupBox1.Controls.Add(this.listView1);
             this.groupBox1.Location = new System.Drawing.Point(12, 100);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(776, 383);
+            this.groupBox1.Size = new System.Drawing.Size(783, 332);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Список материалов";
@@ -102,10 +102,11 @@
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(7, 20);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(763, 357);
+            this.listView1.Size = new System.Drawing.Size(769, 301);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // columnHeader2
             // 
@@ -128,7 +129,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(198, 20);
             this.textBox1.TabIndex = 8;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // label3

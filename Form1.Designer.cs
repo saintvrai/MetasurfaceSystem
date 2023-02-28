@@ -80,28 +80,28 @@
             // открытьToolStripMenuItem
             // 
             this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.открытьToolStripMenuItem.Text = "Открыть...";
             this.открытьToolStripMenuItem.Click += new System.EventHandler(this.открытьToolStripMenuItem_Click);
             // 
             // создатьToolStripMenuItem
             // 
             this.создатьToolStripMenuItem.Name = "создатьToolStripMenuItem";
-            this.создатьToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.создатьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.создатьToolStripMenuItem.Text = "Создать...";
             // 
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Enabled = false;
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.сохранитьToolStripMenuItem.Text = "Сохранить...";
             // 
             // переименоватьToolStripMenuItem
             // 
             this.переименоватьToolStripMenuItem.Enabled = false;
             this.переименоватьToolStripMenuItem.Name = "переименоватьToolStripMenuItem";
-            this.переименоватьToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.переименоватьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.переименоватьToolStripMenuItem.Text = "Удалить...";
             // 
             // проектныеДанныеToolStripMenuItem
@@ -116,7 +116,6 @@
             // 
             // ввестиЗначенияПараметровToolStripMenuItem
             // 
-            this.ввестиЗначенияПараметровToolStripMenuItem.Enabled = false;
             this.ввестиЗначенияПараметровToolStripMenuItem.Name = "ввестиЗначенияПараметровToolStripMenuItem";
             this.ввестиЗначенияПараметровToolStripMenuItem.Size = new System.Drawing.Size(286, 22);
             this.ввестиЗначенияПараметровToolStripMenuItem.Text = "Данные о структуре метаэкрана";
@@ -179,13 +178,13 @@
             // руководствМПИToolStripMenuItem
             // 
             this.руководствМПИToolStripMenuItem.Name = "руководствМПИToolStripMenuItem";
-            this.руководствМПИToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.руководствМПИToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.руководствМПИToolStripMenuItem.Text = "Помощь";
             // 
             // авторToolStripMenuItem
             // 
             this.авторToolStripMenuItem.Name = "авторToolStripMenuItem";
-            this.авторToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.авторToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.авторToolStripMenuItem.Text = "Автор";
             // 
             // progressBar1
