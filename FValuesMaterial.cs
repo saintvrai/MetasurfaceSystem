@@ -28,7 +28,6 @@ namespace MySystem
             addNewMaterial.ShowDialog();
             
             if(addNewMaterial.DialogResult == DialogResult.OK)
-            //TODO: Спарсить несколько файлов из material libryary и добавить их в listview в этой форме
             {
                 listBox1.Items.Add(Material.MaterialName);
                 int i = 1;

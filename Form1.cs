@@ -13,10 +13,10 @@ namespace MySystem
 {
     public partial class Form1 : Form
     {
-        public TextBox txb;
         public Form1()
         {
             InitializeComponent();
+            
 
         }
 
@@ -55,13 +55,6 @@ namespace MySystem
             ввестиЗначенияПараметровToolStripMenuItem.Enabled = true;
 
         }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            
-
-        }
-
         private void ввестиЗначенияПараметровToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Создаём новую форму ввода данных о структуре 
@@ -75,9 +68,6 @@ namespace MySystem
             }
             
         }
-
-
-        //TODO: Настроить параметры метаэкрана а также посмотреть про материалы
 
         private void timer1_Tick_1(object sender, EventArgs e)
         {

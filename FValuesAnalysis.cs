@@ -54,7 +54,6 @@ namespace MySystem
             if(checkBox2.Checked) 
             {
                 label16.Text = "Тип:";
-                comboBox1.Enabled = false;
                 comboBox2.Enabled = false;
                 comboBox3.Enabled = false;
                 comboBox4.Enabled = false;
@@ -69,7 +68,6 @@ namespace MySystem
             else 
             {
                 label16.Text = "Хмин:";
-                comboBox1.Enabled = true;
                 comboBox2.Enabled = true;
                 comboBox3.Enabled = true;
                 comboBox4.Enabled = true;
