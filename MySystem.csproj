@@ -59,6 +59,12 @@
     <Compile Include="FAddNewMaterial.Designer.cs">
       <DependentUpon>FAddNewMaterial.cs</DependentUpon>
     </Compile>
+    <Compile Include="FValuesAnalysis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FValuesAnalysis.Designer.cs">
+      <DependentUpon>FValuesAnalysis.cs</DependentUpon>
+    </Compile>
     <Compile Include="FValuesMaterial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FValuesAnalysis.resx">
+      <DependentUpon>FValuesAnalysis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FValuesMaterial.resx">
       <DependentUpon>FValuesMaterial.cs</DependentUpon>

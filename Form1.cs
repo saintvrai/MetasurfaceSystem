@@ -106,7 +106,19 @@ namespace MySystem
             DialogResult dr = materialStruct.ShowDialog();
             if (dr == DialogResult.OK)
             {
-                данныеОМатериалахToolStripMenuItem.Enabled = true;
+               // данныеОМатериалахToolStripMenuItem.Enabled = true;
+            }
+        }
+
+        private void настройкаПараметровАнализаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Создаём новую форму ввода данных о параметрах метаэкрана 
+            FValuesAnalysis analysisStruct = new FValuesAnalysis();
+            analysisStruct.StartPosition = FormStartPosition.CenterScreen;
+            DialogResult dr = analysisStruct.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                // данныеОМатериалахToolStripMenuItem.Enabled = true;
             }
         }
     }
