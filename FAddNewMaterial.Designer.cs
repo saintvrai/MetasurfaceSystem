@@ -53,21 +53,21 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtMaterialHeatCapacity = new System.Windows.Forms.TextBox();
+            this.txtMaterialThermalConductivity = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtMaterialThermalExpansionCoefficient = new System.Windows.Forms.TextBox();
+            this.txtMaterialPoissonRatio = new System.Windows.Forms.TextBox();
+            this.txtMaterialYoungModulus = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtMaterialRho = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.groupBox1.SuspendLayout();
@@ -325,8 +325,8 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.textBox3);
-            this.groupBox4.Controls.Add(this.textBox4);
+            this.groupBox4.Controls.Add(this.txtMaterialHeatCapacity);
+            this.groupBox4.Controls.Add(this.txtMaterialThermalConductivity);
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Location = new System.Drawing.Point(6, 6);
@@ -336,19 +336,19 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Тепловые настройки";
             // 
-            // textBox3
+            // txtMaterialHeatCapacity
             // 
-            this.textBox3.Location = new System.Drawing.Point(221, 49);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 9;
+            this.txtMaterialHeatCapacity.Location = new System.Drawing.Point(221, 49);
+            this.txtMaterialHeatCapacity.Name = "txtMaterialHeatCapacity";
+            this.txtMaterialHeatCapacity.Size = new System.Drawing.Size(100, 20);
+            this.txtMaterialHeatCapacity.TabIndex = 9;
             // 
-            // textBox4
+            // txtMaterialThermalConductivity
             // 
-            this.textBox4.Location = new System.Drawing.Point(17, 49);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 8;
+            this.txtMaterialThermalConductivity.Location = new System.Drawing.Point(17, 49);
+            this.txtMaterialThermalConductivity.Name = "txtMaterialThermalConductivity";
+            this.txtMaterialThermalConductivity.Size = new System.Drawing.Size(100, 20);
+            this.txtMaterialThermalConductivity.TabIndex = 8;
             // 
             // label12
             // 
@@ -380,9 +380,9 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.textBox2);
-            this.groupBox5.Controls.Add(this.textBox5);
-            this.groupBox5.Controls.Add(this.textBox6);
+            this.groupBox5.Controls.Add(this.txtMaterialThermalExpansionCoefficient);
+            this.groupBox5.Controls.Add(this.txtMaterialPoissonRatio);
+            this.groupBox5.Controls.Add(this.txtMaterialYoungModulus);
             this.groupBox5.Controls.Add(this.label15);
             this.groupBox5.Controls.Add(this.label16);
             this.groupBox5.Controls.Add(this.label17);
@@ -393,26 +393,26 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Механические настройки";
             // 
-            // textBox2
+            // txtMaterialThermalExpansionCoefficient
             // 
-            this.textBox2.Location = new System.Drawing.Point(17, 90);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 10;
+            this.txtMaterialThermalExpansionCoefficient.Location = new System.Drawing.Point(17, 90);
+            this.txtMaterialThermalExpansionCoefficient.Name = "txtMaterialThermalExpansionCoefficient";
+            this.txtMaterialThermalExpansionCoefficient.Size = new System.Drawing.Size(100, 20);
+            this.txtMaterialThermalExpansionCoefficient.TabIndex = 10;
             // 
-            // textBox5
+            // txtMaterialPoissonRatio
             // 
-            this.textBox5.Location = new System.Drawing.Point(17, 139);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 9;
+            this.txtMaterialPoissonRatio.Location = new System.Drawing.Point(17, 139);
+            this.txtMaterialPoissonRatio.Name = "txtMaterialPoissonRatio";
+            this.txtMaterialPoissonRatio.Size = new System.Drawing.Size(100, 20);
+            this.txtMaterialPoissonRatio.TabIndex = 9;
             // 
-            // textBox6
+            // txtMaterialYoungModulus
             // 
-            this.textBox6.Location = new System.Drawing.Point(17, 41);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 8;
+            this.txtMaterialYoungModulus.Location = new System.Drawing.Point(17, 41);
+            this.txtMaterialYoungModulus.Name = "txtMaterialYoungModulus";
+            this.txtMaterialYoungModulus.Size = new System.Drawing.Size(100, 20);
+            this.txtMaterialYoungModulus.TabIndex = 8;
             // 
             // label15
             // 
@@ -453,7 +453,7 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.textBox8);
+            this.groupBox6.Controls.Add(this.txtMaterialRho);
             this.groupBox6.Controls.Add(this.label9);
             this.groupBox6.Location = new System.Drawing.Point(6, 3);
             this.groupBox6.Name = "groupBox6";
@@ -462,12 +462,12 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Настройки плотности";
             // 
-            // textBox8
+            // txtMaterialRho
             // 
-            this.textBox8.Location = new System.Drawing.Point(20, 36);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 20);
-            this.textBox8.TabIndex = 8;
+            this.txtMaterialRho.Location = new System.Drawing.Point(20, 36);
+            this.txtMaterialRho.Name = "txtMaterialRho";
+            this.txtMaterialRho.Size = new System.Drawing.Size(100, 20);
+            this.txtMaterialRho.TabIndex = 8;
             // 
             // label9
             // 
@@ -542,21 +542,21 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtMaterialHeatCapacity;
+        private System.Windows.Forms.TextBox txtMaterialThermalConductivity;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtMaterialThermalExpansionCoefficient;
+        private System.Windows.Forms.TextBox txtMaterialPoissonRatio;
+        private System.Windows.Forms.TextBox txtMaterialYoungModulus;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtMaterialRho;
         private System.Windows.Forms.Label label9;
     }
 }

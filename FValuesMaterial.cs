@@ -88,6 +88,8 @@ namespace MySystem
             }
                
         }
+        // TODO: после добавления материала исправить его поиск,а то он не работает
+
         //Поиск по выбранному материалу и загрузка его параметров
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -106,6 +108,37 @@ namespace MySystem
                             listBox1.Items.Add(line);
                         }
                     }
+            }
+        }
+        // TODO: реализовать удаление материала из листвиев1
+
+        private void btnDeleteMaterial_Click(object sender, EventArgs e)
+        {
+            string fileName = listView1.SelectedItems[0].SubItems[0].Text;
+
+            if (string.IsNullOrEmpty(fileName))
+            {
+                MessageBox.Show("Please enter the name of the file to be deleted.");
+                return;
+            }
+
+            string filePath = Path.Combine(@"C:\CST_Files\Materials", fileName);
+
+            if (File.Exists(filePath))
+            {
+                try
+                {
+                    File.Delete(filePath);
+                    MessageBox.Show("File deleted successfully.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error deleting file: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("File not found.");
             }
         }
     }

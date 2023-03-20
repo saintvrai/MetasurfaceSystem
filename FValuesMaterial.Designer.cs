@@ -41,6 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
+            this.btnDeleteMaterial = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -161,11 +162,22 @@
             this.listBox2.Size = new System.Drawing.Size(201, 17);
             this.listBox2.TabIndex = 13;
             // 
+            // btnDeleteMaterial
+            // 
+            this.btnDeleteMaterial.Location = new System.Drawing.Point(631, 62);
+            this.btnDeleteMaterial.Name = "btnDeleteMaterial";
+            this.btnDeleteMaterial.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteMaterial.TabIndex = 14;
+            this.btnDeleteMaterial.Text = "Удалить материал";
+            this.btnDeleteMaterial.UseVisualStyleBackColor = true;
+            this.btnDeleteMaterial.Click += new System.EventHandler(this.btnDeleteMaterial_Click);
+            // 
             // FValuesMaterial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 637);
+            this.Controls.Add(this.btnDeleteMaterial);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -198,5 +210,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Button btnDeleteMaterial;
     }
 }
