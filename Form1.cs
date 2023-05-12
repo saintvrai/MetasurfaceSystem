@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -113,6 +114,27 @@ namespace MySystem
             {
                 // данныеОМатериалахToolStripMenuItem.Enabled = true;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var proc = new Process();
+            proc.EnableRaisingEvents = true;
+            proc.Exited += (s, ev) => MessageBox.Show(
+                "Проектная процедура завершила работу." +
+                "Испытание не пройдено",
+                "Готово!",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+             );
+
+            string path = $@"C:\Users\Airat\source\repos\MetasurfaceProgram\bin\Debug\CST\Screens";
+
+            string cmdLine = $@"{path}\kvadrat.vbs";      // BPLA
+            //string cmdLine = $@"{path}\copter\COPTER_macro.vbs";    // COPTER
+
+            proc.StartInfo = new ProcessStartInfo("wscript", cmdLine);
+            proc.Start();
         }
     }
 }
