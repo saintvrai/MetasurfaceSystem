@@ -17,7 +17,19 @@ namespace MySystem
         public FValuesParam()
         {
             InitializeComponent();
-            textBox2.Text = Data.Value;
+            textBox2.Text = Data.ResonatorType;
+            var sqauareResonator = new SquareResonator();
+            sqauareResonator.OuterWidth = 50f;
+            var fields = sqauareResonator.GetType().GetFields();
+            foreach(var field in fields)
+            {
+                var newTextBox = new TextBox();
+                newTextBox.Text = field.GetValue(sqauareResonator).ToString();
+                fieldTable.Controls.Add(newTextBox);
+                fieldTable.SetColumn(newTextBox, 0);
+                fieldTable.SetRow(newTextBox, 0);
+            }
+            
             //Загрузка фото по структуре метаэкрана со схемой
             string filepath = @"C:\CST_Files\schemas\" + textBox2.Text + ".jpg";
             if (File.Exists(filepath))
@@ -92,5 +104,9 @@ namespace MySystem
             check_buttuns(ref sender, ref e);
         }
 
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

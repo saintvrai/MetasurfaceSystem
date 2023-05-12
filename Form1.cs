@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Npgsql;
 
 namespace MySystem
 {
@@ -16,6 +17,8 @@ namespace MySystem
         public Form1()
         {
             InitializeComponent();
+
+
             
 
         }
@@ -69,11 +72,11 @@ namespace MySystem
             
         }
 
-        private void timer1_Tick_1(object sender, EventArgs e)
-        {
-            progressBar1.PerformStep();
-        }
-        
+        //private void timer1_Tick_1(object sender, EventArgs e)
+        //{
+        //    progressBar1.PerformStep();
+        //}
+        // Анализируемый мнтаэлемкнт для метаэкрана
         
         private void ввестиДанныеОПараметрахToolStripMenuItem_Click(object sender, EventArgs e)
         {
