@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MySystem
 {
-    public static class Data
+    public static class DataStruct
     {
         public static string ResonatorType { get; set; }
     }

@@ -17,7 +17,7 @@ namespace MySystem
         public FValuesParam()
         {
             InitializeComponent();
-            textBox2.Text = Data.ResonatorType;
+            textBox2.Text = DataStruct.ResonatorType;
             var sqauareResonator = new SquareResonator();
             sqauareResonator.OuterWidth = 50f;
             var fields = sqauareResonator.GetType().GetFields();

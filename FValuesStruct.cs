@@ -30,7 +30,7 @@ namespace MySystem
             }
             else
             {
-                Data.ResonatorType = listBox2.SelectedItem.ToString();
+                DataStruct.ResonatorType = listBox2.SelectedItem.ToString();
                 DialogResult = DialogResult.OK;
                 MessageBox.Show("Успешно");
                 this.Close();
