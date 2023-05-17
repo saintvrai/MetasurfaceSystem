@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic.ApplicationServices;
+using MySystem.Data.Tables;
 using Npgsql;
 
 namespace MySystem
@@ -19,13 +21,23 @@ namespace MySystem
         {
             InitializeComponent();
         }
+        private string connstring = String.Format("Server ={0};Port ={1};" +
+            "User Id={2};Password={3};Database={4};",
+            "localhost", 5432, "postgres", "qwerty", "Diplom");
+
+        private NpgsqlConnection conn;
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.progressBar1.Maximum = 100;
+            conn = new NpgsqlConnection(connstring);
         }
 
-        private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
+
+        //DB TEST
+        // добавление данных
+
+
+private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
             var fileContent = string.Empty;
@@ -132,5 +144,7 @@ namespace MySystem
             proc.StartInfo = new ProcessStartInfo("wscript", cmdLine);
             proc.Start();
         }
+
+       
     }
 }
