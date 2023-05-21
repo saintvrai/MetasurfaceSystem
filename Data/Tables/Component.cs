@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace MySystem.Data.Tables
 {
-    public class Project
+    internal class Component
     {
-        public int Id { get; set; }
-        public string? Name { get; set; }
-        public string Path { get; set; }
     }
 }

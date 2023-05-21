@@ -12,24 +12,15 @@ using System.Windows.Forms;
 
 namespace MySystem
 {
-    public partial class FValuesParam : Form
+    public partial class FValuesParamRomb : Form
     {
-        public FValuesParam()
+        public FValuesParamRomb()
         {
             InitializeComponent();
             textBox2.Text = DataStruct.ResonatorType;
             var sqauareResonator = new SquareResonator();
-            sqauareResonator.OuterWidth = 50f;
-            var fields = sqauareResonator.GetType().GetFields();
-            foreach(var field in fields)
-            {
-                var newTextBox = new TextBox();
-                newTextBox.Text = field.GetValue(sqauareResonator).ToString();
-                fieldTable.Controls.Add(newTextBox);
-                fieldTable.SetColumn(newTextBox, 0);
-                fieldTable.SetRow(newTextBox, 0);
-            }
-            
+           
+
             //Загрузка фото по структуре метаэкрана со схемой
             string filepath = @"C:\CST_Files\schemas\" + textBox2.Text + ".jpg";
             if (File.Exists(filepath))
@@ -61,7 +52,7 @@ namespace MySystem
             }
         }
 
-        private void check_buttuns(ref object sender,ref KeyPressEventArgs e)
+        private void check_buttuns(ref object sender, ref KeyPressEventArgs e)
         {
             // Проверка на ctrl и на букву
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
@@ -83,7 +74,7 @@ namespace MySystem
         {
             check_buttuns(ref sender, ref e);
         }
-      
+
         private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
         {
             check_buttuns(ref sender, ref e);

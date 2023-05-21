@@ -8,6 +8,7 @@ namespace MySystem
 {
     public static class DataStruct
     {
+        public static string ProjectPath { get; set; }
         public static string ResonatorType { get; set; }
     }
 }

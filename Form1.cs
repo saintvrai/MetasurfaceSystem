@@ -6,12 +6,15 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.ApplicationServices;
 using MySystem.Data.Tables;
 using Npgsql;
+using static System.Net.WebRequestMethods;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MySystem
 {
@@ -37,29 +40,37 @@ namespace MySystem
         // добавление данных
 
 
-private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
+        private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
-            var fileContent = string.Empty;
-            var filePath = string.Empty;
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+
+            string projectPath = Application.StartupPath;
+            string folderPath = Path.Combine(projectPath, "CST", "Projects");
+
+            // Создает папку "CST/Projects", если ее не существует
+            if (!Directory.Exists(folderPath))
             {
-                openFileDialog.InitialDirectory = "c:\\";
-                openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-                openFileDialog.FilterIndex = 2;
-                openFileDialog.RestoreDirectory = true;
+                Directory.CreateDirectory(folderPath);
+            }
 
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.InitialDirectory = folderPath;
+                saveFileDialog.Filter = "txt files (*.txt)|*.txt";
+                saveFileDialog.FilterIndex = 1;
+                saveFileDialog.RestoreDirectory = true;
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    //Get the path of specified file
-                    filePath = openFileDialog.FileName;
 
-                    //Read the contents of the file into a stream
-                    var fileStream = openFileDialog.OpenFile();
+                    string filePath = saveFileDialog.FileName;
+                    txtProjectName.Text = Path.GetFileNameWithoutExtension(filePath);
+                    Project.Path = filePath;
+                    Project.Name = txtProjectName.Text;
 
-                    using (StreamReader reader = new StreamReader(fileStream))
+                    using (StreamWriter writer = new StreamWriter(filePath))
                     {
-                        fileContent = reader.ReadToEnd();
+                        // Запись содержимого в файл
+
                     }
                 }
             }
@@ -72,13 +83,13 @@ private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
             //Создаём новую форму ввода данных о структуре 
             FValuesStruct valStruct = new FValuesStruct();
             valStruct.StartPosition = FormStartPosition.CenterScreen;
-            
+
             DialogResult dr = valStruct.ShowDialog();
             if (dr == DialogResult.OK)
             {
                 ввестиДанныеОПараметрахToolStripMenuItem.Enabled = true;
             }
-            
+
         }
 
         //private void timer1_Tick_1(object sender, EventArgs e)
@@ -86,18 +97,36 @@ private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
         //    progressBar1.PerformStep();
         //}
         // Анализируемый мнтаэлемкнт для метаэкрана
-        
+
         private void ввестиДанныеОПараметрахToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Создаём новую форму ввода данных о параметрах метаэкрана 
-            FValuesParam paramStruct = new FValuesParam();
-            paramStruct.StartPosition = FormStartPosition.CenterScreen;
-            DialogResult dr = paramStruct.ShowDialog();
-            if (dr == DialogResult.OK)
+            if (DataStruct.ResonatorType == "Квадратный резонатор")
             {
-                данныеОМатериалахToolStripMenuItem.Enabled = true;
+                FValuesParamKvadrat paramStruct = new FValuesParamKvadrat();
+                paramStruct.StartPosition = FormStartPosition.CenterScreen;
+                DialogResult dr = paramStruct.ShowDialog();
+                if (dr == DialogResult.OK)
+                {
+                    данныеОМатериалахToolStripMenuItem.Enabled = true;
+                }
             }
-            
+            else if (DataStruct.ResonatorType == "Круглый резонатор")
+            {
+                FValuesParamKrug paramStruct = new FValuesParamKrug();
+                paramStruct.StartPosition = FormStartPosition.CenterScreen;
+                DialogResult dr = paramStruct.ShowDialog();
+                if (dr == DialogResult.OK)
+                {
+                    данныеОМатериалахToolStripMenuItem.Enabled = true;
+                }
+            }
+            else
+            {
+
+            }
+
+
         }
 
         private void данныеОМатериалахToolStripMenuItem_Click(object sender, EventArgs e)
@@ -108,7 +137,7 @@ private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
             DialogResult dr = materialStruct.ShowDialog();
             if (dr == DialogResult.OK)
             {
-               // данныеОМатериалахToolStripMenuItem.Enabled = true;
+                // данныеОМатериалахToolStripMenuItem.Enabled = true;
             }
         }
 
@@ -145,6 +174,51 @@ private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
             proc.Start();
         }
 
-       
+        private void создатьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            string projectPath = Application.StartupPath;
+            string folderPath = Path.Combine(projectPath, "CST", "Projects");
+
+            // Создает папку "CST/Projects", если ее не существует
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.InitialDirectory = folderPath;
+                saveFileDialog.Filter = "txt files (*.txt)|*.txt";
+                saveFileDialog.FilterIndex = 1;
+                saveFileDialog.RestoreDirectory = true;
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = saveFileDialog.FileName;
+                    string projectPath2 = Path.GetDirectoryName(Application.StartupPath);
+                    string projectFilePath2 = Path.Combine(projectPath2, filePath);
+                    Project.Path = projectFilePath2;
+                    Project.Name = Path.GetFileName(filePath);
+                    txtProjectName.Text = Path.GetFileNameWithoutExtension(filePath);
+
+
+                    using (StreamWriter writer = new StreamWriter(filePath))
+                    {
+                       
+                        writer.WriteLine("Путь проекта: " + projectFilePath2);
+                        writer.WriteLine("Название файла: " + Path.GetFileName(filePath));
+                    }
+                }
+            }
+
+
+            ввестиЗначенияПараметровToolStripMenuItem.Enabled = true;
+        }
+
+        private void txtProjectName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
