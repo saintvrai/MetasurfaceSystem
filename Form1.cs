@@ -15,6 +15,7 @@ using MySystem.Data.Tables;
 using Npgsql;
 using static System.Net.WebRequestMethods;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using File = System.IO.File;
 
 namespace MySystem
 {
@@ -67,12 +68,77 @@ namespace MySystem
                     Project.Path = filePath;
                     Project.Name = txtProjectName.Text;
 
+                    // Чтение файла и поиск записи о структуре
+                    string fileContent = File.ReadAllText(filePath);
+                    string structureName = "Квадратный резонатор"; // Название структуры, которую нужно найти
+
+                    // Загрузка формы в соответствии с названием структуры
+                    LoadStructureForm(structureName);
                 }
             }
 
             ввестиЗначенияПараметровToolStripMenuItem.Enabled = true;
 
         }
+    
+
+
+        private void LoadStructureForm(string structureName)
+        {
+            if (structureName == "Квадратный резонатор")
+            {
+                Form1 form = new Form1();
+                form.Show();
+
+                // Выделение структуры
+                string imagePath = @"C:\CST_Files\structures\" + structureName.Trim() + ".jpg";
+                if (File.Exists(imagePath))
+                {
+                    form.pictureBox1.ImageLocation = imagePath;
+                    form.pictureBox1.Load(imagePath);
+                    form.pictureBox1.Update();
+                    form.pictureBox1.Refresh();
+                    form.pictureBox1.Visible = true;
+                }
+            }
+            else if (structureName == "Круглый резонатор")
+            {
+                Form2 form = new Form2();
+                form.Show();
+
+                // Выделение структуры
+                string imagePath = @"C:\CST_Files\structures\" + structureName.Trim() + ".jpg";
+                if (File.Exists(imagePath))
+                {
+                    form.pictureBox1.ImageLocation = imagePath;
+                    form.pictureBox1.Load(imagePath);
+                    form.pictureBox1.Update();
+                    form.pictureBox1.Refresh();
+                    form.pictureBox1.Visible = true;
+                }
+            }
+            else if (structureName == "Ромбовидный резонатор")
+            {
+                Form3 form = new Form3();
+                form.Show();
+
+                // Выделение структуры
+                string imagePath = @"C:\CST_Files\structures\" + structureName.Trim() + ".jpg";
+                if (File.Exists(imagePath))
+                {
+                    form.pictureBox1.ImageLocation = imagePath;
+                    form.pictureBox1.Load(imagePath);
+                    form.pictureBox1.Update();
+                    form.pictureBox1.Refresh();
+                    form.pictureBox1.Visible = true;
+                }
+            }
+            else
+            {
+                // Если название структуры не найдено или неизвестно, обработайте соответствующим образом
+            }
+        }
+
         private void ввестиЗначенияПараметровToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Создаём новую форму ввода данных о структуре 
@@ -219,3 +285,4 @@ namespace MySystem
 
     }
 }
+

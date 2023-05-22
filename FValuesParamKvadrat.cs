@@ -84,57 +84,10 @@ namespace MySystem
             check_buttuns(ref sender, ref e);
         }
 
-        public static void GetData()
-        {
-            string filePath = Project.Path; // Получаем путь к файлу
-
-            // Проверяем, что файл существует
-            if (File.Exists(filePath))
-            {
-                using (StreamReader reader = new StreamReader(filePath))
-                {
-                    string line;
-                    while ((line = reader.ReadLine()) != null)
-                    {
-                        if (line.StartsWith("Ширина подложки W="))
-                            KvadratStruct.SubstrateWidth = double.Parse(line.Substring("Ширина подложки W=".Length));
-                        else if (line.StartsWith("Длина подложки L="))
-                            KvadratStruct.SubstrateLength = double.Parse(line.Substring("Длина подложки L=".Length));
-                        else if (line.StartsWith("Максимальная длина внешнего кольца L="))
-                            KvadratStruct.Lupperbound = double.Parse(line.Substring("Максимальная длина внешнего кольца L=".Length));
-                        else if (line.StartsWith("Минимальная длина внешнего кольца L="))
-                            KvadratStruct.Llowerbound = double.Parse(line.Substring("Минимальная длина внешнего кольца L=".Length));
-                        else if (line.StartsWith("Минимальная длина внутреннего кольца K="))
-                            KvadratStruct.Klowerbound = double.Parse(line.Substring("Минимальная длина внутреннего кольца K=".Length));
-                        else if (line.StartsWith("Максимальная длина внутреннго кольца K="))
-                            KvadratStruct.Kupperbound = double.Parse(line.Substring("Максимальная длина внутреннго кольца K=".Length));
-                        else if (line.StartsWith("Минимальная длина вырезки кольца H="))
-                            KvadratStruct.Hlowerbound = double.Parse(line.Substring("Минимальная длина вырезки кольца H=".Length));
-                        else if (line.StartsWith("Максимальная длина вырезки кольца H="))
-                            KvadratStruct.Hupperbound = double.Parse(line.Substring("Максимальная длина вырезки кольца H=".Length));
-                    }
-                }
-            }
-
-            // Отображаем значения в текстовых полях
-            //TestFun(Form.texb, KvadratStruct.SubstrateWidth.ToString())
-            //textBox1.Text = KvadratStruct.SubstrateWidth.ToString();
-            //textBox3.Text = KvadratStruct.SubstrateLength.ToString();
-            //textBox6.Text = KvadratStruct.Llowerbound.ToString();
-            //textBox7.Text = KvadratStruct.Lupperbound.ToString();
-            //textBox4.Text = KvadratStruct.Klowerbound.ToString();
-            //textBox5.Text = KvadratStruct.Kupperbound.ToString();
-            //textBox8.Text = KvadratStruct.Hlowerbound.ToString();
-            //textBox9.Text = KvadratStruct.Hupperbound.ToString();
-
-
-
-        }
-
-
-
+        // Загружаем данные о проекте в форму, если там они есть
         private void LoadData()
         {
+            
 
             using (StreamReader reader = new StreamReader(Project.Path))
             {
@@ -159,7 +112,6 @@ namespace MySystem
                         KvadratStruct.Hupperbound = double.Parse(line.Substring("Максимальная длина вырезки кольца H=".Length));
                 }
 
-
                 textBox1.Text = KvadratStruct.SubstrateWidth.ToString();
                 textBox3.Text = KvadratStruct.SubstrateLength.ToString();
                 textBox6.Text = KvadratStruct.Llowerbound.ToString();
@@ -168,16 +120,11 @@ namespace MySystem
                 textBox5.Text = KvadratStruct.Kupperbound.ToString();
                 textBox8.Text = KvadratStruct.Hlowerbound.ToString();
                 textBox9.Text = KvadratStruct.Hupperbound.ToString();
-                Console.WriteLine(KvadratStruct.SubstrateWidth.ToString());
-
 
             }
-
-
-
-
         }
 
+        // Сохранение в файл параметры структуры
         private void btn_Save_Click(object sender, EventArgs e)
         {
             Project.MetascreenStructName = DataStruct.ResonatorType.ToString();
@@ -192,6 +139,7 @@ namespace MySystem
 
             using (StreamWriter writer = new StreamWriter(Project.Path, false))
             {
+                writer.WriteLine("Структура:" + Project.MetascreenStructName + "\n");
                 writer.WriteLine("Ширина подложки W=" + KvadratStruct.SubstrateWidth);
                 writer.WriteLine("Длина подложки S=" + KvadratStruct.SubstrateLength);
                 writer.WriteLine("Максимальная длина внешнего кольца L=" + KvadratStruct.Lupperbound);
