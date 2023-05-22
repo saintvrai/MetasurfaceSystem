@@ -49,12 +49,14 @@
             textBox8 = new System.Windows.Forms.TextBox();
             textBox9 = new System.Windows.Forms.TextBox();
             label10 = new System.Windows.Forms.Label();
+            label11 = new System.Windows.Forms.Label();
+            btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // textBox1
             // 
-            textBox1.Location = new System.Drawing.Point(180, 153);
+            textBox1.Location = new System.Drawing.Point(180, 117);
             textBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textBox1.Name = "textBox1";
             textBox1.Size = new System.Drawing.Size(116, 23);
@@ -83,7 +85,7 @@
             // 
             // btn_Save
             // 
-            btn_Save.Location = new System.Drawing.Point(564, 553);
+            btn_Save.Location = new System.Drawing.Point(472, 554);
             btn_Save.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btn_Save.Name = "btn_Save";
             btn_Save.Size = new System.Drawing.Size(88, 27);
@@ -106,7 +108,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(20, 153);
+            label3.Location = new System.Drawing.Point(20, 120);
             label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(123, 15);
@@ -116,7 +118,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(20, 209);
+            label4.Location = new System.Drawing.Point(20, 163);
             label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(134, 15);
@@ -125,7 +127,7 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new System.Drawing.Point(180, 204);
+            textBox3.Location = new System.Drawing.Point(180, 160);
             textBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textBox3.Name = "textBox3";
             textBox3.Size = new System.Drawing.Size(116, 23);
@@ -134,7 +136,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(20, 296);
+            label6.Location = new System.Drawing.Point(16, 264);
             label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(243, 15);
@@ -143,24 +145,24 @@
             // 
             // textBox6
             // 
-            textBox6.Location = new System.Drawing.Point(280, 337);
+            textBox6.Location = new System.Drawing.Point(289, 302);
             textBox6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textBox6.Name = "textBox6";
-            textBox6.Size = new System.Drawing.Size(116, 23);
+            textBox6.Size = new System.Drawing.Size(120, 23);
             textBox6.TabIndex = 15;
             // 
             // textBox7
             // 
-            textBox7.Location = new System.Drawing.Point(280, 296);
+            textBox7.Location = new System.Drawing.Point(289, 264);
             textBox7.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textBox7.Name = "textBox7";
-            textBox7.Size = new System.Drawing.Size(116, 23);
+            textBox7.Size = new System.Drawing.Size(120, 23);
             textBox7.TabIndex = 14;
             // 
             // pictureBox1
             // 
             pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            pictureBox1.Location = new System.Drawing.Point(769, 75);
+            pictureBox1.Location = new System.Drawing.Point(599, 75);
             pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new System.Drawing.Size(408, 404);
@@ -171,7 +173,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(24, 340);
+            label5.Location = new System.Drawing.Point(16, 302);
             label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(239, 15);
@@ -180,24 +182,24 @@
             // 
             // textBox4
             // 
-            textBox4.Location = new System.Drawing.Point(284, 420);
+            textBox4.Location = new System.Drawing.Point(289, 378);
             textBox4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textBox4.Name = "textBox4";
-            textBox4.Size = new System.Drawing.Size(116, 23);
+            textBox4.Size = new System.Drawing.Size(120, 23);
             textBox4.TabIndex = 21;
             // 
             // textBox5
             // 
-            textBox5.Location = new System.Drawing.Point(284, 379);
+            textBox5.Location = new System.Drawing.Point(289, 340);
             textBox5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textBox5.Name = "textBox5";
-            textBox5.Size = new System.Drawing.Size(116, 23);
+            textBox5.Size = new System.Drawing.Size(120, 23);
             textBox5.TabIndex = 20;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new System.Drawing.Point(24, 379);
+            label8.Location = new System.Drawing.Point(16, 340);
             label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label8.Name = "label8";
             label8.Size = new System.Drawing.Size(258, 15);
@@ -207,7 +209,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(24, 423);
+            label7.Location = new System.Drawing.Point(16, 378);
             label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new System.Drawing.Size(254, 15);
@@ -217,7 +219,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new System.Drawing.Point(24, 508);
+            label9.Location = new System.Drawing.Point(16, 454);
             label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(233, 15);
@@ -226,35 +228,58 @@
             // 
             // textBox8
             // 
-            textBox8.Location = new System.Drawing.Point(284, 505);
+            textBox8.Location = new System.Drawing.Point(289, 454);
             textBox8.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textBox8.Name = "textBox8";
-            textBox8.Size = new System.Drawing.Size(116, 23);
+            textBox8.Size = new System.Drawing.Size(120, 23);
             textBox8.TabIndex = 25;
             // 
             // textBox9
             // 
-            textBox9.Location = new System.Drawing.Point(284, 464);
+            textBox9.Location = new System.Drawing.Point(289, 416);
             textBox9.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textBox9.Name = "textBox9";
-            textBox9.Size = new System.Drawing.Size(116, 23);
+            textBox9.Size = new System.Drawing.Size(120, 23);
             textBox9.TabIndex = 24;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new System.Drawing.Point(24, 464);
+            label10.Location = new System.Drawing.Point(16, 416);
             label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label10.Name = "label10";
             label10.Size = new System.Drawing.Size(237, 15);
             label10.TabIndex = 23;
             label10.Text = "Максимальная длина вырезки кольца H=";
             // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new System.Drawing.Point(20, 206);
+            label11.Name = "label11";
+            label11.Size = new System.Drawing.Size(173, 15);
+            label11.TabIndex = 27;
+            label11.Text = "Параметры для оптимизации:";
+            // 
+            // btnCancel
+            // 
+            btnCancel.DialogResult = System.Windows.Forms.DialogResult.OK;
+            btnCancel.Location = new System.Drawing.Point(599, 554);
+            btnCancel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new System.Drawing.Size(88, 27);
+            btnCancel.TabIndex = 28;
+            btnCancel.Text = "Отменить";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
+            // 
             // FValuesParamKvadrat
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1213, 593);
+            ClientSize = new System.Drawing.Size(1033, 593);
+            Controls.Add(btnCancel);
+            Controls.Add(label11);
             Controls.Add(label9);
             Controls.Add(textBox8);
             Controls.Add(textBox9);
@@ -306,5 +331,7 @@
         public System.Windows.Forms.TextBox textBox8;
         public System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

@@ -214,10 +214,11 @@
             // 
             txtProjectName.Location = new System.Drawing.Point(141, 45);
             txtProjectName.Name = "txtProjectName";
+            txtProjectName.ReadOnly = true;
             txtProjectName.Size = new System.Drawing.Size(114, 23);
             txtProjectName.TabIndex = 7;
             txtProjectName.Text = "Файл не выбран";
-            txtProjectName.TextChanged += txtProjectName_TextChanged;
+            
             // 
             // Form1
             // 

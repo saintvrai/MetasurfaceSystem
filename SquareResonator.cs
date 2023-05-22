@@ -11,6 +11,6 @@ namespace MySystem
         public float OuterWidth;
         public float OuterHeight;
         public float InnerWidth;
-        // TODO: рефлексия
+      
     }
 }

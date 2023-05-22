@@ -52,7 +52,7 @@ namespace MySystem
                 Directory.CreateDirectory(folderPath);
             }
 
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            using (OpenFileDialog saveFileDialog = new OpenFileDialog())
             {
                 saveFileDialog.InitialDirectory = folderPath;
                 saveFileDialog.Filter = "txt files (*.txt)|*.txt";
@@ -67,11 +67,6 @@ namespace MySystem
                     Project.Path = filePath;
                     Project.Name = txtProjectName.Text;
 
-                    using (StreamWriter writer = new StreamWriter(filePath))
-                    {
-                        // Запись содержимого в файл
-
-                    }
                 }
             }
 
@@ -103,9 +98,9 @@ namespace MySystem
             //Создаём новую форму ввода данных о параметрах метаэкрана 
             if (DataStruct.ResonatorType == "Квадратный резонатор")
             {
-                FValuesParamKvadrat paramStruct = new FValuesParamKvadrat();
-                paramStruct.StartPosition = FormStartPosition.CenterScreen;
-                DialogResult dr = paramStruct.ShowDialog();
+                FValuesParamKvadrat paramStructKvadrat = new FValuesParamKvadrat();
+                paramStructKvadrat.StartPosition = FormStartPosition.CenterScreen;
+                DialogResult dr = paramStructKvadrat.ShowDialog();
                 if (dr == DialogResult.OK)
                 {
                     данныеОМатериалахToolStripMenuItem.Enabled = true;
@@ -113,9 +108,9 @@ namespace MySystem
             }
             else if (DataStruct.ResonatorType == "Круглый резонатор")
             {
-                FValuesParamKrug paramStruct = new FValuesParamKrug();
-                paramStruct.StartPosition = FormStartPosition.CenterScreen;
-                DialogResult dr = paramStruct.ShowDialog();
+                FValuesParamKrug paramStructKrug = new FValuesParamKrug();
+                paramStructKrug.StartPosition = FormStartPosition.CenterScreen;
+                DialogResult dr = paramStructKrug.ShowDialog();
                 if (dr == DialogResult.OK)
                 {
                     данныеОМатериалахToolStripMenuItem.Enabled = true;
@@ -123,7 +118,13 @@ namespace MySystem
             }
             else
             {
-
+                FValuesParamRomb paramStructRomb = new FValuesParamRomb();
+                paramStructRomb.StartPosition = FormStartPosition.CenterScreen;
+                DialogResult dr = paramStructRomb.ShowDialog();
+                if (dr == DialogResult.OK)
+                {
+                    данныеОМатериалахToolStripMenuItem.Enabled = true;
+                }
             }
 
 
@@ -205,7 +206,7 @@ namespace MySystem
 
                     using (StreamWriter writer = new StreamWriter(filePath))
                     {
-                       
+
                         writer.WriteLine("Путь проекта: " + projectFilePath2);
                         writer.WriteLine("Название файла: " + Path.GetFileName(filePath));
                     }
@@ -216,9 +217,5 @@ namespace MySystem
             ввестиЗначенияПараметровToolStripMenuItem.Enabled = true;
         }
 
-        private void txtProjectName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

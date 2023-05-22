@@ -18,7 +18,7 @@ namespace MySystem
         {
             InitializeComponent();
             textBox2.Text = DataStruct.ResonatorType;
-            
+
             //Загрузка фото по структуре метаэкрана со схемой
             string filepath = @"C:\CST_Files\schemas\" + textBox2.Text + ".jpg";
             if (File.Exists(filepath))
@@ -30,8 +30,8 @@ namespace MySystem
                 pictureBox1.Visible = true;
             }
 
+            // Загружаем данные из проекта, если они есть
             LoadData();
-            GetData(this);
         }
 
 
@@ -84,7 +84,7 @@ namespace MySystem
             check_buttuns(ref sender, ref e);
         }
 
-        public static void GetData(FValuesParamKvadrat form)
+        public static void GetData()
         {
             string filePath = Project.Path; // Получаем путь к файлу
 
@@ -117,19 +117,25 @@ namespace MySystem
             }
 
             // Отображаем значения в текстовых полях
-            form.textBox1.Text = KvadratStruct.SubstrateWidth.ToString();
-            form.textBox3.Text = KvadratStruct.SubstrateLength.ToString();
-            form.textBox6.Text = KvadratStruct.Llowerbound.ToString();
-            form.textBox7.Text = KvadratStruct.Lupperbound.ToString();
-            form.textBox4.Text = KvadratStruct.Klowerbound.ToString();
-            form.textBox5.Text = KvadratStruct.Kupperbound.ToString();
-            form.textBox8.Text = KvadratStruct.Hlowerbound.ToString();
-            form.textBox9.Text = KvadratStruct.Hupperbound.ToString();
+            //TestFun(Form.texb, KvadratStruct.SubstrateWidth.ToString())
+            //textBox1.Text = KvadratStruct.SubstrateWidth.ToString();
+            //textBox3.Text = KvadratStruct.SubstrateLength.ToString();
+            //textBox6.Text = KvadratStruct.Llowerbound.ToString();
+            //textBox7.Text = KvadratStruct.Lupperbound.ToString();
+            //textBox4.Text = KvadratStruct.Klowerbound.ToString();
+            //textBox5.Text = KvadratStruct.Kupperbound.ToString();
+            //textBox8.Text = KvadratStruct.Hlowerbound.ToString();
+            //textBox9.Text = KvadratStruct.Hupperbound.ToString();
+
+
+
         }
+
 
 
         private void LoadData()
         {
+
             using (StreamReader reader = new StreamReader(Project.Path))
             {
                 string line;
@@ -137,8 +143,8 @@ namespace MySystem
                 {
                     if (line.StartsWith("Ширина подложки W="))
                         KvadratStruct.SubstrateWidth = double.Parse(line.Substring("Ширина подложки W=".Length));
-                    else if (line.StartsWith("Длина подложки L="))
-                        KvadratStruct.SubstrateLength = double.Parse(line.Substring("Длина подложки L=".Length));
+                    else if (line.StartsWith("Длина подложки S="))
+                        KvadratStruct.SubstrateLength = double.Parse(line.Substring("Длина подложки S=".Length));
                     else if (line.StartsWith("Максимальная длина внешнего кольца L="))
                         KvadratStruct.Lupperbound = double.Parse(line.Substring("Максимальная длина внешнего кольца L=".Length));
                     else if (line.StartsWith("Минимальная длина внешнего кольца L="))
@@ -152,7 +158,24 @@ namespace MySystem
                     else if (line.StartsWith("Максимальная длина вырезки кольца H="))
                         KvadratStruct.Hupperbound = double.Parse(line.Substring("Максимальная длина вырезки кольца H=".Length));
                 }
+
+
+                textBox1.Text = KvadratStruct.SubstrateWidth.ToString();
+                textBox3.Text = KvadratStruct.SubstrateLength.ToString();
+                textBox6.Text = KvadratStruct.Llowerbound.ToString();
+                textBox7.Text = KvadratStruct.Lupperbound.ToString();
+                textBox4.Text = KvadratStruct.Klowerbound.ToString();
+                textBox5.Text = KvadratStruct.Kupperbound.ToString();
+                textBox8.Text = KvadratStruct.Hlowerbound.ToString();
+                textBox9.Text = KvadratStruct.Hupperbound.ToString();
+                Console.WriteLine(KvadratStruct.SubstrateWidth.ToString());
+
+
             }
+
+
+
+
         }
 
         private void btn_Save_Click(object sender, EventArgs e)
@@ -170,15 +193,21 @@ namespace MySystem
             using (StreamWriter writer = new StreamWriter(Project.Path, false))
             {
                 writer.WriteLine("Ширина подложки W=" + KvadratStruct.SubstrateWidth);
-                writer.WriteLine("Длина подложки S=" + KvadratStruct.SubstrateWidth);
+                writer.WriteLine("Длина подложки S=" + KvadratStruct.SubstrateLength);
                 writer.WriteLine("Максимальная длина внешнего кольца L=" + KvadratStruct.Lupperbound);
                 writer.WriteLine("Минимальная длина внешнего кольца L=" + KvadratStruct.Llowerbound);
                 writer.WriteLine("Минимальная длина внутреннего кольца K=" + KvadratStruct.Klowerbound);
                 writer.WriteLine("Максимальная длина внутреннго кольца K=" + KvadratStruct.Kupperbound);
                 writer.WriteLine("Минимальная длина вырезки кольца H=" + KvadratStruct.Hlowerbound);
                 writer.WriteLine("Максимальная длина вырезки кольца H=" + KvadratStruct.Hupperbound);
-               
+
             }
+            this.Close();
+        }
+
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }

@@ -19,8 +19,8 @@ namespace MySystem
             InitializeComponent();
             textBox2.Text = DataStruct.ResonatorType;
             var sqauareResonator = new SquareResonator();
-        
-            
+
+
             //Загрузка фото по структуре метаэкрана со схемой
             string filepath = @"C:\CST_Files\schemas\" + textBox2.Text + ".jpg";
             if (File.Exists(filepath))

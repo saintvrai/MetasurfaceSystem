@@ -28,240 +28,309 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)this.pictureBox1).BeginInit();
+            btnCancel = new System.Windows.Forms.Button();
+            label11 = new System.Windows.Forms.Label();
+            label9 = new System.Windows.Forms.Label();
+            textBox8 = new System.Windows.Forms.TextBox();
+            textBox9 = new System.Windows.Forms.TextBox();
+            label10 = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
+            textBox4 = new System.Windows.Forms.TextBox();
+            textBox5 = new System.Windows.Forms.TextBox();
+            label8 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            pictureBox1 = new System.Windows.Forms.PictureBox();
+            textBox6 = new System.Windows.Forms.TextBox();
+            textBox7 = new System.Windows.Forms.TextBox();
+            label6 = new System.Windows.Forms.Label();
+            textBox3 = new System.Windows.Forms.TextBox();
+            label4 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            btn_Save = new System.Windows.Forms.Button();
+            textBox2 = new System.Windows.Forms.TextBox();
+            label1 = new System.Windows.Forms.Label();
+            textBox1 = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // textBox1
+            // btnCancel
             // 
-            this.textBox1.Location = new System.Drawing.Point(180, 153);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(116, 23);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.KeyPress += this.textBox1_KeyPress_1;
+            btnCancel.DialogResult = System.Windows.Forms.DialogResult.OK;
+            btnCancel.Location = new System.Drawing.Point(592, 553);
+            btnCancel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new System.Drawing.Size(88, 27);
+            btnCancel.TabIndex = 51;
+            btnCancel.Text = "Отменить";
+            btnCancel.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // label11
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 75);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 15);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Выбранная структура";
+            label11.AutoSize = true;
+            label11.Location = new System.Drawing.Point(13, 217);
+            label11.Name = "label11";
+            label11.Size = new System.Drawing.Size(173, 15);
+            label11.TabIndex = 50;
+            label11.Text = "Параметры для оптимизации:";
             // 
-            // textBox2
+            // label9
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Location = new System.Drawing.Point(180, 75);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(270, 23);
-            this.textBox2.TabIndex = 3;
+            label9.AutoSize = true;
+            label9.Location = new System.Drawing.Point(9, 453);
+            label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(233, 15);
+            label9.TabIndex = 49;
+            label9.Text = "Минимальная длина вырезки кольца H=";
             // 
-            // button1
+            // textBox8
             // 
-            this.button1.Location = new System.Drawing.Point(564, 553);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 27);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Сохранить";
-            this.button1.UseVisualStyleBackColor = true;
+            textBox8.Location = new System.Drawing.Point(282, 453);
+            textBox8.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox8.Name = "textBox8";
+            textBox8.Size = new System.Drawing.Size(120, 23);
+            textBox8.TabIndex = 48;
             // 
-            // label2
+            // textBox9
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(364, 10);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(465, 26);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Ввод данных о параметрах метаэкрана круг";
+            textBox9.Location = new System.Drawing.Point(282, 415);
+            textBox9.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox9.Name = "textBox9";
+            textBox9.Size = new System.Drawing.Size(120, 23);
+            textBox9.TabIndex = 47;
             // 
-            // label3
+            // label10
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 153);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(123, 15);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Размер подложки a=";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 209);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(133, 15);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Толщина подложки s=";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(180, 204);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(116, 23);
-            this.textBox3.TabIndex = 8;
-            this.textBox3.KeyPress += this.textBox3_KeyPress;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 264);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(121, 15);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Толщина пластин t=";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(180, 260);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(116, 23);
-            this.textBox4.TabIndex = 10;
-            this.textBox4.KeyPress += this.textBox4_KeyPress;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(398, 153);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(159, 15);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Длина внешнего кольца L=";
+            label10.AutoSize = true;
+            label10.Location = new System.Drawing.Point(9, 415);
+            label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(237, 15);
+            label10.TabIndex = 46;
+            label10.Text = "Максимальная длина вырезки кольца H=";
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(398, 209);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(174, 15);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Длина внутреннего кольца K=";
+            label7.AutoSize = true;
+            label7.Location = new System.Drawing.Point(9, 377);
+            label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(259, 15);
+            label7.TabIndex = 45;
+            label7.Text = "Минимальный радиус внутреннего кольца I=";
             // 
-            // label8
+            // textBox4
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(398, 264);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(200, 15);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "Ширина внутреннего отверстия g=";
+            textBox4.Location = new System.Drawing.Point(282, 377);
+            textBox4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new System.Drawing.Size(120, 23);
+            textBox4.TabIndex = 44;
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(623, 256);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(116, 23);
-            this.textBox5.TabIndex = 16;
-            this.textBox5.KeyPress += this.textBox5_KeyPress;
+            textBox5.Location = new System.Drawing.Point(282, 339);
+            textBox5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new System.Drawing.Size(120, 23);
+            textBox5.TabIndex = 43;
             // 
-            // textBox6
+            // label8
             // 
-            this.textBox6.Location = new System.Drawing.Point(623, 201);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(116, 23);
-            this.textBox6.TabIndex = 15;
-            this.textBox6.KeyPress += this.textBox6_KeyPress;
+            label8.AutoSize = true;
+            label8.Location = new System.Drawing.Point(9, 339);
+            label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(263, 15);
+            label8.TabIndex = 42;
+            label8.Text = "Максимальный радиус внутреннего кольца I=";
             // 
-            // textBox7
+            // label5
             // 
-            this.textBox7.Location = new System.Drawing.Point(623, 145);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(116, 23);
-            this.textBox7.TabIndex = 14;
-            this.textBox7.KeyPress += this.textBox7_KeyPress;
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(9, 301);
+            label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(251, 15);
+            label5.TabIndex = 41;
+            label5.Text = "Минимальный радиус внешнего кольца O=";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(769, 75);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(408, 404);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 17;
-            this.pictureBox1.TabStop = false;
+            pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            pictureBox1.Location = new System.Drawing.Point(592, 74);
+            pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new System.Drawing.Size(408, 404);
+            pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 40;
+            pictureBox1.TabStop = false;
+            // 
+            // textBox6
+            // 
+            textBox6.Location = new System.Drawing.Point(282, 301);
+            textBox6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new System.Drawing.Size(120, 23);
+            textBox6.TabIndex = 39;
+            // 
+            // textBox7
+            // 
+            textBox7.Location = new System.Drawing.Point(282, 263);
+            textBox7.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox7.Name = "textBox7";
+            textBox7.Size = new System.Drawing.Size(120, 23);
+            textBox7.TabIndex = 38;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(9, 263);
+            label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(255, 15);
+            label6.TabIndex = 37;
+            label6.Text = "Максимальный радиус внешнего кольца O=";
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new System.Drawing.Point(173, 159);
+            textBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new System.Drawing.Size(116, 23);
+            textBox3.TabIndex = 36;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(13, 162);
+            label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(134, 15);
+            label4.TabIndex = 35;
+            label4.Text = "Толщина подложки S=";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(13, 119);
+            label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(123, 15);
+            label3.TabIndex = 34;
+            label3.Text = "Длина подложки W=";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label2.Location = new System.Drawing.Point(357, 9);
+            label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(417, 26);
+            label2.TabIndex = 33;
+            label2.Text = "Ввод данных о параметрах метаэкрана";
+            // 
+            // btn_Save
+            // 
+            btn_Save.Location = new System.Drawing.Point(465, 553);
+            btn_Save.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btn_Save.Name = "btn_Save";
+            btn_Save.Size = new System.Drawing.Size(88, 27);
+            btn_Save.TabIndex = 32;
+            btn_Save.Text = "Сохранить";
+            btn_Save.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            textBox2.BackColor = System.Drawing.SystemColors.Window;
+            textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            textBox2.Location = new System.Drawing.Point(173, 74);
+            textBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox2.Name = "textBox2";
+            textBox2.ReadOnly = true;
+            textBox2.Size = new System.Drawing.Size(270, 23);
+            textBox2.TabIndex = 31;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(13, 74);
+            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(126, 15);
+            label1.TabIndex = 30;
+            label1.Text = "Выбранная структура";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new System.Drawing.Point(173, 116);
+            textBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new System.Drawing.Size(116, 23);
+            textBox1.TabIndex = 29;
             // 
             // FValuesParamKrug
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1213, 593);
-            Controls.Add(this.pictureBox1);
-            Controls.Add(this.textBox5);
-            Controls.Add(this.textBox6);
-            Controls.Add(this.textBox7);
-            Controls.Add(this.label8);
-            Controls.Add(this.label7);
-            Controls.Add(this.label6);
-            Controls.Add(this.textBox4);
-            Controls.Add(this.label5);
-            Controls.Add(this.textBox3);
-            Controls.Add(this.label4);
-            Controls.Add(this.label3);
-            Controls.Add(this.label2);
-            Controls.Add(this.button1);
-            Controls.Add(this.textBox2);
-            Controls.Add(this.label1);
-            Controls.Add(this.textBox1);
+            ClientSize = new System.Drawing.Size(1015, 593);
+            Controls.Add(btnCancel);
+            Controls.Add(label11);
+            Controls.Add(label9);
+            Controls.Add(textBox8);
+            Controls.Add(textBox9);
+            Controls.Add(label10);
+            Controls.Add(label7);
+            Controls.Add(textBox4);
+            Controls.Add(textBox5);
+            Controls.Add(label8);
+            Controls.Add(label5);
+            Controls.Add(pictureBox1);
+            Controls.Add(textBox6);
+            Controls.Add(textBox7);
+            Controls.Add(label6);
+            Controls.Add(textBox3);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(btn_Save);
+            Controls.Add(textBox2);
+            Controls.Add(label1);
+            Controls.Add(textBox1);
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "FValuesParamKrug";
             Text = "Параметры метаэкрана";
-            ((System.ComponentModel.ISupportInitialize)this.pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        public System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label5;
-        public System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label6;
+
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label9;
+        public System.Windows.Forms.TextBox textBox8;
+        public System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        public System.Windows.Forms.TextBox textBox4;
         public System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox pictureBox1;
         public System.Windows.Forms.TextBox textBox6;
         public System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label6;
+        public System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btn_Save;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
     }
 }
