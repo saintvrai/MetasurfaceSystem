@@ -126,7 +126,7 @@ namespace MySystem
         }
         // TODO: после добавления материала исправить его поиск,а то он не работает
 
-        //Поиск по выбранному материалу и загрузка его параметров
+        // Поиск по выбранному материалу и загрузка его параметров
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string folderPath = @"C:\CST_Files\Materials\";
