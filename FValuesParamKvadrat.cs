@@ -38,13 +38,19 @@ namespace MySystem
         private void check_buttuns(ref object sender, ref KeyPressEventArgs e)
         {
             // Проверка на ctrl и на букву
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+
+            // Запрет ввода точки
+            if (e.KeyChar == '.')
             {
                 e.Handled = true;
             }
 
             // Цифры с плавающей запятой
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
             {
                 e.Handled = true;
             }
@@ -127,6 +133,7 @@ namespace MySystem
         // Сохранение в файл параметры структуры
         private void btn_Save_Click(object sender, EventArgs e)
         {
+            
             Project.MetascreenStructName = DataStruct.ResonatorType.ToString();
             KvadratStruct.SubstrateWidth = double.Parse(textBox1.Text);
             KvadratStruct.SubstrateLength = double.Parse(textBox3.Text);
@@ -137,20 +144,29 @@ namespace MySystem
             KvadratStruct.Hlowerbound = double.Parse(textBox8.Text);
             KvadratStruct.Hupperbound = double.Parse(textBox9.Text);
 
-            using (StreamWriter writer = new StreamWriter(Project.Path, false))
+            // Проверка перекрещивания внешнего и внутреннего кольца
+            if (KvadratStruct.Kupperbound <= KvadratStruct.Llowerbound || KvadratStruct.Klowerbound >= KvadratStruct.Lupperbound)
             {
-                writer.WriteLine("Структура:" + Project.MetascreenStructName + "\n");
-                writer.WriteLine("Ширина подложки W=" + KvadratStruct.SubstrateWidth);
-                writer.WriteLine("Длина подложки S=" + KvadratStruct.SubstrateLength);
-                writer.WriteLine("Максимальная длина внешнего кольца L=" + KvadratStruct.Lupperbound);
-                writer.WriteLine("Минимальная длина внешнего кольца L=" + KvadratStruct.Llowerbound);
-                writer.WriteLine("Минимальная длина внутреннего кольца K=" + KvadratStruct.Klowerbound);
-                writer.WriteLine("Максимальная длина внутреннго кольца K=" + KvadratStruct.Kupperbound);
-                writer.WriteLine("Минимальная длина вырезки кольца H=" + KvadratStruct.Hlowerbound);
-                writer.WriteLine("Максимальная длина вырезки кольца H=" + KvadratStruct.Hupperbound);
+                using (StreamWriter writer = new StreamWriter(Project.Path, false))
+                {
+                    writer.WriteLine("Структура:" + Project.MetascreenStructName + "\n");
+                    writer.WriteLine("Ширина подложки W=" + KvadratStruct.SubstrateWidth);
+                    writer.WriteLine("Длина подложки S=" + KvadratStruct.SubstrateLength);
+                    writer.WriteLine("Максимальная длина внешнего кольца L=" + KvadratStruct.Lupperbound);
+                    writer.WriteLine("Минимальная длина внешнего кольца L=" + KvadratStruct.Llowerbound);
+                    writer.WriteLine("Минимальная длина внутреннего кольца K=" + KvadratStruct.Klowerbound);
+                    writer.WriteLine("Максимальная длина внутреннго кольца K=" + KvadratStruct.Kupperbound);
+                    writer.WriteLine("Минимальная длина вырезки кольца H=" + KvadratStruct.Hlowerbound);
+                    writer.WriteLine("Максимальная длина вырезки кольца H=" + KvadratStruct.Hupperbound);
 
+                }
+                this.Close();
             }
-            this.Close();
+            else
+            {
+                MessageBox.Show("Проверьте правильность введенных данных и ограничения (см. Помощь)", "Ошибка");
+                
+            }
         }
 
 

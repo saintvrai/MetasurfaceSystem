@@ -68,75 +68,103 @@ namespace MySystem
                     Project.Path = filePath;
                     Project.Name = txtProjectName.Text;
 
-                    // Чтение файла и поиск записи о структуре
-                    string fileContent = File.ReadAllText(filePath);
-                    string structureName = "Квадратный резонатор"; // Название структуры, которую нужно найти
+                    // Проверка наличия строки "Структура:" в файле и получение названия структуры
+
+                    CheckStructureInFile(Project.Path);
 
                     // Загрузка формы в соответствии с названием структуры
-                    LoadStructureForm(structureName);
+                    // LoadStructureForm(structureName);
                 }
             }
-
-            ввестиЗначенияПараметровToolStripMenuItem.Enabled = true;
 
         }
-    
 
-
-        private void LoadStructureForm(string structureName)
+        private void CheckStructureInFile(string filePath)
         {
-            if (structureName == "Квадратный резонатор")
-            {
-                Form1 form = new Form1();
-                form.Show();
+            string fileContent = File.ReadAllText(filePath);
+            string structureKeyword = "Структура:";
 
-                // Выделение структуры
-                string imagePath = @"C:\CST_Files\structures\" + structureName.Trim() + ".jpg";
-                if (File.Exists(imagePath))
+            int keywordIndex = fileContent.IndexOf(structureKeyword);
+            if (keywordIndex != -1)
+            {
+                int startIndex = keywordIndex + structureKeyword.Length;
+                int endIndex = fileContent.IndexOf('\n', startIndex);
+
+                if (endIndex != -1)
                 {
-                    form.pictureBox1.ImageLocation = imagePath;
-                    form.pictureBox1.Load(imagePath);
-                    form.pictureBox1.Update();
-                    form.pictureBox1.Refresh();
-                    form.pictureBox1.Visible = true;
+                    DataStruct.ResonatorType = fileContent.Substring(startIndex, endIndex - startIndex).Trim();
                 }
             }
-            else if (structureName == "Круглый резонатор")
-            {
-                Form2 form = new Form2();
-                form.Show();
 
-                // Выделение структуры
-                string imagePath = @"C:\CST_Files\structures\" + structureName.Trim() + ".jpg";
-                if (File.Exists(imagePath))
-                {
-                    form.pictureBox1.ImageLocation = imagePath;
-                    form.pictureBox1.Load(imagePath);
-                    form.pictureBox1.Update();
-                    form.pictureBox1.Refresh();
-                    form.pictureBox1.Visible = true;
-                }
-            }
-            else if (structureName == "Ромбовидный резонатор")
+            if (!string.IsNullOrEmpty(DataStruct.ResonatorType))
             {
-                Form3 form = new Form3();
-                form.Show();
 
-                // Выделение структуры
-                string imagePath = @"C:\CST_Files\structures\" + structureName.Trim() + ".jpg";
-                if (File.Exists(imagePath))
-                {
-                    form.pictureBox1.ImageLocation = imagePath;
-                    form.pictureBox1.Load(imagePath);
-                    form.pictureBox1.Update();
-                    form.pictureBox1.Refresh();
-                    form.pictureBox1.Visible = true;
-                }
+                ввестиДанныеОСтруктуреToolStripMenuItem.Enabled = false;
+                ввестиДанныеОПараметрахToolStripMenuItem.Enabled = true;
+
+
+                // Здесь можно использовать значение DataStruct.ResonatorType для дальнейших операций
             }
             else
             {
-                // Если название структуры не найдено или неизвестно, обработайте соответствующим образом
+                ввестиДанныеОСтруктуреToolStripMenuItem.Enabled = true;
             }
+        }
+
+        private void LoadStructureForm(string structureName)
+        {
+            //if (structureName == "Квадратный резонатор")
+            //{
+            //    Form1 form = new Form1();
+            //    form.Show();
+
+            //    // Выделение структуры
+            //    string imagePath = @"C:\CST_Files\structures\" + structureName.Trim() + ".jpg";
+            //    if (File.Exists(imagePath))
+            //    {
+            //        form.pictureBox1.ImageLocation = imagePath;
+            //        form.pictureBox1.Load(imagePath);
+            //        form.pictureBox1.Update();
+            //        form.pictureBox1.Refresh();
+            //        form.pictureBox1.Visible = true;
+            //    }
+            //}
+            //else if (structureName == "Круглый резонатор")
+            //{
+            //    Form2 form = new Form2();
+            //    form.Show();
+
+            //    // Выделение структуры
+            //    string imagePath = @"C:\CST_Files\structures\" + structureName.Trim() + ".jpg";
+            //    if (File.Exists(imagePath))
+            //    {
+            //        form.pictureBox1.ImageLocation = imagePath;
+            //        form.pictureBox1.Load(imagePath);
+            //        form.pictureBox1.Update();
+            //        form.pictureBox1.Refresh();
+            //        form.pictureBox1.Visible = true;
+            //    }
+            //}
+            //else if (structureName == "Ромбовидный резонатор")
+            //{
+            //    Form3 form = new Form3();
+            //    form.Show();
+
+            //    // Выделение структуры
+            //    string imagePath = @"C:\CST_Files\structures\" + structureName.Trim() + ".jpg";
+            //    if (File.Exists(imagePath))
+            //    {
+            //        form.pictureBox1.ImageLocation = imagePath;
+            //        form.pictureBox1.Load(imagePath);
+            //        form.pictureBox1.Update();
+            //        form.pictureBox1.Refresh();
+            //        form.pictureBox1.Visible = true;
+            //    }
+            //}
+            //else
+            //{
+            //    // Если название структуры не найдено или неизвестно, обработайте соответствующим образом
+            //}
         }
 
         private void ввестиЗначенияПараметровToolStripMenuItem_Click(object sender, EventArgs e)
@@ -280,7 +308,7 @@ namespace MySystem
             }
 
 
-            ввестиЗначенияПараметровToolStripMenuItem.Enabled = true;
+            ввестиДанныеОСтруктуреToolStripMenuItem.Enabled = true;
         }
 
     }

@@ -36,7 +36,7 @@
             сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             переименоватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             проектныеДанныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ввестиЗначенияПараметровToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            ввестиДанныеОСтруктуреToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ввестиДанныеОПараметрахToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             данныеОМатериалахToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             выполнитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,20 +102,22 @@
             // 
             // проектныеДанныеToolStripMenuItem
             // 
-            проектныеДанныеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { ввестиЗначенияПараметровToolStripMenuItem, ввестиДанныеОПараметрахToolStripMenuItem, данныеОМатериалахToolStripMenuItem });
+            проектныеДанныеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { ввестиДанныеОСтруктуреToolStripMenuItem, ввестиДанныеОПараметрахToolStripMenuItem, данныеОМатериалахToolStripMenuItem });
             проектныеДанныеToolStripMenuItem.Name = "проектныеДанныеToolStripMenuItem";
             проектныеДанныеToolStripMenuItem.Size = new System.Drawing.Size(125, 20);
             проектныеДанныеToolStripMenuItem.Text = "Проектные данные";
             // 
-            // ввестиЗначенияПараметровToolStripMenuItem
+            // ввестиДанныеОСтруктуреToolStripMenuItem
             // 
-            ввестиЗначенияПараметровToolStripMenuItem.Name = "ввестиЗначенияПараметровToolStripMenuItem";
-            ввестиЗначенияПараметровToolStripMenuItem.Size = new System.Drawing.Size(286, 22);
-            ввестиЗначенияПараметровToolStripMenuItem.Text = "Данные о структуре метаэкрана";
-            ввестиЗначенияПараметровToolStripMenuItem.Click += ввестиЗначенияПараметровToolStripMenuItem_Click;
+            ввестиДанныеОСтруктуреToolStripMenuItem.Enabled = false;
+            ввестиДанныеОСтруктуреToolStripMenuItem.Name = "ввестиДанныеОСтруктуреToolStripMenuItem";
+            ввестиДанныеОСтруктуреToolStripMenuItem.Size = new System.Drawing.Size(286, 22);
+            ввестиДанныеОСтруктуреToolStripMenuItem.Text = "Данные о структуре метаэкрана";
+            ввестиДанныеОСтруктуреToolStripMenuItem.Click += ввестиЗначенияПараметровToolStripMenuItem_Click;
             // 
             // ввестиДанныеОПараметрахToolStripMenuItem
             // 
+            ввестиДанныеОПараметрахToolStripMenuItem.Enabled = false;
             ввестиДанныеОПараметрахToolStripMenuItem.Name = "ввестиДанныеОПараметрахToolStripMenuItem";
             ввестиДанныеОПараметрахToolStripMenuItem.Size = new System.Drawing.Size(286, 22);
             ввестиДанныеОПараметрахToolStripMenuItem.Text = "Данные о параметрах метаэкрана";
@@ -215,10 +217,9 @@
             txtProjectName.Location = new System.Drawing.Point(141, 45);
             txtProjectName.Name = "txtProjectName";
             txtProjectName.ReadOnly = true;
-            txtProjectName.Size = new System.Drawing.Size(114, 23);
+            txtProjectName.Size = new System.Drawing.Size(220, 23);
             txtProjectName.TabIndex = 7;
             txtProjectName.Text = "Файл не выбран";
-            
             // 
             // Form1
             // 
@@ -249,7 +250,7 @@
         private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem переименоватьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ввестиЗначенияПараметровToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ввестиДанныеОСтруктуреToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ввестиДанныеОПараметрахToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem данныеОМатериалахToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem анализToolStripMenuItem;

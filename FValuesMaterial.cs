@@ -14,20 +14,22 @@ namespace MySystem
 {
     public partial class FValuesMaterial : Form
     {
+        int index = 0;
         FAddNewMaterial addNewMaterial;
 
         public FValuesMaterial()
         {
             InitializeComponent();
             LoadMaterialsToListView(@"C:\CST_Files\Materials");
+            LoadDataFromProjectFile();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             addNewMaterial = new FAddNewMaterial();
             addNewMaterial.ShowDialog();
-            
-            if(addNewMaterial.DialogResult == DialogResult.OK)
+
+            if (addNewMaterial.DialogResult == DialogResult.OK)
             {
                 listBox1.Items.Add(Material.MaterialName);
                 int i = 1;
@@ -65,7 +67,41 @@ namespace MySystem
                 item.SubItems.Add(folderPath);
                 listView1.Items.Add(item);
             }
-            
+
+        }
+        // Загружаем данные, если они есть в проекте
+
+        private void LoadDataFromProjectFile()
+        {
+            string filePath = Project.Path; // Путь к файлу проекта
+
+            // Чтение содержимого файла
+            string[] lines = File.ReadAllLines(filePath);
+
+            // Поиск строк с данными и их обработка
+            foreach (string line in lines)
+            {
+                if (line.StartsWith("Solid.ChangeMaterial"))
+                {
+                    string[] parts = line.Split('\"');
+                    string component = parts[1];
+                    string material = parts[3];
+
+                    // Заполнение TextBox'ов в зависимости от компонента
+                    if (component == "component1:Substrate")
+                    {
+                        textBox2.Text = material;
+                    }
+                    else if (component == "component1:outter")
+                    {
+                        textBox3.Text = material;
+                    }
+                    else if (component == "component1:inner")
+                    {
+                        textBox4.Text = material;
+                    }
+                }
+            }
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
@@ -86,7 +122,7 @@ namespace MySystem
                     MessageBox.Show("Item not found."); // display an error message if the item was not found
                 }
             }
-               
+
         }
         // TODO: после добавления материала исправить его поиск,а то он не работает
 
@@ -100,14 +136,14 @@ namespace MySystem
             if (listView1.SelectedItems.Count > 0)
             {
                 string fileName = listView1.SelectedItems[0].SubItems[0].Text;
-                    using (StreamReader reader = new StreamReader(folderPath + Path.GetFileName(fileName) +".txt"))
+                using (StreamReader reader = new StreamReader(folderPath + Path.GetFileName(fileName) + ".txt"))
+                {
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
                     {
-                        string line;
-                        while ((line = reader.ReadLine()) != null)
-                        {
-                            listBox1.Items.Add(line);
-                        }
+                        listBox1.Items.Add(line);
                     }
+                }
             }
         }
         // TODO: реализовать удаление материала из листвиев1
@@ -141,5 +177,107 @@ namespace MySystem
                 MessageBox.Show("File not found.");
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //Проверка, что выбран элемент в ListView
+                if (listView1.SelectedItems.Count > 0)
+            {
+                // Получение выбранного элемента
+                ListViewItem selectedItem = listView1.SelectedItems[0];
+
+                // Получение названия материала
+                string materialName = selectedItem.SubItems[0].Text;
+
+                // Добавление названия материала в TextBox
+                textBox2.Text = materialName;
+
+                // Запись в файл
+                string component = "component1:Substrate"; // Здесь нужно указать нужный компонент
+                string material = materialName;
+                WriteMaterialToFile(component, material);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //Проверка, что выбран элемент в ListView
+                if (listView1.SelectedItems.Count > 0)
+            {
+                // Получение выбранного элемента
+                ListViewItem selectedItem = listView1.SelectedItems[0];
+
+                // Получение названия материала
+                string materialName = selectedItem.SubItems[0].Text;
+
+                // Добавление названия материала в TextBox
+                textBox3.Text = materialName;
+
+                // Запись в файл
+                string component = "component1:outter"; // Здесь нужно указать нужный компонент
+                string material = materialName;
+                WriteMaterialToFile(component, material);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //Проверка, что выбран элемент в ListView
+                if (listView1.SelectedItems.Count > 0)
+            {
+                // Получение выбранного элемента
+                ListViewItem selectedItem = listView1.SelectedItems[0];
+
+                // Получение названия материала
+                string materialName = selectedItem.SubItems[0].Text;
+
+                // Добавление названия материала в TextBox
+                textBox4.Text = materialName;
+
+                // Запись в файл
+                string component = "component1:inner"; // Здесь нужно указать нужный компонент
+                string material = materialName;
+                WriteMaterialToFile(component, material);
+            }
+        }
+
+        //TODO: сделать вписывание материалов в файл, а то он не записывает
+        private void WriteMaterialToFile(string component, string material)
+        {
+            string filePath = Project.Path; // Путь к файлу проекта
+
+            // Чтение содержимого файла
+            string[] lines = File.ReadAllLines(filePath);
+
+            bool componentFound = false;
+            bool materialChanged = false;
+
+            // Поиск строки с указанным компонентом
+            for (int i = 0; i < lines.Length; i++)
+            {
+                if (lines[i].Contains(component))
+                {
+                    componentFound = true;
+                    // Замена строки с материалом
+                    lines[i] = $"Solid.ChangeMaterial \"{component}\", \"{material}\"";
+                    materialChanged = true;
+                    break;
+                }
+            }
+
+            // Если строка с указанным компонентом не найдена, добавляем ее в конец файла
+            if (!componentFound)
+            {
+                lines = lines.Append($"Solid.ChangeMaterial \"{component}\", \"{material}\"").ToArray();
+                materialChanged = true;
+            }
+
+            // Запись изменений в файл, только если материал был изменен
+            if (materialChanged)
+            {
+                File.WriteAllLines(filePath, lines);
+            }
+        }
     }
+    
 }

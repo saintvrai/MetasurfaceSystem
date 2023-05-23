@@ -28,171 +28,285 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.btnDeleteMaterial = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.SuspendLayout();
+            button1 = new System.Windows.Forms.Button();
+            label1 = new System.Windows.Forms.Label();
+            listBox1 = new System.Windows.Forms.ListBox();
+            label2 = new System.Windows.Forms.Label();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            listView1 = new System.Windows.Forms.ListView();
+            columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            columnHeader3 = new System.Windows.Forms.ColumnHeader();
+            columnHeader4 = new System.Windows.Forms.ColumnHeader();
+            textBox1 = new System.Windows.Forms.TextBox();
+            label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            listBox2 = new System.Windows.Forms.ListBox();
+            btnDeleteMaterial = new System.Windows.Forms.Button();
+            label5 = new System.Windows.Forms.Label();
+            textBox2 = new System.Windows.Forms.TextBox();
+            textBox3 = new System.Windows.Forms.TextBox();
+            textBox4 = new System.Windows.Forms.TextBox();
+            label6 = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
+            label8 = new System.Windows.Forms.Label();
+            button2 = new System.Windows.Forms.Button();
+            button3 = new System.Windows.Forms.Button();
+            button4 = new System.Windows.Forms.Button();
+            groupBox1.SuspendLayout();
+            SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 593);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(187, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Добавить новый материал";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.Location = new System.Drawing.Point(14, 684);
+            button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(218, 27);
+            button1.TabIndex = 0;
+            button1.Text = "Добавить новый материал";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 435);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(124, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Параметры материала";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(14, 502);
+            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(133, 15);
+            label1.TabIndex = 1;
+            label1.Text = "Параметры материала";
             // 
             // listBox1
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 453);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(254, 134);
-            this.listBox1.TabIndex = 2;
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Location = new System.Drawing.Point(14, 523);
+            listBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new System.Drawing.Size(296, 154);
+            listBox1.TabIndex = 2;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(170, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(460, 26);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Ввод данных об используемых материалах";
+            label2.AutoSize = true;
+            label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label2.Location = new System.Drawing.Point(198, 10);
+            label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(460, 26);
+            label2.TabIndex = 6;
+            label2.Text = "Ввод данных об используемых материалах";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.listView1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 100);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(783, 332);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Список материалов";
+            groupBox1.Controls.Add(listView1);
+            groupBox1.Location = new System.Drawing.Point(14, 115);
+            groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox1.Size = new System.Drawing.Size(913, 383);
+            groupBox1.TabIndex = 7;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Список материалов";
             // 
             // listView1
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
-            this.listView1.FullRowSelect = true;
-            this.listView1.GridLines = true;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(7, 20);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(769, 301);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { columnHeader2, columnHeader3, columnHeader4 });
+            listView1.FullRowSelect = true;
+            listView1.GridLines = true;
+            listView1.Location = new System.Drawing.Point(8, 23);
+            listView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            listView1.Name = "listView1";
+            listView1.Size = new System.Drawing.Size(896, 347);
+            listView1.TabIndex = 0;
+            listView1.UseCompatibleStateImageBehavior = false;
+            listView1.View = System.Windows.Forms.View.Details;
+            listView1.SelectedIndexChanged += listView1_SelectedIndexChanged;
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Материал";
-            this.columnHeader2.Width = 163;
+            columnHeader2.Text = "Материал";
+            columnHeader2.Width = 163;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Тип";
-            this.columnHeader3.Width = 155;
+            columnHeader3.Text = "Тип";
+            columnHeader3.Width = 155;
             // 
             // columnHeader4
             // 
-            this.columnHeader4.Text = "Нахождение";
-            this.columnHeader4.Width = 478;
+            columnHeader4.Text = "Нахождение";
+            columnHeader4.Width = 478;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(118, 62);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(198, 20);
-            this.textBox1.TabIndex = 8;
-            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
+            textBox1.Location = new System.Drawing.Point(138, 72);
+            textBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new System.Drawing.Size(230, 23);
+            textBox1.TabIndex = 8;
+            textBox1.KeyDown += textBox1_KeyDown;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 65);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Поиск материала:";
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(14, 75);
+            label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(107, 15);
+            label3.TabIndex = 9;
+            label3.Text = "Поиск материала:";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(331, 65);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 13);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Тип:";
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(386, 75);
+            label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(30, 15);
+            label4.TabIndex = 11;
+            label4.Text = "Тип:";
             // 
             // listBox2
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Items.AddRange(new object[] {
-            "Normal",
-            "Annelead",
-            "Pure"});
-            this.listBox2.Location = new System.Drawing.Point(366, 62);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(201, 17);
-            this.listBox2.TabIndex = 13;
+            listBox2.FormattingEnabled = true;
+            listBox2.ItemHeight = 15;
+            listBox2.Items.AddRange(new object[] { "Normal", "Annelead", "Pure" });
+            listBox2.Location = new System.Drawing.Point(427, 72);
+            listBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            listBox2.Name = "listBox2";
+            listBox2.Size = new System.Drawing.Size(234, 19);
+            listBox2.TabIndex = 13;
             // 
             // btnDeleteMaterial
             // 
-            this.btnDeleteMaterial.Location = new System.Drawing.Point(631, 62);
-            this.btnDeleteMaterial.Name = "btnDeleteMaterial";
-            this.btnDeleteMaterial.Size = new System.Drawing.Size(75, 23);
-            this.btnDeleteMaterial.TabIndex = 14;
-            this.btnDeleteMaterial.Text = "Удалить материал";
-            this.btnDeleteMaterial.UseVisualStyleBackColor = true;
-            this.btnDeleteMaterial.Click += new System.EventHandler(this.btnDeleteMaterial_Click);
+            btnDeleteMaterial.Location = new System.Drawing.Point(736, 72);
+            btnDeleteMaterial.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnDeleteMaterial.Name = "btnDeleteMaterial";
+            btnDeleteMaterial.Size = new System.Drawing.Size(88, 27);
+            btnDeleteMaterial.TabIndex = 14;
+            btnDeleteMaterial.Text = "Удалить материал";
+            btnDeleteMaterial.UseVisualStyleBackColor = true;
+            btnDeleteMaterial.Click += btnDeleteMaterial_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(354, 524);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(287, 15);
+            label5.TabIndex = 15;
+            label5.Text = "Выберите материал для каждого слоя метаэкрана:";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new System.Drawing.Point(481, 559);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new System.Drawing.Size(160, 23);
+            textBox2.TabIndex = 16;
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new System.Drawing.Point(482, 596);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new System.Drawing.Size(159, 23);
+            textBox3.TabIndex = 17;
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new System.Drawing.Point(483, 637);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new System.Drawing.Size(158, 23);
+            textBox4.TabIndex = 18;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(354, 562);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(67, 15);
+            label6.TabIndex = 19;
+            label6.Text = "Подложка:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new System.Drawing.Point(354, 599);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(103, 15);
+            label7.TabIndex = 20;
+            label7.Text = "Внешнее кольцо:";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new System.Drawing.Point(354, 640);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(117, 15);
+            label8.TabIndex = 21;
+            label8.Text = "Внутреннее кольцо:";
+            // 
+            // button2
+            // 
+            button2.Location = new System.Drawing.Point(724, 558);
+            button2.Name = "button2";
+            button2.Size = new System.Drawing.Size(75, 23);
+            button2.TabIndex = 22;
+            button2.Text = "Выбрать";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // button3
+            // 
+            button3.Location = new System.Drawing.Point(724, 596);
+            button3.Name = "button3";
+            button3.Size = new System.Drawing.Size(75, 23);
+            button3.TabIndex = 23;
+            button3.Text = "Выбрать";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
+            // button4
+            // 
+            button4.Location = new System.Drawing.Point(724, 637);
+            button4.Name = "button4";
+            button4.Size = new System.Drawing.Size(75, 23);
+            button4.TabIndex = 24;
+            button4.Text = "Выбрать";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // FValuesMaterial
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 637);
-            this.Controls.Add(this.btnDeleteMaterial);
-            this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
-            this.Name = "FValuesMaterial";
-            this.Text = "Ввод данных об используемых материалах";
-            this.groupBox1.ResumeLayout(false);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(933, 735);
+            Controls.Add(button4);
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(label8);
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(textBox4);
+            Controls.Add(textBox3);
+            Controls.Add(textBox2);
+            Controls.Add(label5);
+            Controls.Add(btnDeleteMaterial);
+            Controls.Add(listBox2);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(textBox1);
+            Controls.Add(groupBox1);
+            Controls.Add(label2);
+            Controls.Add(listBox1);
+            Controls.Add(label1);
+            Controls.Add(button1);
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "FValuesMaterial";
+            Text = "Ввод данных об используемых материалах";
+            groupBox1.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -211,5 +325,15 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Button btnDeleteMaterial;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }
