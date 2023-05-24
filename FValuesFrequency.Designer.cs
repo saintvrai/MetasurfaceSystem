@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             groupBox2 = new System.Windows.Forms.GroupBox();
-            txtMaterialType = new System.Windows.Forms.TextBox();
-            txtMaterialName = new System.Windows.Forms.TextBox();
+            label5 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            txtMaxFrequency = new System.Windows.Forms.TextBox();
+            txtMinFrequency = new System.Windows.Forms.TextBox();
             label1 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
@@ -42,8 +44,10 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(txtMaterialType);
-            groupBox2.Controls.Add(txtMaterialName);
+            groupBox2.Controls.Add(label5);
+            groupBox2.Controls.Add(label4);
+            groupBox2.Controls.Add(txtMaxFrequency);
+            groupBox2.Controls.Add(txtMinFrequency);
             groupBox2.Controls.Add(label1);
             groupBox2.Controls.Add(label3);
             groupBox2.Location = new System.Drawing.Point(50, 55);
@@ -55,21 +59,39 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Диапазон анализа частоты";
             // 
-            // txtMaterialType
+            // label5
             // 
-            txtMaterialType.Location = new System.Drawing.Point(258, 57);
-            txtMaterialType.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            txtMaterialType.Name = "txtMaterialType";
-            txtMaterialType.Size = new System.Drawing.Size(116, 23);
-            txtMaterialType.TabIndex = 9;
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(381, 65);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(29, 15);
+            label5.TabIndex = 11;
+            label5.Text = "GHz";
             // 
-            // txtMaterialName
+            // label4
             // 
-            txtMaterialName.Location = new System.Drawing.Point(20, 57);
-            txtMaterialName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            txtMaterialName.Name = "txtMaterialName";
-            txtMaterialName.Size = new System.Drawing.Size(116, 23);
-            txtMaterialName.TabIndex = 8;
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(143, 65);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(29, 15);
+            label4.TabIndex = 10;
+            label4.Text = "GHz";
+            // 
+            // txtMaxFrequency
+            // 
+            txtMaxFrequency.Location = new System.Drawing.Point(258, 57);
+            txtMaxFrequency.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtMaxFrequency.Name = "txtMaxFrequency";
+            txtMaxFrequency.Size = new System.Drawing.Size(116, 23);
+            txtMaxFrequency.TabIndex = 9;
+            // 
+            // txtMinFrequency
+            // 
+            txtMinFrequency.Location = new System.Drawing.Point(20, 57);
+            txtMinFrequency.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtMinFrequency.Name = "txtMinFrequency";
+            txtMinFrequency.Size = new System.Drawing.Size(116, 23);
+            txtMinFrequency.TabIndex = 8;
             // 
             // label1
             // 
@@ -122,6 +144,7 @@
             btnCancel.TabIndex = 10;
             btnCancel.Text = "Отменить";
             btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnSave
             // 
@@ -133,6 +156,7 @@
             btnSave.TabIndex = 9;
             btnSave.Text = "Сохранить";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // FValuesFrequency
             // 
@@ -155,13 +179,15 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txtMaterialType;
-        private System.Windows.Forms.TextBox txtMaterialName;
+        private System.Windows.Forms.TextBox txtMaxFrequency;
+        private System.Windows.Forms.TextBox txtMinFrequency;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
     }
 }
