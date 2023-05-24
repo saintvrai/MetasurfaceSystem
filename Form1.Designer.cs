@@ -46,7 +46,6 @@
             справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             руководствМПИToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             авторToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            progressBar1 = new System.Windows.Forms.ProgressBar();
             timer1 = new System.Windows.Forms.Timer(components);
             button1 = new System.Windows.Forms.Button();
             label1 = new System.Windows.Forms.Label();
@@ -168,24 +167,14 @@
             // руководствМПИToolStripMenuItem
             // 
             руководствМПИToolStripMenuItem.Name = "руководствМПИToolStripMenuItem";
-            руководствМПИToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            руководствМПИToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             руководствМПИToolStripMenuItem.Text = "Помощь";
             // 
             // авторToolStripMenuItem
             // 
             авторToolStripMenuItem.Name = "авторToolStripMenuItem";
-            авторToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            авторToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             авторToolStripMenuItem.Text = "Автор";
-            // 
-            // progressBar1
-            // 
-            progressBar1.Enabled = false;
-            progressBar1.ForeColor = System.Drawing.Color.Lime;
-            progressBar1.Location = new System.Drawing.Point(247, 388);
-            progressBar1.Margin = new System.Windows.Forms.Padding(2);
-            progressBar1.Name = "progressBar1";
-            progressBar1.Size = new System.Drawing.Size(196, 22);
-            progressBar1.TabIndex = 3;
             // 
             // timer1
             // 
@@ -193,7 +182,7 @@
             // 
             // button1
             // 
-            button1.Location = new System.Drawing.Point(298, 356);
+            button1.Location = new System.Drawing.Point(297, 383);
             button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             button1.Name = "button1";
             button1.Size = new System.Drawing.Size(88, 27);
@@ -229,7 +218,6 @@
             Controls.Add(txtProjectName);
             Controls.Add(label1);
             Controls.Add(button1);
-            Controls.Add(progressBar1);
             Controls.Add(menuStrip2);
             Margin = new System.Windows.Forms.Padding(2);
             Name = "Form1";
@@ -257,7 +245,6 @@
         private System.Windows.Forms.ToolStripMenuItem синтезToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem руководствМПИToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem авторToolStripMenuItem;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.ToolStripMenuItem создатьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem настройкаПараметровАнализаToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;

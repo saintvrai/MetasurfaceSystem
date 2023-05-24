@@ -93,7 +93,7 @@ namespace MySystem
         // Загружаем данные о проекте в форму, если там они есть
         private void LoadData()
         {
-            
+
 
             using (StreamReader reader = new StreamReader(Project.Path))
             {
@@ -133,7 +133,7 @@ namespace MySystem
         // Сохранение в файл параметры структуры
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            
+
             Project.MetascreenStructName = DataStruct.ResonatorType.ToString();
             KvadratStruct.SubstrateWidth = double.Parse(textBox1.Text);
             KvadratStruct.SubstrateLength = double.Parse(textBox3.Text);
@@ -165,7 +165,7 @@ namespace MySystem
             else
             {
                 MessageBox.Show("Проверьте правильность введенных данных и ограничения (см. Помощь)", "Ошибка");
-                
+
             }
         }
 

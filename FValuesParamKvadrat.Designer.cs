@@ -51,6 +51,14 @@
             label10 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
             btnCancel = new System.Windows.Forms.Button();
+            label12 = new System.Windows.Forms.Label();
+            label13 = new System.Windows.Forms.Label();
+            label14 = new System.Windows.Forms.Label();
+            label15 = new System.Windows.Forms.Label();
+            label16 = new System.Windows.Forms.Label();
+            label17 = new System.Windows.Forms.Label();
+            label18 = new System.Windows.Forms.Label();
+            label19 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -136,7 +144,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(16, 264);
+            label6.Location = new System.Drawing.Point(20, 264);
             label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(243, 15);
@@ -173,7 +181,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(16, 302);
+            label5.Location = new System.Drawing.Point(20, 302);
             label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(239, 15);
@@ -199,7 +207,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new System.Drawing.Point(16, 340);
+            label8.Location = new System.Drawing.Point(20, 340);
             label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label8.Name = "label8";
             label8.Size = new System.Drawing.Size(258, 15);
@@ -209,7 +217,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(16, 378);
+            label7.Location = new System.Drawing.Point(20, 378);
             label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new System.Drawing.Size(254, 15);
@@ -219,7 +227,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new System.Drawing.Point(16, 454);
+            label9.Location = new System.Drawing.Point(20, 454);
             label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(233, 15);
@@ -245,7 +253,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new System.Drawing.Point(16, 416);
+            label10.Location = new System.Drawing.Point(20, 416);
             label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label10.Name = "label10";
             label10.Size = new System.Drawing.Size(237, 15);
@@ -255,7 +263,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new System.Drawing.Point(20, 206);
+            label11.Location = new System.Drawing.Point(20, 222);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(173, 15);
             label11.TabIndex = 27;
@@ -273,11 +281,91 @@
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new System.Drawing.Point(416, 272);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(29, 15);
+            label12.TabIndex = 29;
+            label12.Text = "mm";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new System.Drawing.Point(416, 310);
+            label13.Name = "label13";
+            label13.Size = new System.Drawing.Size(29, 15);
+            label13.TabIndex = 30;
+            label13.Text = "mm";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new System.Drawing.Point(416, 348);
+            label14.Name = "label14";
+            label14.Size = new System.Drawing.Size(29, 15);
+            label14.TabIndex = 31;
+            label14.Text = "mm";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new System.Drawing.Point(416, 386);
+            label15.Name = "label15";
+            label15.Size = new System.Drawing.Size(29, 15);
+            label15.TabIndex = 32;
+            label15.Text = "mm";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new System.Drawing.Point(416, 424);
+            label16.Name = "label16";
+            label16.Size = new System.Drawing.Size(29, 15);
+            label16.TabIndex = 33;
+            label16.Text = "mm";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new System.Drawing.Point(416, 464);
+            label17.Name = "label17";
+            label17.Size = new System.Drawing.Size(29, 15);
+            label17.TabIndex = 34;
+            label17.Text = "mm";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new System.Drawing.Point(303, 125);
+            label18.Name = "label18";
+            label18.Size = new System.Drawing.Size(29, 15);
+            label18.TabIndex = 35;
+            label18.Text = "mm";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new System.Drawing.Point(303, 168);
+            label19.Name = "label19";
+            label19.Size = new System.Drawing.Size(29, 15);
+            label19.TabIndex = 36;
+            label19.Text = "mm";
+            // 
             // FValuesParamKvadrat
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1033, 593);
+            Controls.Add(label19);
+            Controls.Add(label18);
+            Controls.Add(label17);
+            Controls.Add(label16);
+            Controls.Add(label15);
+            Controls.Add(label14);
+            Controls.Add(label13);
+            Controls.Add(label12);
             Controls.Add(btnCancel);
             Controls.Add(label11);
             Controls.Add(label9);
@@ -333,5 +421,13 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
     }
 }

@@ -80,7 +80,7 @@ namespace MySystem
                 label14.Enabled = true;
 
             }
-            // TODO: попробовать добавить базу и кнопку помощи при наведении сделать
+          
         }
     }
 }

@@ -36,10 +36,8 @@ namespace MySystem
             conn = new NpgsqlConnection(connstring);
         }
 
-
         //DB TEST
         // добавление данных
-
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -76,7 +74,6 @@ namespace MySystem
                     // LoadStructureForm(structureName);
                 }
             }
-
         }
 
         private void CheckStructureInFile(string filePath)
@@ -185,6 +182,7 @@ namespace MySystem
         //{
         //    progressBar1.PerformStep();
         //}
+
         // Анализируемый мнтаэлемкнт для метаэкрана
 
         private void ввестиДанныеОПараметрахToolStripMenuItem_Click(object sender, EventArgs e)
@@ -239,7 +237,7 @@ namespace MySystem
         private void настройкаПараметровАнализаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Создаём новую форму ввода данных о параметрах метаэкрана 
-            FValuesAnalysis analysisStruct = new FValuesAnalysis();
+            FValuesFrequency analysisStruct = new FValuesFrequency();
             analysisStruct.StartPosition = FormStartPosition.CenterScreen;
             DialogResult dr = analysisStruct.ShowDialog();
             if (dr == DialogResult.OK)
@@ -306,7 +304,6 @@ namespace MySystem
                     }
                 }
             }
-
 
             ввестиДанныеОСтруктуреToolStripMenuItem.Enabled = true;
         }
