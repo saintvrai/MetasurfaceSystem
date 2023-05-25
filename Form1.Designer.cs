@@ -41,8 +41,8 @@
             данныеОМатериалахToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             выполнитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             настройкаПараметровАнализаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            анализToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             синтезToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            стартToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             руководствМПИToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             авторToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -131,7 +131,7 @@
             // 
             // выполнитьToolStripMenuItem
             // 
-            выполнитьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { настройкаПараметровАнализаToolStripMenuItem, анализToolStripMenuItem, синтезToolStripMenuItem });
+            выполнитьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { настройкаПараметровАнализаToolStripMenuItem, синтезToolStripMenuItem, стартToolStripMenuItem });
             выполнитьToolStripMenuItem.Name = "выполнитьToolStripMenuItem";
             выполнитьToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
             выполнитьToolStripMenuItem.Text = "Выполнить";
@@ -143,19 +143,19 @@
             настройкаПараметровАнализаToolStripMenuItem.Text = "Настройка параметров анализа";
             настройкаПараметровАнализаToolStripMenuItem.Click += настройкаПараметровАнализаToolStripMenuItem_Click;
             // 
-            // анализToolStripMenuItem
-            // 
-            анализToolStripMenuItem.Enabled = false;
-            анализToolStripMenuItem.Name = "анализToolStripMenuItem";
-            анализToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
-            анализToolStripMenuItem.Text = "Настройка параметров синтеза";
-            // 
             // синтезToolStripMenuItem
             // 
-            синтезToolStripMenuItem.Enabled = false;
             синтезToolStripMenuItem.Name = "синтезToolStripMenuItem";
             синтезToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
-            синтезToolStripMenuItem.Text = "Выполнить проектную операцию";
+            синтезToolStripMenuItem.Text = "Настройка параметров синтеза";
+            синтезToolStripMenuItem.Click += синтезToolStripMenuItem_Click;
+            // 
+            // стартToolStripMenuItem
+            // 
+            стартToolStripMenuItem.Enabled = false;
+            стартToolStripMenuItem.Name = "стартToolStripMenuItem";
+            стартToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
+            стартToolStripMenuItem.Text = "Выполнить проектную операцию";
             // 
             // справкаToolStripMenuItem
             // 
@@ -167,13 +167,13 @@
             // руководствМПИToolStripMenuItem
             // 
             руководствМПИToolStripMenuItem.Name = "руководствМПИToolStripMenuItem";
-            руководствМПИToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            руководствМПИToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             руководствМПИToolStripMenuItem.Text = "Помощь";
             // 
             // авторToolStripMenuItem
             // 
             авторToolStripMenuItem.Name = "авторToolStripMenuItem";
-            авторToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            авторToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             авторToolStripMenuItem.Text = "Автор";
             // 
             // timer1
@@ -241,8 +241,8 @@
         private System.Windows.Forms.ToolStripMenuItem ввестиДанныеОСтруктуреToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ввестиДанныеОПараметрахToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem данныеОМатериалахToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem анализToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem синтезToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem стартToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem руководствМПИToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem авторToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem создатьToolStripMenuItem;

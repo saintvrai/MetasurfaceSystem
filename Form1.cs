@@ -308,6 +308,17 @@ namespace MySystem
             ввестиДанныеОСтруктуреToolStripMenuItem.Enabled = true;
         }
 
+        private void синтезToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Создаём новую форму ввода данных о параметрах метаэкрана 
+            FValuesSintez sintezStruct = new FValuesSintez();
+            sintezStruct.StartPosition = FormStartPosition.CenterScreen;
+            DialogResult dr = sintezStruct.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                // данныеОМатериалахToolStripMenuItem.Enabled = true;
+            }
+        }
     }
 }
 

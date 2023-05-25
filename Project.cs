@@ -13,6 +13,9 @@ namespace MySystem
         public static string MetascreenStructName { get; set; }
         public static int MinFrequency { get; set; }
         public static int MaxFrequency { get; set; }
-        
+        public static int PopulationNumber {get; set;}
+        public static double MutationChance { get; set; }
+        public static double CrossingChance { get; set; }
+
     }
 }
