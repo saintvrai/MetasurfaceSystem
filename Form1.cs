@@ -74,6 +74,8 @@ namespace MySystem
                     // LoadStructureForm(structureName);
                 }
             }
+            сохранитьToolStripMenuItem.Enabled = true;
+            удалитьToolStripMenuItem.Enabled = true;
         }
 
         private void CheckStructureInFile(string filePath)
@@ -294,18 +296,12 @@ namespace MySystem
                     Project.Path = projectFilePath2;
                     Project.Name = Path.GetFileName(filePath);
                     txtProjectName.Text = Path.GetFileNameWithoutExtension(filePath);
-
-
-                    using (StreamWriter writer = new StreamWriter(filePath))
-                    {
-
-                        writer.WriteLine("Путь проекта: " + projectFilePath2);
-                        writer.WriteLine("Название файла: " + Path.GetFileName(filePath));
-                    }
                 }
             }
 
             ввестиДанныеОСтруктуреToolStripMenuItem.Enabled = true;
+            сохранитьToolStripMenuItem.Enabled = true;
+            удалитьToolStripMenuItem.Enabled = true;
         }
 
         private void синтезToolStripMenuItem_Click(object sender, EventArgs e)
@@ -318,6 +314,69 @@ namespace MySystem
             {
                 // данныеОМатериалахToolStripMenuItem.Enabled = true;
             }
+        }
+
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Проверка наличия пути проекта
+            if (string.IsNullOrEmpty(Project.Path))
+            {
+                MessageBox.Show("Путь проекта не указан.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Формирование данных для сохранения
+            string filePath = Project.Path;
+
+
+            // Запись данных в файл
+            try
+            {
+                // Ваш код для записи данных в файл по пути Project.Path
+
+                MessageBox.Show("Файл успешно сохранен.", "Сохранение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при сохранении файла: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Проверка наличия пути проекта
+            if (string.IsNullOrEmpty(Project.Path))
+            {
+                MessageBox.Show("Путь проекта не указан.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Подтверждение удаления файла
+            DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить файл?", "Удаление файла", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    // Удаление файла
+                    File.Delete(Project.Path);
+
+                    MessageBox.Show("Файл успешно удален.", "Удаление файла", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при удалении файла: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            txtProjectName.Text = "Файл не выбран";
+            Project.Path = null;
+            Project.Name = txtProjectName.Text;
+
+            ввестиДанныеОСтруктуреToolStripMenuItem.Enabled = false;
+            сохранитьToolStripMenuItem.Enabled = false;
+            удалитьToolStripMenuItem.Enabled = false;
+
+            //TODO: сделать также закрытие ненужных функций программы после удаления и настроить основную логику
+            //TODO: сделать уже основной парсер хотя бы для структуры квадратной и запустить макрос
         }
     }
 }

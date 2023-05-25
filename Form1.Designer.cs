@@ -34,7 +34,7 @@
             открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             создатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            переименоватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             проектныеДанныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ввестиДанныеОСтруктуреToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ввестиДанныеОПараметрахToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,7 +66,7 @@
             // 
             // проектToolStripMenuItem
             // 
-            проектToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { открытьToolStripMenuItem, создатьToolStripMenuItem, сохранитьToolStripMenuItem, переименоватьToolStripMenuItem });
+            проектToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { открытьToolStripMenuItem, создатьToolStripMenuItem, сохранитьToolStripMenuItem, удалитьToolStripMenuItem });
             проектToolStripMenuItem.Name = "проектToolStripMenuItem";
             проектToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             проектToolStripMenuItem.Text = "Проект";
@@ -74,14 +74,14 @@
             // открытьToolStripMenuItem
             // 
             открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            открытьToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            открытьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             открытьToolStripMenuItem.Text = "Открыть...";
             открытьToolStripMenuItem.Click += открытьToolStripMenuItem_Click;
             // 
             // создатьToolStripMenuItem
             // 
             создатьToolStripMenuItem.Name = "создатьToolStripMenuItem";
-            создатьToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            создатьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             создатьToolStripMenuItem.Text = "Создать...";
             создатьToolStripMenuItem.Click += создатьToolStripMenuItem_Click;
             // 
@@ -89,15 +89,17 @@
             // 
             сохранитьToolStripMenuItem.Enabled = false;
             сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            сохранитьToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             сохранитьToolStripMenuItem.Text = "Сохранить...";
+            сохранитьToolStripMenuItem.Click += сохранитьToolStripMenuItem_Click;
             // 
-            // переименоватьToolStripMenuItem
+            // удалитьToolStripMenuItem
             // 
-            переименоватьToolStripMenuItem.Enabled = false;
-            переименоватьToolStripMenuItem.Name = "переименоватьToolStripMenuItem";
-            переименоватьToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            переименоватьToolStripMenuItem.Text = "Удалить...";
+            удалитьToolStripMenuItem.Enabled = false;
+            удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
+            удалитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            удалитьToolStripMenuItem.Text = "Удалить...";
+            удалитьToolStripMenuItem.Click += удалитьToolStripMenuItem_Click;
             // 
             // проектныеДанныеToolStripMenuItem
             // 
@@ -237,7 +239,7 @@
         private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem переименоватьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ввестиДанныеОСтруктуреToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ввестиДанныеОПараметрахToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem данныеОМатериалахToolStripMenuItem;
