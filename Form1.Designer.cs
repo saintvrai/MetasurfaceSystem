@@ -50,6 +50,7 @@
             button1 = new System.Windows.Forms.Button();
             label1 = new System.Windows.Forms.Label();
             txtProjectName = new System.Windows.Forms.TextBox();
+            button2 = new System.Windows.Forms.Button();
             menuStrip2.SuspendLayout();
             SuspendLayout();
             // 
@@ -74,14 +75,14 @@
             // открытьToolStripMenuItem
             // 
             открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            открытьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            открытьToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             открытьToolStripMenuItem.Text = "Открыть...";
             открытьToolStripMenuItem.Click += открытьToolStripMenuItem_Click;
             // 
             // создатьToolStripMenuItem
             // 
             создатьToolStripMenuItem.Name = "создатьToolStripMenuItem";
-            создатьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            создатьToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             создатьToolStripMenuItem.Text = "Создать...";
             создатьToolStripMenuItem.Click += создатьToolStripMenuItem_Click;
             // 
@@ -89,7 +90,7 @@
             // 
             сохранитьToolStripMenuItem.Enabled = false;
             сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            сохранитьToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             сохранитьToolStripMenuItem.Text = "Сохранить...";
             сохранитьToolStripMenuItem.Click += сохранитьToolStripMenuItem_Click;
             // 
@@ -97,7 +98,7 @@
             // 
             удалитьToolStripMenuItem.Enabled = false;
             удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
-            удалитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            удалитьToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             удалитьToolStripMenuItem.Text = "Удалить...";
             удалитьToolStripMenuItem.Click += удалитьToolStripMenuItem_Click;
             // 
@@ -212,11 +213,22 @@
             txtProjectName.TabIndex = 7;
             txtProjectName.Text = "Файл не выбран";
             // 
+            // button2
+            // 
+            button2.Location = new System.Drawing.Point(297, 241);
+            button2.Name = "button2";
+            button2.Size = new System.Drawing.Size(113, 23);
+            button2.TabIndex = 8;
+            button2.Text = "Заменить данные с одного файла на другой";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(700, 422);
+            Controls.Add(button2);
             Controls.Add(txtProjectName);
             Controls.Add(label1);
             Controls.Add(button1);
@@ -253,6 +265,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtProjectName;
+        private System.Windows.Forms.Button button2;
     }
 }
 

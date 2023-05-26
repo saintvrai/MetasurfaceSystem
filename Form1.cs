@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -72,10 +73,12 @@ namespace MySystem
 
                     // Загрузка формы в соответствии с названием структуры
                     // LoadStructureForm(structureName);
+
+                    сохранитьToolStripMenuItem.Enabled = true;
+                    удалитьToolStripMenuItem.Enabled = true;
                 }
             }
-            сохранитьToolStripMenuItem.Enabled = true;
-            удалитьToolStripMenuItem.Enabled = true;
+
         }
 
         private void CheckStructureInFile(string filePath)
@@ -291,17 +294,23 @@ namespace MySystem
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string filePath = saveFileDialog.FileName;
-                    string projectPath2 = Path.GetDirectoryName(Application.StartupPath);
-                    string projectFilePath2 = Path.Combine(projectPath2, filePath);
-                    Project.Path = projectFilePath2;
+                    string projectFilePath = Path.Combine(folderPath, filePath);
+                    Project.Path = projectFilePath;
                     Project.Name = Path.GetFileName(filePath);
                     txtProjectName.Text = Path.GetFileNameWithoutExtension(filePath);
-                }
-            }
 
-            ввестиДанныеОСтруктуреToolStripMenuItem.Enabled = true;
-            сохранитьToolStripMenuItem.Enabled = true;
-            удалитьToolStripMenuItem.Enabled = true;
+                    using (StreamWriter writer = new StreamWriter(Project.Path, true))
+                    {
+
+                    }
+
+
+                    ввестиДанныеОСтруктуреToolStripMenuItem.Enabled = true;
+                    сохранитьToolStripMenuItem.Enabled = true;
+                    удалитьToolStripMenuItem.Enabled = true;
+                }
+
+            }
         }
 
         private void синтезToolStripMenuItem_Click(object sender, EventArgs e)
@@ -377,6 +386,71 @@ namespace MySystem
 
             //TODO: сделать также закрытие ненужных функций программы после удаления и настроить основную логику
             //TODO: сделать уже основной парсер хотя бы для структуры квадратной и запустить макрос
+        }
+
+
+        private void ReplaceDataInFile()
+        {
+            string sourceFilePath = Project.Path;
+            string targetFilePath = @"C:\Users\Saint vRAI\source\repos\MetasurfaceSystem\bin\Debug\CST\Screens\kvadratik.txt"; // Укажите путь к целевому файлу
+
+            // Чтение исходного файла
+            string[] sourceLines = File.ReadAllLines(sourceFilePath);
+
+            // Значения переменных
+            string wValue = GetValueFromLine(sourceLines, "Ширина подложки W=");
+            string sValue = GetValueFromLine(sourceLines, "Длина подложки S=");
+            string lMaxValue = GetValueFromLine(sourceLines, "Максимальная длина внешнего кольца L=");
+            string lMinValue = GetValueFromLine(sourceLines, "Минимальная длина внешнего кольца L=");
+            string kMinValue = GetValueFromLine(sourceLines, "Минимальная длина внутреннего кольца K=");
+            string kMaxValue = GetValueFromLine(sourceLines, "Максимальная длина внутреннего кольца K=");
+            string hMinValue = GetValueFromLine(sourceLines, "Минимальная длина вырезки кольца H=");
+            string hMaxValue = GetValueFromLine(sourceLines, "Максимальная длина вырезки кольца H=");
+
+            // Чтение целевого файла
+            string[] targetLines = File.ReadAllLines(targetFilePath);
+
+            // Замена значений в целевом файле
+            ReplaceValueInLine(targetLines, "W=", wValue);
+            ReplaceValueInLine(targetLines, "S=", sValue);
+            ReplaceValueInLine(targetLines, "upperboundL =", lMaxValue);
+            ReplaceValueInLine(targetLines, "lowerboundL =", lMinValue);
+            ReplaceValueInLine(targetLines, "lowerboundK =", kMinValue);
+            ReplaceValueInLine(targetLines, "upperboundK =", kMaxValue);
+            ReplaceValueInLine(targetLines, "lowerboundH =", hMinValue);
+            ReplaceValueInLine(targetLines, "upperboundH =", hMaxValue);
+
+            // Запись изменений в целевой файл
+            File.WriteAllLines(targetFilePath, targetLines);
+        }
+
+        private string GetValueFromLine(string[] lines, string prefix)
+        {
+            foreach (string line in lines)
+            {
+                if (line.StartsWith(prefix))
+                {
+                    return line.Substring(prefix.Length);
+                }
+            }
+            return string.Empty;
+        }
+
+        private void ReplaceValueInLine(string[] lines, string prefix, string newValue)
+        {
+            for (int i = 0; i < lines.Length; i++)
+            {
+                if (lines[i].StartsWith(prefix))
+                {
+                    lines[i] = prefix + newValue;
+                    break;
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ReplaceDataInFile();
         }
     }
 }

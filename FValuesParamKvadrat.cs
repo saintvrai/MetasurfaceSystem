@@ -80,7 +80,6 @@ namespace MySystem
         {
             check_buttuns(ref sender, ref e);
         }
-
         private void textBox8_KeyPress(object sender, KeyPressEventArgs e)
         {
             check_buttuns(ref sender, ref e);
@@ -93,8 +92,6 @@ namespace MySystem
         // Загружаем данные о проекте в форму, если там они есть
         private void LoadData()
         {
-
-
             using (StreamReader reader = new StreamReader(Project.Path))
             {
                 string line;
@@ -111,7 +108,7 @@ namespace MySystem
                     else if (line.StartsWith("Минимальная длина внутреннего кольца K="))
                         KvadratStruct.Klowerbound = double.Parse(line.Substring("Минимальная длина внутреннего кольца K=".Length));
                     else if (line.StartsWith("Максимальная длина внутреннго кольца K="))
-                        KvadratStruct.Kupperbound = double.Parse(line.Substring("Максимальная длина внутреннго кольца K=".Length));
+                        KvadratStruct.Kupperbound = double.Parse(line.Substring("Максимальная длина внутреннего кольца K=".Length));
                     else if (line.StartsWith("Минимальная длина вырезки кольца H="))
                         KvadratStruct.Hlowerbound = double.Parse(line.Substring("Минимальная длина вырезки кольца H=".Length));
                     else if (line.StartsWith("Максимальная длина вырезки кольца H="))
@@ -155,7 +152,7 @@ namespace MySystem
                     writer.WriteLine("Максимальная длина внешнего кольца L=" + KvadratStruct.Lupperbound);
                     writer.WriteLine("Минимальная длина внешнего кольца L=" + KvadratStruct.Llowerbound);
                     writer.WriteLine("Минимальная длина внутреннего кольца K=" + KvadratStruct.Klowerbound);
-                    writer.WriteLine("Максимальная длина внутреннго кольца K=" + KvadratStruct.Kupperbound);
+                    writer.WriteLine("Максимальная длина внутреннего кольца K=" + KvadratStruct.Kupperbound);
                     writer.WriteLine("Минимальная длина вырезки кольца H=" + KvadratStruct.Hlowerbound);
                     writer.WriteLine("Максимальная длина вырезки кольца H=" + KvadratStruct.Hupperbound);
 
