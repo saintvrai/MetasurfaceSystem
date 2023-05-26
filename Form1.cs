@@ -411,18 +411,19 @@ namespace MySystem
             string[] targetLines = File.ReadAllLines(targetFilePath);
 
             // Замена значений в целевом файле
-            ReplaceValueInLine(targetLines, "W=", wValue);
-            ReplaceValueInLine(targetLines, "S=", sValue);
-            ReplaceValueInLine(targetLines, "upperboundL =", lMaxValue);
-            ReplaceValueInLine(targetLines, "lowerboundL =", lMinValue);
-            ReplaceValueInLine(targetLines, "lowerboundK =", kMinValue);
-            ReplaceValueInLine(targetLines, "upperboundK =", kMaxValue);
-            ReplaceValueInLine(targetLines, "lowerboundH =", hMinValue);
-            ReplaceValueInLine(targetLines, "upperboundH =", hMaxValue);
+            ReplaceValueInLine(targetLines, "W=", wValue.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "S=", sValue.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "upperboundL =", lMaxValue.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "lowerboundL =", lMinValue.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "lowerboundK =", kMinValue.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "upperboundK =", kMaxValue.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "lowerboundH =", hMinValue.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "upperboundH =", hMaxValue.Replace(',', '.'));
 
             // Запись изменений в целевой файл
             File.WriteAllLines(targetFilePath, targetLines);
         }
+
 
         private string GetValueFromLine(string[] lines, string prefix)
         {

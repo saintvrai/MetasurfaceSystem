@@ -46,7 +46,7 @@ namespace MySystem
             // Запрет ввода точки
             if (e.KeyChar == '.')
             {
-                e.Handled = true;
+                e.Handled = false;
             }
 
             // Цифры с плавающей запятой
@@ -130,20 +130,63 @@ namespace MySystem
         // Сохранение в файл параметры структуры
         private void btn_Save_Click(object sender, EventArgs e)
         {
+            // Проверка заполнения всех текстовых полей
+            if (string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(textBox3.Text) ||
+                string.IsNullOrWhiteSpace(textBox6.Text) || string.IsNullOrWhiteSpace(textBox7.Text) ||
+                string.IsNullOrWhiteSpace(textBox4.Text) || string.IsNullOrWhiteSpace(textBox5.Text) ||
+                string.IsNullOrWhiteSpace(textBox8.Text) || string.IsNullOrWhiteSpace(textBox9.Text))
+            {
+                MessageBox.Show("Заполните все текстовые поля", "Ошибка");
+                return;
+            }
 
-            Project.MetascreenStructName = DataStruct.ResonatorType.ToString();
-            KvadratStruct.SubstrateWidth = double.Parse(textBox1.Text);
-            KvadratStruct.SubstrateLength = double.Parse(textBox3.Text);
-            KvadratStruct.Llowerbound = double.Parse(textBox6.Text);
-            KvadratStruct.Lupperbound = double.Parse(textBox7.Text);
-            KvadratStruct.Klowerbound = double.Parse(textBox4.Text);
-            KvadratStruct.Kupperbound = double.Parse(textBox5.Text);
-            KvadratStruct.Hlowerbound = double.Parse(textBox8.Text);
-            KvadratStruct.Hupperbound = double.Parse(textBox9.Text);
+            double substrateWidth;
+            double substrateLength;
+            double lLowerbound;
+            double lUpperbound;
+            double kLowerbound;
+            double kUpperbound;
+            double hLowerbound;
+            double hUpperbound;
+
+            // Проверка корректности введенных значений
+            if (!double.TryParse(textBox1.Text, out substrateWidth) ||
+                !double.TryParse(textBox3.Text, out substrateLength) ||
+                !double.TryParse(textBox6.Text, out lLowerbound) ||
+                !double.TryParse(textBox7.Text, out lUpperbound) ||
+                !double.TryParse(textBox4.Text, out kLowerbound) ||
+                !double.TryParse(textBox5.Text, out kUpperbound) ||
+                !double.TryParse(textBox8.Text, out hLowerbound) ||
+                !double.TryParse(textBox9.Text, out hUpperbound))
+            {
+                MessageBox.Show("Проверьте правильность введенных данных", "Ошибка");
+                return;
+            }
+
 
             // Проверка перекрещивания внешнего и внутреннего кольца
-            if (KvadratStruct.Kupperbound <= KvadratStruct.Llowerbound || KvadratStruct.Klowerbound >= KvadratStruct.Lupperbound)
+            if (kUpperbound <= lLowerbound || kLowerbound >= lUpperbound)
             {
+                Project.MetascreenStructName = DataStruct.ResonatorType.ToString();
+                KvadratStruct.SubstrateWidth = substrateWidth;
+
+                // Проверка, что ни одно значение не превышает ширину подложки
+                if (lLowerbound > substrateWidth || lUpperbound > substrateWidth ||
+                    kLowerbound > substrateWidth || kUpperbound > substrateWidth ||
+                    hLowerbound > substrateWidth || hUpperbound > substrateWidth)
+                {
+                    MessageBox.Show("Значения не могут быть больше Ширины подложки W", "Ошибка");
+                    return;
+                }
+
+                KvadratStruct.SubstrateLength = substrateLength;
+                KvadratStruct.Llowerbound = lLowerbound;
+                KvadratStruct.Lupperbound = lUpperbound;
+                KvadratStruct.Klowerbound = kLowerbound;
+                KvadratStruct.Kupperbound = kUpperbound;
+                KvadratStruct.Hlowerbound = hLowerbound;
+                KvadratStruct.Hupperbound = hUpperbound;
+
                 using (StreamWriter writer = new StreamWriter(Project.Path, false))
                 {
                     writer.WriteLine("Структура:" + Project.MetascreenStructName + "\n");
@@ -155,16 +198,17 @@ namespace MySystem
                     writer.WriteLine("Максимальная длина внутреннего кольца K=" + KvadratStruct.Kupperbound);
                     writer.WriteLine("Минимальная длина вырезки кольца H=" + KvadratStruct.Hlowerbound);
                     writer.WriteLine("Максимальная длина вырезки кольца H=" + KvadratStruct.Hupperbound);
-
                 }
+
                 this.Close();
             }
             else
             {
                 MessageBox.Show("Проверьте правильность введенных данных и ограничения (см. Помощь)", "Ошибка");
-
             }
         }
+
+
 
 
         private void btnCancel_Click(object sender, EventArgs e)
