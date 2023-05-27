@@ -266,7 +266,7 @@ namespace MySystem
 
             string path = @"C:\Users\Saint vRAI\source\repos\MetasurfaceSystem\bin\Debug\CST\Screens";
 
-            string cmdLine = $@"{path}\kvadratikmacros.vbs";      // BPLA
+            string cmdLine = $@"{path}\kvadratik.vbs";      // BPLA
             //string cmdLine = $@"{path}\copter\COPTER_macro.vbs";    // COPTER
 
             proc.StartInfo = new ProcessStartInfo("wscript", cmdLine);
