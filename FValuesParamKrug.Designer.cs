@@ -51,6 +51,14 @@
             textBox2 = new System.Windows.Forms.TextBox();
             label1 = new System.Windows.Forms.Label();
             textBox1 = new System.Windows.Forms.TextBox();
+            label12 = new System.Windows.Forms.Label();
+            label13 = new System.Windows.Forms.Label();
+            label14 = new System.Windows.Forms.Label();
+            label15 = new System.Windows.Forms.Label();
+            label16 = new System.Windows.Forms.Label();
+            label17 = new System.Windows.Forms.Label();
+            label18 = new System.Windows.Forms.Label();
+            label19 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -271,11 +279,91 @@
             textBox1.Size = new System.Drawing.Size(116, 23);
             textBox1.TabIndex = 29;
             // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new System.Drawing.Point(409, 271);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(29, 15);
+            label12.TabIndex = 52;
+            label12.Text = "mm";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new System.Drawing.Point(409, 309);
+            label13.Name = "label13";
+            label13.Size = new System.Drawing.Size(29, 15);
+            label13.TabIndex = 53;
+            label13.Text = "mm";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new System.Drawing.Point(409, 347);
+            label14.Name = "label14";
+            label14.Size = new System.Drawing.Size(29, 15);
+            label14.TabIndex = 54;
+            label14.Text = "mm";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new System.Drawing.Point(409, 385);
+            label15.Name = "label15";
+            label15.Size = new System.Drawing.Size(29, 15);
+            label15.TabIndex = 55;
+            label15.Text = "mm";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new System.Drawing.Point(409, 423);
+            label16.Name = "label16";
+            label16.Size = new System.Drawing.Size(29, 15);
+            label16.TabIndex = 56;
+            label16.Text = "mm";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new System.Drawing.Point(409, 463);
+            label17.Name = "label17";
+            label17.Size = new System.Drawing.Size(29, 15);
+            label17.TabIndex = 57;
+            label17.Text = "mm";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new System.Drawing.Point(296, 124);
+            label18.Name = "label18";
+            label18.Size = new System.Drawing.Size(29, 15);
+            label18.TabIndex = 58;
+            label18.Text = "mm";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new System.Drawing.Point(296, 167);
+            label19.Name = "label19";
+            label19.Size = new System.Drawing.Size(29, 15);
+            label19.TabIndex = 59;
+            label19.Text = "mm";
+            // 
             // FValuesParamKrug
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1015, 593);
+            Controls.Add(label19);
+            Controls.Add(label18);
+            Controls.Add(label17);
+            Controls.Add(label16);
+            Controls.Add(label15);
+            Controls.Add(label14);
+            Controls.Add(label13);
+            Controls.Add(label12);
             Controls.Add(btnCancel);
             Controls.Add(label11);
             Controls.Add(label9);
@@ -332,5 +420,13 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
     }
 }

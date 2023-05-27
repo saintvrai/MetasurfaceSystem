@@ -17,6 +17,6 @@ namespace MySystem
         public static double O_outter { get; set; }
         public static double I_outter { get; set; }
         public static double O_inner { get; set; }
-        public static double i_inner { get; set; }
+        public static double I_inner { get; set; }
     }
 }

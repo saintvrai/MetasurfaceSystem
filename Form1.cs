@@ -30,8 +30,8 @@ namespace MySystem
         {
             InitializeComponent();
 
-            string filePath = @"C:\CST_Files\Results\Kvadrat\Final.txt";
-            StartFileMonitoring(filePath);
+            //string filePath = @"C:\CST_Files\Results\Kvadrat\Final.txt";
+            //StartFileMonitoring(filePath);
 
         }
         private string connstring = String.Format("Server ={0};Port ={1};" +
