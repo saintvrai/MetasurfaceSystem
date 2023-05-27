@@ -9,6 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.ServiceModel.Channels;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.ApplicationServices;
@@ -263,9 +264,9 @@ namespace MySystem
                 MessageBoxIcon.Information
              );
 
-            string path = $@"C:\Users\Airat\source\repos\MetasurfaceProgram\bin\Debug\CST\Screens";
+            string path = @"C:\Users\Saint vRAI\source\repos\MetasurfaceSystem\bin\Debug\CST\Screens";
 
-            string cmdLine = $@"{path}\kvadrat.vbs";      // BPLA
+            string cmdLine = $@"{path}\kvadratikmacros.vbs";      // BPLA
             //string cmdLine = $@"{path}\copter\COPTER_macro.vbs";    // COPTER
 
             proc.StartInfo = new ProcessStartInfo("wscript", cmdLine);
@@ -386,8 +387,10 @@ namespace MySystem
             удалитьToolStripMenuItem.Enabled = false;
 
             //TODO: сделать также закрытие ненужных функций программы после удаления и настроить основную логику
-            //TODO: сделать уже основной парсер хотя бы для структуры квадратной и запустить макрос
         }
+
+        //TODO: сделать правильные пути, а то они сейчас захордкодены, а также парсер параметров синтеза
+
 
         #region Работа с параметрами в целевом файле 
         //Работа с параметрами в файле
@@ -546,6 +549,77 @@ namespace MySystem
         }
         #endregion
 
+        #region Работа с данными синтеза в скрипте
+        private void ReplaceDataInFileSintez()
+        {
+            string sourceFilePath = Project.Path;
+            string targetFilePath = @"C:\Users\Saint vRAI\source\repos\MetasurfaceSystem\bin\Debug\CST\Screens\kvadratikmat.txt"; // Укажите путь к целевому файлу
+
+            // Чтение исходного файла
+            string[] sourceLines = File.ReadAllLines(sourceFilePath);
+
+            // Чтение целевого файла
+            List<string> targetLines = new List<string>(File.ReadAllLines(targetFilePath));
+
+            // Поиск строки "While (num_pop <= {currentValue})"
+            int whileLoopIndex = targetLines.FindIndex(line => line.Contains("While (num_pop <="));
+
+            if (whileLoopIndex != -1)
+            {
+                // Поиск строки с значением PopulationNumber
+                string populationNumberLine = GetPopulationNumberLineFromSourceFile(sourceLines);
+
+                // Получение значения PopulationNumber
+                int populationNumber = ExtractPopulationNumber(populationNumberLine);
+
+                // Замена значения в строке While (num_pop <= {currentValue})
+                string whileLoopLine = ModifyWhileLoopLine(targetLines[whileLoopIndex], populationNumber);
+                targetLines[whileLoopIndex] = whileLoopLine;
+            }
+
+            // Запись изменений в целевой файл
+            File.WriteAllLines(targetFilePath, targetLines);
+        }
+
+        // Метод для получения строки с PopulationNumber из исходного файла
+        private string GetPopulationNumberLineFromSourceFile(string[] sourceLines)
+        {
+            foreach (string line in sourceLines)
+            {
+                if (line.Contains("PopulationNumber="))
+                {
+                    return line;
+                }
+            }
+
+            return string.Empty;
+        }
+
+        // Метод для извлечения значения PopulationNumber из строки
+        private int ExtractPopulationNumber(string populationNumberLine)
+        {
+            // Извлечение значения после знака равенства
+            int startIndex = populationNumberLine.IndexOf("=") + 1;
+            string populationNumberString = populationNumberLine.Substring(startIndex).Trim();
+
+            if (int.TryParse(populationNumberString, out int populationNumber))
+            {
+                return populationNumber;
+            }
+
+            return 0; // Значение по умолчанию
+        }
+
+        // Метод для замены значения в строке While (num_pop <= {currentValue})
+        private string ModifyWhileLoopLine(string whileLoopLine, int populationNumber)
+        {
+            // Замена значения в строке
+            string modifiedLine = Regex.Replace(whileLoopLine, @"(?<=<=\s+)\d+", populationNumber.ToString());
+            return modifiedLine;
+        }
+        #endregion
+
+
         private void button2_Click(object sender, EventArgs e)
         {
             ReplaceDataInFile();
@@ -554,6 +628,7 @@ namespace MySystem
         private void button3_Click(object sender, EventArgs e)
         {
             ReplaceDataInFileMat();
+            ReplaceDataInFileSintez();
         }
     }
 }
