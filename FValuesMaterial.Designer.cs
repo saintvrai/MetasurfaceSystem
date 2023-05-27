@@ -197,9 +197,9 @@
             label5.AutoSize = true;
             label5.Location = new System.Drawing.Point(354, 524);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(287, 15);
+            label5.Size = new System.Drawing.Size(313, 15);
             label5.TabIndex = 15;
-            label5.Text = "Выберите материал для каждого слоя метаэкрана:";
+            label5.Text = "Выберите материал для каждого элемента метаэкрана:";
             // 
             // textBox2
             // 

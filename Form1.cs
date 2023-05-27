@@ -23,9 +23,16 @@ namespace MySystem
 {
     public partial class Form1 : Form
     {
+        private FileSystemWatcher watcher;
+        private Timer timer;
+        private string filePath;
         public Form1()
         {
             InitializeComponent();
+
+            string filePath = @"C:\CST_Files\Results\Kvadrat\Final.txt";
+            StartFileMonitoring(filePath);
+
         }
         private string connstring = String.Format("Server ={0};Port ={1};" +
             "User Id={2};Password={3};Database={4};",
@@ -38,8 +45,52 @@ namespace MySystem
             conn = new NpgsqlConnection(connstring);
         }
 
-        //DB TEST
-        // добавление данных
+
+        #region Читает файл и выводит в RichTextBox
+
+        private void StartFileMonitoring(string path)
+        {
+            filePath = path;
+
+            // Создаем FileSystemWatcher
+            watcher = new FileSystemWatcher();
+            watcher.Path = Path.GetDirectoryName(filePath);
+            watcher.Filter = Path.GetFileName(filePath);
+            watcher.NotifyFilter = NotifyFilters.LastWrite; // Мониторим только изменения записи
+            watcher.EnableRaisingEvents = true;
+            watcher.Changed += OnFileChanged;
+
+            // Создаем Timer
+            timer = new Timer();
+            timer.Interval = 1000; // Интервал проверки, можно изменить по необходимости
+            timer.Tick += OnTimerTick;
+            timer.Start();
+        }
+        private void OnFileChanged(object sender, FileSystemEventArgs e)
+        {
+            // При изменении файла останавливаем таймер
+            timer.Stop();
+        }
+
+        private void OnTimerTick(object sender, EventArgs e)
+        {
+            try
+            {
+                // Чтение содержимого файла
+                string fileContent = File.ReadAllText(filePath);
+
+                // Обновление содержимого элемента TextBox
+                richTextBox1.Invoke((MethodInvoker)(() =>
+                {
+                    richTextBox1.Text = fileContent;
+                }));
+            }
+            catch (IOException ex)
+            {
+                // Файл занят другим процессом, продолжаем ожидание
+            }
+        }
+        #endregion
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -113,7 +164,7 @@ namespace MySystem
                 ввестиДанныеОСтруктуреToolStripMenuItem.Enabled = true;
             }
         }
-
+        //TODO: сделать для круга и ромба, данные, параметры все дела
         private void LoadStructureForm(string structureName)
         {
             //if (structureName == "Квадратный резонатор")
@@ -184,12 +235,8 @@ namespace MySystem
 
         }
 
-        //private void timer1_Tick_1(object sender, EventArgs e)
-        //{
-        //    progressBar1.PerformStep();
-        //}
 
-        // Анализируемый мнтаэлемкнт для метаэкрана
+        // Анализируемый метаэлемент для метаэкрана
 
         private void ввестиДанныеОПараметрахToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -214,7 +261,7 @@ namespace MySystem
                     данныеОМатериалахToolStripMenuItem.Enabled = true;
                 }
             }
-            else
+            else if (DataStruct.ResonatorType == "Ромбовидный резонатор")
             {
                 FValuesParamRomb paramStructRomb = new FValuesParamRomb();
                 paramStructRomb.StartPosition = FormStartPosition.CenterScreen;
@@ -223,6 +270,10 @@ namespace MySystem
                 {
                     данныеОМатериалахToolStripMenuItem.Enabled = true;
                 }
+            }
+            else
+            {
+                MessageBox.Show("Не удалось распознать тип структуры", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 
@@ -377,6 +428,45 @@ namespace MySystem
             }
         }
 
+        private bool CheckKvadratStructData()
+        {
+            string filePath = Project.Path;
+
+            string[] expectedLines = new string[]
+            {
+        "Структура:Квадратный резонатор",
+        "Ширина подложки W=",
+        "Длина подложки S=",
+        "Максимальная длина внешнего кольца L=",
+        "Минимальная длина внешнего кольца L=",
+        "Минимальная длина внутреннего кольца K=",
+        "Максимальная длина внутреннего кольца K=",
+        "Минимальная длина вырезки кольца H=",
+        "Максимальная длина вырезки кольца H=",
+        "Solid.ChangeMaterial \"component1:Substrate\",",
+        "Solid.ChangeMaterial \"component1:outter\",",
+        "Solid.ChangeMaterial \"component1:inner\",",
+        "Solver.FrequencyRange",
+        "PopulationNumber=",
+        "MutationChance=",
+        "CrossingChance="
+            };
+
+            string[] fileLines = File.ReadAllLines(filePath);
+
+            // Проверка построчно наличие ожидаемых строк
+            for (int i = 0; i < expectedLines.Length; i++)
+            {
+                if (!fileLines.Any(line => line.Contains(expectedLines[i])))
+                {
+                    MessageBox.Show("Неправильно в строке" + expectedLines[i].ToString());
+                    return false;
+                }
+            }
+            MessageBox.Show("Все данные правильные");
+            return true;
+        }
+
         private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Проверка наличия пути проекта
@@ -410,7 +500,7 @@ namespace MySystem
             сохранитьToolStripMenuItem.Enabled = false;
             удалитьToolStripMenuItem.Enabled = false;
 
-            //TODO: сделать также закрытие ненужных функций программы после удаления и настроить основную логику
+
         }
 
         //TODO: сделать правильные пути, а то они сейчас захордкодены, а также парсер параметров синтеза
@@ -421,7 +511,7 @@ namespace MySystem
         private void ReplaceDataInFile()
         {
             string sourceFilePath = Project.Path;
-            string targetFilePath = @"C:\Users\Saint vRAI\source\repos\MetasurfaceSystem\bin\Debug\CST\Screens\kvadratik.txt"; // Укажите путь к целевому файлу
+            string targetFilePath = @"C:\CST_Files\Macros\Kvadrat\kvadrat_macros.txt"; // Укажите путь к целевому файлу
 
             // Чтение исходного файла
             string[] sourceLines = File.ReadAllLines(sourceFilePath);
@@ -482,8 +572,21 @@ namespace MySystem
         #region Работа с материалами и частотой
         private void ReplaceDataInFileMat()
         {
+            string targetFilePath;
             string sourceFilePath = Project.Path;
-            string targetFilePath = @"C:\Users\Saint vRAI\source\repos\MetasurfaceSystem\bin\Debug\CST\Screens\kvadratikmat.txt"; // Укажите путь к целевому файлу
+            if (DataStruct.ResonatorType == "Квадратный резонатор")
+            {
+                targetFilePath = @"C:\CST_Files\Macros\Kvadrat\kvadrat_macros.txt"; // Укажите путь к целевому файлу
+            }
+            else if (DataStruct.ResonatorType == "Круглый резонатор")
+            {
+                targetFilePath = @"C:\CST_Files\Macros\Krug\krug_macros.txt"; // Укажите путь к целевому файлу
+            }
+            else
+            {
+                targetFilePath = @"C:\CST_Files\Macros\Romb\romb_macros.txt";
+            }
+
 
             // Чтение исходного файла
             string[] sourceLines = File.ReadAllLines(sourceFilePath);
@@ -527,10 +630,6 @@ namespace MySystem
                     }
                 }
             }
-
-
-
-
             // Запись изменений в целевой файл
             File.WriteAllLines(targetFilePath, targetLines);
         }
@@ -576,35 +675,48 @@ namespace MySystem
         #region Работа с данными синтеза в скрипте
         private void ReplaceDataInFileSintez()
         {
-            string sourceFilePath = Project.Path;
-            string targetFilePath = @"C:\Users\Saint vRAI\source\repos\MetasurfaceSystem\bin\Debug\CST\Screens\kvadratikmat.txt"; // Укажите путь к целевому файлу
-
-            // Чтение исходного файла
-            string[] sourceLines = File.ReadAllLines(sourceFilePath);
-
-            // Чтение целевого файла
-            List<string> targetLines = new List<string>(File.ReadAllLines(targetFilePath));
-
-            // Поиск строки "While (num_pop <= {currentValue})"
-            int whileLoopIndex = targetLines.FindIndex(line => line.Contains("While (num_pop <="));
-
-            if (whileLoopIndex != -1)
             {
-                // Поиск строки с значением PopulationNumber
-                string populationNumberLine = GetPopulationNumberLineFromSourceFile(sourceLines);
+                string targetFilePath;
+                string sourceFilePath = Project.Path;
+                if (DataStruct.ResonatorType == "Квадратный резонатор")
+                {
+                    targetFilePath = @"C:\CST_Files\Macros\Kvadrat\kvadrat_macros.txt"; // Укажите путь к целевому файлу
+                }
+                else if (DataStruct.ResonatorType == "Круглый резонатор")
+                {
+                    targetFilePath = @"C:\CST_Files\Macros\Krug\krug_macros.txt"; // Укажите путь к целевому файлу
+                }
+                else
+                {
+                    targetFilePath = @"C:\CST_Files\Macros\Romb\romb_macros.txt";
+                }
 
-                // Получение значения PopulationNumber
-                int populationNumber = ExtractPopulationNumber(populationNumberLine);
+                // Чтение исходного файла
+                string[] sourceLines = File.ReadAllLines(sourceFilePath);
 
-                // Замена значения в строке While (num_pop <= {currentValue})
-                string whileLoopLine = ModifyWhileLoopLine(targetLines[whileLoopIndex], populationNumber);
-                targetLines[whileLoopIndex] = whileLoopLine;
+                // Чтение целевого файла
+                List<string> targetLines = new List<string>(File.ReadAllLines(targetFilePath));
+
+                // Поиск строки "While (num_pop <= {currentValue})"
+                int whileLoopIndex = targetLines.FindIndex(line => line.Contains("While (num_pop <="));
+
+                if (whileLoopIndex != -1)
+                {
+                    // Поиск строки с значением PopulationNumber
+                    string populationNumberLine = GetPopulationNumberLineFromSourceFile(sourceLines);
+
+                    // Получение значения PopulationNumber
+                    int populationNumber = ExtractPopulationNumber(populationNumberLine);
+
+                    // Замена значения в строке While (num_pop <= {currentValue})
+                    string whileLoopLine = ModifyWhileLoopLine(targetLines[whileLoopIndex], populationNumber);
+                    targetLines[whileLoopIndex] = whileLoopLine;
+                }
+
+                // Запись изменений в целевой файл
+                File.WriteAllLines(targetFilePath, targetLines);
             }
-
-            // Запись изменений в целевой файл
-            File.WriteAllLines(targetFilePath, targetLines);
         }
-
         // Метод для получения строки с PopulationNumber из исходного файла
         private string GetPopulationNumberLineFromSourceFile(string[] sourceLines)
         {
@@ -660,6 +772,58 @@ namespace MySystem
             string scriptPath = @"C:\Users\SaintvRAI\source\repos\MetasurfaceSystem\bin\Debug\CST\Screens\kvadrat.vbs";
             RunVbsScript(scriptPath);
         }
+        //TODO: Попробовать сделать progress bar для скрипта
+        private void btnRun_Click(object sender, EventArgs e)
+        {
+            if (CheckKvadratStructData() == true)
+            {
+                var proc = new Process();
+                proc.EnableRaisingEvents = true;
+                proc.Exited += (s, ev) =>
+                {
+                    // Обновление ProgressBar после завершения скрипта
+                    progressBar1.Invoke(new Action(() =>
+                    {
+                        progressBar1.Value = 100;
+                        MessageBox.Show(
+                            "Проектная процедура завершила работу." +
+                            "Испытание пройдено",
+                            "Готово!",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+                    }));
+                };
+
+                string path = @"C:\CST_Files\Macros\Kvadrat";
+                string cmdLine = $@"{path}\kvadrat_struct.vbs";
+
+                proc.StartInfo = new ProcessStartInfo("wscript", cmdLine);
+
+                // Обновление ProgressBar во время выполнения скрипта
+                proc.OutputDataReceived += (s, ev) =>
+                {
+                    if (!string.IsNullOrEmpty(ev.Data) && ev.Data.StartsWith("Progress:"))
+                    {
+                        string progressString = ev.Data.Substring("Progress:".Length).Trim();
+                        int progressValue = int.Parse(progressString);
+                        progressBar1.Invoke(new Action(() =>
+                        {
+                            progressBar1.Value = progressValue;
+                        }));
+                    }
+                };
+
+                proc.Start();
+            }
+            else
+            {
+                MessageBox.Show("Проверьте правильность введеных всех данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
     }
 }
+
 

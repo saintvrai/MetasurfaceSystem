@@ -53,6 +53,9 @@
             button2 = new System.Windows.Forms.Button();
             button3 = new System.Windows.Forms.Button();
             button4 = new System.Windows.Forms.Button();
+            btnRun = new System.Windows.Forms.Button();
+            progressBar1 = new System.Windows.Forms.ProgressBar();
+            richTextBox1 = new System.Windows.Forms.RichTextBox();
             menuStrip2.SuspendLayout();
             SuspendLayout();
             // 
@@ -187,7 +190,7 @@
             // 
             // button1
             // 
-            button1.Location = new System.Drawing.Point(297, 383);
+            button1.Location = new System.Drawing.Point(296, 350);
             button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             button1.Name = "button1";
             button1.Size = new System.Drawing.Size(88, 27);
@@ -217,7 +220,7 @@
             // 
             // button2
             // 
-            button2.Location = new System.Drawing.Point(167, 243);
+            button2.Location = new System.Drawing.Point(523, 192);
             button2.Name = "button2";
             button2.Size = new System.Drawing.Size(177, 49);
             button2.TabIndex = 8;
@@ -227,7 +230,7 @@
             // 
             // button3
             // 
-            button3.Location = new System.Drawing.Point(417, 243);
+            button3.Location = new System.Drawing.Point(523, 295);
             button3.Name = "button3";
             button3.Size = new System.Drawing.Size(177, 49);
             button3.TabIndex = 9;
@@ -237,7 +240,7 @@
             // 
             // button4
             // 
-            button4.Location = new System.Drawing.Point(490, 379);
+            button4.Location = new System.Drawing.Point(625, 350);
             button4.Name = "button4";
             button4.Size = new System.Drawing.Size(75, 23);
             button4.TabIndex = 10;
@@ -245,11 +248,39 @@
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
+            // btnRun
+            // 
+            btnRun.Location = new System.Drawing.Point(523, 247);
+            btnRun.Name = "btnRun";
+            btnRun.Size = new System.Drawing.Size(170, 42);
+            btnRun.TabIndex = 11;
+            btnRun.Text = "Выполнить проектную процедуру";
+            btnRun.UseVisualStyleBackColor = true;
+            btnRun.Click += btnRun_Click;
+            // 
+            // progressBar1
+            // 
+            progressBar1.Location = new System.Drawing.Point(49, 387);
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new System.Drawing.Size(582, 23);
+            progressBar1.TabIndex = 12;
+            // 
+            // richTextBox1
+            // 
+            richTextBox1.Location = new System.Drawing.Point(12, 90);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new System.Drawing.Size(505, 236);
+            richTextBox1.TabIndex = 13;
+            richTextBox1.Text = "";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(700, 422);
+            Controls.Add(richTextBox1);
+            Controls.Add(progressBar1);
+            Controls.Add(btnRun);
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -292,6 +323,9 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnRun;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 
