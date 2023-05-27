@@ -252,6 +252,30 @@ namespace MySystem
             }
         }
 
+        //TODO: попробовать запустить скрипт
+
+        private void RunVbsScript(string scriptPath)
+        {
+            try
+            {
+                var proc = new Process();
+                proc.EnableRaisingEvents = true;
+                proc.Exited += (s, ev) =>
+                {
+                    MessageBox.Show("Проектная процедура завершила работу. Испытание не пройдено",
+                        "Готово!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                };
+
+                proc.StartInfo = new ProcessStartInfo("wscript", scriptPath);
+                proc.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при запуске скрипта: {ex.Message}",
+                    "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             var proc = new Process();
@@ -264,10 +288,10 @@ namespace MySystem
                 MessageBoxIcon.Information
              );
 
-            string path = @"C:\Users\Saint vRAI\source\repos\MetasurfaceSystem\bin\Debug\CST\Screens";
+            string path = @"C:\CST_Files\Macros";
 
-            string cmdLine = $@"{path}\kvadratik.vbs";      // BPLA
-            //string cmdLine = $@"{path}\copter\COPTER_macro.vbs";    // COPTER
+            string cmdLine = $@"{path}\kvadratik.vbs";
+
 
             proc.StartInfo = new ProcessStartInfo("wscript", cmdLine);
             proc.Start();
@@ -629,6 +653,12 @@ namespace MySystem
         {
             ReplaceDataInFileMat();
             ReplaceDataInFileSintez();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string scriptPath = @"C:\Users\SaintvRAI\source\repos\MetasurfaceSystem\bin\Debug\CST\Screens\kvadrat.vbs";
+            RunVbsScript(scriptPath);
         }
     }
 }
