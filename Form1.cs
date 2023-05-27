@@ -337,11 +337,12 @@ namespace MySystem
             // Формирование данных для сохранения
             string filePath = Project.Path;
 
-
             // Запись данных в файл
             try
             {
-                // Ваш код для записи данных в файл по пути Project.Path
+                string fileContent = File.ReadAllText(filePath); // Чтение текущего содержимого файла
+
+                File.WriteAllText(filePath, fileContent); // Перезапись файла с обновленным содержимым
 
                 MessageBox.Show("Файл успешно сохранен.", "Сохранение", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -388,7 +389,8 @@ namespace MySystem
             //TODO: сделать уже основной парсер хотя бы для структуры квадратной и запустить макрос
         }
 
-
+        #region Работа с параметрами в целевом файле 
+        //Работа с параметрами в файле
         private void ReplaceDataInFile()
         {
             string sourceFilePath = Project.Path;
@@ -402,8 +404,8 @@ namespace MySystem
             string sValue = GetValueFromLine(sourceLines, "Длина подложки S=");
             string lMaxValue = GetValueFromLine(sourceLines, "Максимальная длина внешнего кольца L=");
             string lMinValue = GetValueFromLine(sourceLines, "Минимальная длина внешнего кольца L=");
-            string kMinValue = GetValueFromLine(sourceLines, "Минимальная длина внутреннего кольца K=");
             string kMaxValue = GetValueFromLine(sourceLines, "Максимальная длина внутреннего кольца K=");
+            string kMinValue = GetValueFromLine(sourceLines, "Минимальная длина внутреннего кольца K=");
             string hMinValue = GetValueFromLine(sourceLines, "Минимальная длина вырезки кольца H=");
             string hMaxValue = GetValueFromLine(sourceLines, "Максимальная длина вырезки кольца H=");
 
@@ -448,10 +450,110 @@ namespace MySystem
                 }
             }
         }
+        #endregion
+
+        #region Работа с материалами и частотой
+        private void ReplaceDataInFileMat()
+        {
+            string sourceFilePath = Project.Path;
+            string targetFilePath = @"C:\Users\Saint vRAI\source\repos\MetasurfaceSystem\bin\Debug\CST\Screens\kvadratikmat.txt"; // Укажите путь к целевому файлу
+
+            // Чтение исходного файла
+            string[] sourceLines = File.ReadAllLines(sourceFilePath);
+
+            // Чтение целевого файла
+            List<string> targetLines = new List<string>(File.ReadAllLines(targetFilePath));
+
+            // Поиск индекса строки 'set the frequency range'
+            int frequencyRangeIndex = targetLines.FindIndex(line => line.Contains("set the frequency range"));
+
+            if (frequencyRangeIndex != -1)
+            {
+                // Замена строки Solver.FrequencyRange
+                string frequencyRangeLine = GetFrequencyRangeLineFromSourceFile(sourceLines);
+                targetLines[frequencyRangeIndex + 1] = frequencyRangeLine;
+            }
+
+            // Поиск индекса строки 'set new materials'
+            int newMaterialsIndex = targetLines.FindIndex(line => line.Contains("set new materials"));
+
+            if (newMaterialsIndex != -1)
+            {
+                // Определение индекса строки, после которой должны быть вставлены новые материалы
+                int insertIndex = newMaterialsIndex + 1;
+
+                // Удаление всех строк Solid.ChangeMaterial после 'set new materials'
+                targetLines.RemoveAll(line => line.StartsWith("Solid.ChangeMaterial") && targetLines.IndexOf(line) > newMaterialsIndex);
+
+                // Вставка новых материалов из файла Project.Path
+                string[] materialLines = GetMaterialLinesFromSourceFile(sourceLines);
+                targetLines.InsertRange(insertIndex, materialLines.Take(3)); // Берем только первые 3 записи
+
+                // Дополняем недостающие строки, если количество записей меньше 3
+                int remainingLines = 3 - materialLines.Length;
+                if (remainingLines > 0)
+                {
+                    string lastLine = materialLines.LastOrDefault();
+                    for (int i = 0; i < remainingLines; i++)
+                    {
+                        targetLines.Insert(insertIndex + materialLines.Length + i, lastLine);
+                    }
+                }
+            }
+
+
+
+
+            // Запись изменений в целевой файл
+            File.WriteAllLines(targetFilePath, targetLines);
+        }
+
+        // Метод для получения строки с Solver.FrequencyRange из исходного файла
+        private string GetFrequencyRangeLineFromSourceFile(string[] sourceLines)
+        {
+            foreach (string line in sourceLines)
+            {
+                if (line.StartsWith("Solver.FrequencyRange"))
+                {
+                    return line;
+                }
+            }
+
+            return string.Empty;
+        }
+
+        // Метод для получения строк с материалами из исходного файла
+        private string[] GetMaterialLinesFromSourceFile(string[] sourceLines)
+        {
+            List<string> materialLines = new List<string>();
+
+            bool insertMaterials = false;
+
+            foreach (string line in sourceLines)
+            {
+                if (insertMaterials && line.StartsWith("Solid.ChangeMaterial"))
+                {
+                    materialLines.Add(line);
+                }
+                else if (line.Contains("Solid.ChangeMaterial"))
+                {
+                    insertMaterials = true;
+                    materialLines.Add(line);
+                }
+            }
+
+            return materialLines.ToArray();
+        }
+        #endregion
 
         private void button2_Click(object sender, EventArgs e)
         {
             ReplaceDataInFile();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ReplaceDataInFileMat();
         }
     }
 }

@@ -51,6 +51,7 @@
             label1 = new System.Windows.Forms.Label();
             txtProjectName = new System.Windows.Forms.TextBox();
             button2 = new System.Windows.Forms.Button();
+            button3 = new System.Windows.Forms.Button();
             menuStrip2.SuspendLayout();
             SuspendLayout();
             // 
@@ -215,19 +216,30 @@
             // 
             // button2
             // 
-            button2.Location = new System.Drawing.Point(297, 241);
+            button2.Location = new System.Drawing.Point(167, 243);
             button2.Name = "button2";
-            button2.Size = new System.Drawing.Size(113, 23);
+            button2.Size = new System.Drawing.Size(177, 49);
             button2.TabIndex = 8;
-            button2.Text = "Заменить данные с одного файла на другой";
+            button2.Text = "Заменить данные о параметрах";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
+            // 
+            // button3
+            // 
+            button3.Location = new System.Drawing.Point(417, 243);
+            button3.Name = "button3";
+            button3.Size = new System.Drawing.Size(177, 49);
+            button3.TabIndex = 9;
+            button3.Text = "Заменить данные о материалах";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(700, 422);
+            Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(txtProjectName);
             Controls.Add(label1);
@@ -266,6 +278,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtProjectName;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
 

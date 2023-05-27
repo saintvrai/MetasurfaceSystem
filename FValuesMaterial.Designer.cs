@@ -52,6 +52,9 @@
             button2 = new System.Windows.Forms.Button();
             button3 = new System.Windows.Forms.Button();
             button4 = new System.Windows.Forms.Button();
+            btnSave = new System.Windows.Forms.Button();
+            btnCancel = new System.Windows.Forms.Button();
+            btnHelp = new System.Windows.Forms.Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -276,11 +279,43 @@
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
+            // btnSave
+            // 
+            btnSave.Location = new System.Drawing.Point(483, 700);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new System.Drawing.Size(75, 23);
+            btnSave.TabIndex = 25;
+            btnSave.Text = "Сохранить";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
+            // 
+            // btnCancel
+            // 
+            btnCancel.Location = new System.Drawing.Point(584, 700);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new System.Drawing.Size(75, 23);
+            btnCancel.TabIndex = 26;
+            btnCancel.Text = "Отменить";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
+            // 
+            // btnHelp
+            // 
+            btnHelp.Location = new System.Drawing.Point(685, 700);
+            btnHelp.Name = "btnHelp";
+            btnHelp.Size = new System.Drawing.Size(75, 23);
+            btnHelp.TabIndex = 27;
+            btnHelp.Text = "Помощь";
+            btnHelp.UseVisualStyleBackColor = true;
+            // 
             // FValuesMaterial
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(933, 735);
+            Controls.Add(btnHelp);
+            Controls.Add(btnCancel);
+            Controls.Add(btnSave);
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -335,5 +370,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnHelp;
     }
 }

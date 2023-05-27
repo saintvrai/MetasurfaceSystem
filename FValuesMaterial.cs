@@ -181,7 +181,7 @@ namespace MySystem
         private void button2_Click(object sender, EventArgs e)
         {
             //Проверка, что выбран элемент в ListView
-                if (listView1.SelectedItems.Count > 0)
+            if (listView1.SelectedItems.Count > 0)
             {
                 // Получение выбранного элемента
                 ListViewItem selectedItem = listView1.SelectedItems[0];
@@ -202,7 +202,7 @@ namespace MySystem
         private void button3_Click(object sender, EventArgs e)
         {
             //Проверка, что выбран элемент в ListView
-                if (listView1.SelectedItems.Count > 0)
+            if (listView1.SelectedItems.Count > 0)
             {
                 // Получение выбранного элемента
                 ListViewItem selectedItem = listView1.SelectedItems[0];
@@ -223,7 +223,7 @@ namespace MySystem
         private void button4_Click(object sender, EventArgs e)
         {
             //Проверка, что выбран элемент в ListView
-                if (listView1.SelectedItems.Count > 0)
+            if (listView1.SelectedItems.Count > 0)
             {
                 // Получение выбранного элемента
                 ListViewItem selectedItem = listView1.SelectedItems[0];
@@ -241,7 +241,6 @@ namespace MySystem
             }
         }
 
-        //TODO: сделать вписывание материалов в файл, а то он не записывает
         private void WriteMaterialToFile(string component, string material)
         {
             string filePath = Project.Path; // Путь к файлу проекта
@@ -278,6 +277,39 @@ namespace MySystem
                 File.WriteAllLines(filePath, lines);
             }
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            // Проверка наличия пути проекта
+            if (string.IsNullOrEmpty(Project.Path))
+            {
+                MessageBox.Show("Путь проекта не указан.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Формирование данных для сохранения
+            string filePath = Project.Path;
+
+            // Запись данных в файл
+            try
+            {
+                string fileContent = File.ReadAllText(filePath); // Чтение текущего содержимого файла
+                                                                 // Ваш код для обновления данных в переменной fileContent
+
+                File.WriteAllText(filePath, fileContent); // Перезапись файла с обновленным содержимым
+
+                MessageBox.Show("Файл успешно сохранен.", "Сохранение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при сохранении файла: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
-    
+
 }

@@ -105,14 +105,15 @@ namespace MySystem
                         KvadratStruct.Lupperbound = double.Parse(line.Substring("Максимальная длина внешнего кольца L=".Length));
                     else if (line.StartsWith("Минимальная длина внешнего кольца L="))
                         KvadratStruct.Llowerbound = double.Parse(line.Substring("Минимальная длина внешнего кольца L=".Length));
+                    else if (line.StartsWith("Максимальная длина внутреннего кольца K="))
+                        KvadratStruct.Kupperbound = double.Parse(line.Substring("Максимальная длина внутреннего кольца K=".Length));
                     else if (line.StartsWith("Минимальная длина внутреннего кольца K="))
                         KvadratStruct.Klowerbound = double.Parse(line.Substring("Минимальная длина внутреннего кольца K=".Length));
-                    else if (line.StartsWith("Максимальная длина внутреннго кольца K="))
-                        KvadratStruct.Kupperbound = double.Parse(line.Substring("Максимальная длина внутреннего кольца K=".Length));
-                    else if (line.StartsWith("Минимальная длина вырезки кольца H="))
-                        KvadratStruct.Hlowerbound = double.Parse(line.Substring("Минимальная длина вырезки кольца H=".Length));
                     else if (line.StartsWith("Максимальная длина вырезки кольца H="))
                         KvadratStruct.Hupperbound = double.Parse(line.Substring("Максимальная длина вырезки кольца H=".Length));
+                    else if (line.StartsWith("Минимальная длина вырезки кольца H="))
+                        KvadratStruct.Hlowerbound = double.Parse(line.Substring("Минимальная длина вырезки кольца H=".Length));
+                    
                 }
 
                 textBox1.Text = KvadratStruct.SubstrateWidth.ToString();
@@ -159,7 +160,7 @@ namespace MySystem
                 !double.TryParse(textBox8.Text, out hLowerbound) ||
                 !double.TryParse(textBox9.Text, out hUpperbound))
             {
-                MessageBox.Show("Проверьте правильность введенных данных", "Ошибка");
+                MessageBox.Show("Проверьте правильность введенных данных(Попробуйте вместо точки использовать запятую)", "Ошибка");
                 return;
             }
 
@@ -175,7 +176,7 @@ namespace MySystem
                     kLowerbound > substrateWidth || kUpperbound > substrateWidth ||
                     hLowerbound > substrateWidth || hUpperbound > substrateWidth)
                 {
-                    MessageBox.Show("Значения не могут быть больше Ширины подложки W", "Ошибка");
+                    MessageBox.Show("Значения не могут быть больше Ширина подложки W", "Ошибка");
                     return;
                 }
 
@@ -194,10 +195,11 @@ namespace MySystem
                     writer.WriteLine("Длина подложки S=" + KvadratStruct.SubstrateLength);
                     writer.WriteLine("Максимальная длина внешнего кольца L=" + KvadratStruct.Lupperbound);
                     writer.WriteLine("Минимальная длина внешнего кольца L=" + KvadratStruct.Llowerbound);
-                    writer.WriteLine("Минимальная длина внутреннего кольца K=" + KvadratStruct.Klowerbound);
                     writer.WriteLine("Максимальная длина внутреннего кольца K=" + KvadratStruct.Kupperbound);
-                    writer.WriteLine("Минимальная длина вырезки кольца H=" + KvadratStruct.Hlowerbound);
+                    writer.WriteLine("Минимальная длина внутреннего кольца K=" + KvadratStruct.Klowerbound);
                     writer.WriteLine("Максимальная длина вырезки кольца H=" + KvadratStruct.Hupperbound);
+                    writer.WriteLine("Минимальная длина вырезки кольца H=" + KvadratStruct.Hlowerbound + "\n");
+                   
                 }
 
                 this.Close();
