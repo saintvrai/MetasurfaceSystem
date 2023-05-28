@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace MySystem
 {
-    public static class KrugStruct
+    public static class RombStruct
     {
         public static double SubstrateLength { get; set; }
         public static double SubstrateWidth { get; set; }
-        public static double Hupperbound { get; set; }
-        public static double Hlowerbound { get; set; }
-        public static double O_outter { get; set; }
-        public static double I_outter { get; set; }
+        public static double Kupperbound { get; set; }
+        public static double Klowerbound { get; set; }
+        public static double Lupperbound { get; set; }
+        public static double Llowerbound { get; set; }
         public static double O_inner { get; set; }
         public static double I_inner { get; set; }
     }

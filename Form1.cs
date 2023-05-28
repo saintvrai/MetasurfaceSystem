@@ -29,10 +29,6 @@ namespace MySystem
         public Form1()
         {
             InitializeComponent();
-
-            //string filePath = @"C:\CST_Files\Results\Kvadrat\Final.txt";
-            //StartFileMonitoring(filePath);
-
         }
         private string connstring = String.Format("Server ={0};Port ={1};" +
             "User Id={2};Password={3};Database={4};",
@@ -48,48 +44,48 @@ namespace MySystem
 
         #region Читает файл и выводит в RichTextBox
 
-        private void StartFileMonitoring(string path)
-        {
-            filePath = path;
+        //private void StartFileMonitoring(string path)
+        //{
+        //    filePath = path;
 
-            // Создаем FileSystemWatcher
-            watcher = new FileSystemWatcher();
-            watcher.Path = Path.GetDirectoryName(filePath);
-            watcher.Filter = Path.GetFileName(filePath);
-            watcher.NotifyFilter = NotifyFilters.LastWrite; // Мониторим только изменения записи
-            watcher.EnableRaisingEvents = true;
-            watcher.Changed += OnFileChanged;
+        //    // Создаем FileSystemWatcher
+        //    watcher = new FileSystemWatcher();
+        //    watcher.Path = Path.GetDirectoryName(filePath);
+        //    watcher.Filter = Path.GetFileName(filePath);
+        //    watcher.NotifyFilter = NotifyFilters.LastWrite; // Мониторим только изменения записи
+        //    watcher.EnableRaisingEvents = true;
+        //    watcher.Changed += OnFileChanged;
 
-            // Создаем Timer
-            timer = new Timer();
-            timer.Interval = 1000; // Интервал проверки, можно изменить по необходимости
-            timer.Tick += OnTimerTick;
-            timer.Start();
-        }
-        private void OnFileChanged(object sender, FileSystemEventArgs e)
-        {
-            // При изменении файла останавливаем таймер
-            timer.Stop();
-        }
+        //    // Создаем Timer
+        //    timer = new Timer();
+        //    timer.Interval = 1000; // Интервал проверки, можно изменить по необходимости
+        //    timer.Tick += OnTimerTick;
+        //    timer.Start();
+        //}
+        //private void OnFileChanged(object sender, FileSystemEventArgs e)
+        //{
+        //    // При изменении файла останавливаем таймер
+        //    timer.Stop();
+        //}
 
-        private void OnTimerTick(object sender, EventArgs e)
-        {
-            try
-            {
-                // Чтение содержимого файла
-                string fileContent = File.ReadAllText(filePath);
+        //private void OnTimerTick(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        // Чтение содержимого файла
+        //        string fileContent = File.ReadAllText(filePath);
 
-                // Обновление содержимого элемента TextBox
-                richTextBox1.Invoke((MethodInvoker)(() =>
-                {
-                    richTextBox1.Text = fileContent;
-                }));
-            }
-            catch (IOException ex)
-            {
-                // Файл занят другим процессом, продолжаем ожидание
-            }
-        }
+        //        // Обновление содержимого элемента TextBox
+        //        richTextBox1.Invoke((MethodInvoker)(() =>
+        //        {
+        //            richTextBox1.Text = fileContent;
+        //        }));
+        //    }
+        //    catch (IOException ex)
+        //    {
+        //        // Файл занят другим процессом, продолжаем ожидание
+        //    }
+        //}
         #endregion
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -162,7 +158,7 @@ namespace MySystem
             }
         }
         //TODO: сделать для круга и ромба, данные, параметры все дела
-        
+
         private void ввестиЗначенияПараметровToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Создаём новую форму ввода данных о структуре 
@@ -244,27 +240,7 @@ namespace MySystem
             }
         }
 
-        private void RunVbsScript(string scriptPath)
-        {
-            try
-            {
-                var proc = new Process();
-                proc.EnableRaisingEvents = true;
-                proc.Exited += (s, ev) =>
-                {
-                    MessageBox.Show("Проектная процедура завершила работу. Испытание не пройдено",
-                        "Готово!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                };
 
-                proc.StartInfo = new ProcessStartInfo("wscript", scriptPath);
-                proc.Start();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка при запуске скрипта: {ex.Message}",
-                    "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -411,7 +387,7 @@ namespace MySystem
 
             string[] expectedLines = new string[]
             {
-        "Структура:Квадратный резонатор",
+        "Структура:Круглый резонатор",
         "Ширина подложки W=",
         "Длина подложки S=",
         "Максимальный радиус внешнего кольца O=",
@@ -420,6 +396,44 @@ namespace MySystem
         "Минимальный радиус внутреннего кольца I=",
         "Минимальная длина вырезки кольца H=",
         "Максимальная длина вырезки кольца H=",
+        "Solid.ChangeMaterial \"component1:Substrate\",",
+        "Solid.ChangeMaterial \"component1:outter\",",
+        "Solid.ChangeMaterial \"component1:inner\",",
+        "Solver.FrequencyRange",
+        "PopulationNumber=",
+        "MutationChance=",
+        "CrossingChance="
+            };
+
+            string[] fileLines = File.ReadAllLines(filePath);
+
+            // Проверка построчно наличие ожидаемых строк
+            for (int i = 0; i < expectedLines.Length; i++)
+            {
+                if (!fileLines.Any(line => line.Contains(expectedLines[i])))
+                {
+                    MessageBox.Show("Неправильно в строке" + expectedLines[i].ToString());
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private bool CheckRombStructData()
+        {
+            string filePath = Project.Path;
+
+            string[] expectedLines = new string[]
+            {
+        "Структура:Ромбовидный резонатор",
+        "Ширина подложки W=",
+        "Длина подложки S=",
+        "Максимальная длина внешнего кольца L=",
+        "Минимальная длина внешнего кольца L=",
+        "Максимальная длина внутреннего кольца K=",
+        "Минимальная длина внутреннего кольца K=",
+        "Максимальный радиус внутреннего кольца I=",
+        "Минимальный радиус внутреннего кольца I=",
         "Solid.ChangeMaterial \"component1:Substrate\",",
         "Solid.ChangeMaterial \"component1:outter\",",
         "Solid.ChangeMaterial \"component1:inner\",",
@@ -556,7 +570,7 @@ namespace MySystem
         private void ReplaceDataInFileRomb()
         {
             string sourceFilePath = Project.Path;
-            string targetFilePath = @"C:\CST_Files\Macros\Kvadrat\kvadrat_macros.txt"; // Укажите путь к целевому файлу
+            string targetFilePath = @"C:\CST_Files\Macros\Romb\romb_macros.txt"; // Укажите путь к целевому файлу
 
             // Чтение исходного файла
             string[] sourceLines = File.ReadAllLines(sourceFilePath);
@@ -568,21 +582,21 @@ namespace MySystem
             string lMinValue = GetValueFromLine(sourceLines, "Минимальная длина внешнего кольца L=");
             string kMaxValue = GetValueFromLine(sourceLines, "Максимальная длина внутреннего кольца K=");
             string kMinValue = GetValueFromLine(sourceLines, "Минимальная длина внутреннего кольца K=");
-            string hMinValue = GetValueFromLine(sourceLines, "Минимальная длина вырезки кольца H=");
-            string hMaxValue = GetValueFromLine(sourceLines, "Максимальная длина вырезки кольца H=");
+            string O_inner = GetValueFromLine(sourceLines, "Максимальный радиус внутреннего кольца I=");
+            string I_inner = GetValueFromLine(sourceLines, "Минимальный радиус внутреннего кольца I=");
 
             // Чтение целевого файла
             string[] targetLines = File.ReadAllLines(targetFilePath);
 
             // Замена значений в целевом файле
             ReplaceValueInLine(targetLines, "W=", wValue.Replace(',', '.'));
-            ReplaceValueInLine(targetLines, "S=", sValue.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "s=", sValue.Replace(',', '.'));
             ReplaceValueInLine(targetLines, "upperboundL =", lMaxValue.Replace(',', '.'));
             ReplaceValueInLine(targetLines, "lowerboundL =", lMinValue.Replace(',', '.'));
             ReplaceValueInLine(targetLines, "lowerboundK =", kMinValue.Replace(',', '.'));
             ReplaceValueInLine(targetLines, "upperboundK =", kMaxValue.Replace(',', '.'));
-            ReplaceValueInLine(targetLines, "lowerboundH =", hMinValue.Replace(',', '.'));
-            ReplaceValueInLine(targetLines, "upperboundH =", hMaxValue.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "o_inner=", O_inner.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "i_inner=", I_inner.Replace(',', '.'));
 
             // Запись изменений в целевой файл
             File.WriteAllLines(targetFilePath, targetLines);
@@ -800,28 +814,25 @@ namespace MySystem
         }
         #endregion
 
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            ReplaceDataInFileKvadrat();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            ReplaceDataInFileMat();
-            ReplaceDataInFileSintez();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            string scriptPath = @"C:\Users\SaintvRAI\source\repos\MetasurfaceSystem\bin\Debug\CST\Screens\kvadrat.vbs";
-            RunVbsScript(scriptPath);
-        }
         //TODO: Попробовать сделать progress bar для скрипта
         private void btnRun_Click(object sender, EventArgs e)
         {
-            if (CheckKvadratStructData() == true)
+            стартToolStripMenuItem_Click(sender, e);
+        }
+
+        private void стартToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (DataStruct.ResonatorType == "Квадратный резонатор")
             {
+                if (!CheckKvadratStructData() == true)
+                {
+                    MessageBox.Show("Проверьте правильность введеных всех значений для запуска анализа");
+                    return;
+                }
+                ReplaceDataInFileKvadrat();
+                ReplaceDataInFileMat();
+                ReplaceDataInFileSintez();
+
                 var proc = new Process();
                 proc.EnableRaisingEvents = true;
                 proc.Exited += (s, ev) =>
@@ -839,6 +850,8 @@ namespace MySystem
                         );
                     }));
                 };
+
+
 
                 string path = @"C:\CST_Files\Macros\Kvadrat";
                 string cmdLine = $@"{path}\kvadrat_struct.vbs";
@@ -860,43 +873,169 @@ namespace MySystem
                 };
 
                 proc.Start();
-            }
-            else
-            {
-                MessageBox.Show("Проверьте правильность введеных всех данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
-        private void стартToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (DataStruct.ResonatorType == "Квадратный резонатор")
-            {
-                if (!CheckKvadratStructData() == true)
-                {
-                    MessageBox.Show("Проверьте правильность введеных всех значений для запуска анализа");
-                }
-                ReplaceDataInFileKvadrat();
-                ReplaceDataInFileMat();
-                ReplaceDataInFileSintez();
+                string filePath = @"C:\CST_Files\Results\Kvadrat\Final.txt";
+                StartFileWatcher(filePath);
             }
             else if (DataStruct.ResonatorType == "Круглый резонатор")
             {
                 if (!CheckKrugStructData() == true)
                 {
                     MessageBox.Show("Проверьте правильность введеных всех значений для запуска анализа");
+                    return;
                 }
                 ReplaceDataInFileKrug();
                 ReplaceDataInFileMat();
                 ReplaceDataInFileSintez();
+
+                var proc = new Process();
+                proc.EnableRaisingEvents = true;
+                proc.Exited += (s, ev) =>
+                {
+                    // Обновление ProgressBar после завершения скрипта
+                    progressBar1.Invoke(new Action(() =>
+                    {
+                        progressBar1.Value = 100;
+                        MessageBox.Show(
+                            "Проектная процедура завершила работу." +
+                            "Испытание пройдено",
+                            "Готово!",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+                    }));
+                };
+
+
+
+                string path = @"C:\CST_Files\Macros\Krug";
+                string cmdLine = $@"{path}\krug_struct.vbs";
+
+                proc.StartInfo = new ProcessStartInfo("wscript", cmdLine);
+
+                // Обновление ProgressBar во время выполнения скрипта
+                proc.OutputDataReceived += (s, ev) =>
+                {
+                    if (!string.IsNullOrEmpty(ev.Data) && ev.Data.StartsWith("Progress:"))
+                    {
+                        string progressString = ev.Data.Substring("Progress:".Length).Trim();
+                        int progressValue = int.Parse(progressString);
+                        progressBar1.Invoke(new Action(() =>
+                        {
+                            progressBar1.Value = progressValue;
+                        }));
+                    }
+                };
+
+                proc.Start();
+
+                string filePath = @"C:\CST_Files\Results\Krug\Final.txt";
+                StartFileWatcher(filePath);
             }
             else if (DataStruct.ResonatorType == "Ромбовидный резонатор")
             {
-                //TODO: Сюда добавить про ромб все его проверки и тп
+                if (!CheckRombStructData() == true)
+                {
+                    MessageBox.Show("Проверьте правильность введеных всех значений для запуска анализа");
+                    return;
+                }
+                ReplaceDataInFileRomb();
+                ReplaceDataInFileMat();
+                ReplaceDataInFileSintez();
+
+
+                var proc = new Process();
+                proc.EnableRaisingEvents = true;
+                proc.Exited += (s, ev) =>
+                {
+                    // Обновление ProgressBar после завершения скрипта
+                    progressBar1.Invoke(new Action(() =>
+                    {
+                        progressBar1.Value = 100;
+                        MessageBox.Show(
+                            "Проектная процедура завершила работу." +
+                            "Испытание пройдено",
+                            "Готово!",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+                    }));
+                };
+
+
+
+                string path = @"C:\CST_Files\Macros\Romb";
+                string cmdLine = $@"{path}\romb_struct.vbs";
+
+                proc.StartInfo = new ProcessStartInfo("wscript", cmdLine);
+
+                // Обновление ProgressBar во время выполнения скрипта
+                proc.OutputDataReceived += (s, ev) =>
+                {
+                    if (!string.IsNullOrEmpty(ev.Data) && ev.Data.StartsWith("Progress:"))
+                    {
+                        string progressString = ev.Data.Substring("Progress:".Length).Trim();
+                        int progressValue = int.Parse(progressString);
+                        progressBar1.Invoke(new Action(() =>
+                        {
+                            progressBar1.Value = progressValue;
+                        }));
+                    }
+                };
+
+                proc.Start();
+
+                string filePath = @"C:\CST_Files\Results\Romb\Final.txt";
+                StartFileWatcher(filePath);
             }
             else
             {
                 MessageBox.Show("Не удалось распознать тип структуры", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public void StartFileWatcher(string path)
+        {
+            // Установка пути к файлу, который нужно отслеживать
+            filePath = path;
+
+            // Создание экземпляра FileSystemWatcher
+            watcher = new FileSystemWatcher();
+
+            // Указание пути к отслеживаемой директории
+            watcher.Path = Path.GetDirectoryName(filePath);
+
+            // Указание имени файла, который нужно отслеживать
+            watcher.Filter = Path.GetFileName(filePath);
+
+            // Включение отслеживания изменений в файле
+            watcher.NotifyFilter = NotifyFilters.LastWrite;
+
+            // Добавление обработчика события изменения файла
+            watcher.Changed += OnFileChanged;
+
+            // Запуск отслеживания
+            watcher.EnableRaisingEvents = true;
+        }
+
+        private void OnFileChanged(object sender, FileSystemEventArgs e)
+        {
+            // Чтение содержимого файла
+            string content = File.ReadAllText(filePath);
+
+            // Обновление текста в RichTextBox
+            Invoke((MethodInvoker)delegate
+            {
+                richTextBox1.Text = content;
+            });
+        }
+
+        public void StopFileWatcher()
+        {
+            // Остановка отслеживания изменений в файле
+            watcher.EnableRaisingEvents = false;
+            watcher.Changed -= OnFileChanged;
+            watcher.Dispose();
         }
     }
 }

@@ -19,8 +19,26 @@ namespace MySystem
 
             // Создание экземпляра FileSystemWatcher
             watcher = new FileSystemWatcher();
-            watcher.Path = @"C:\CST_Files\Kvadrat";
-            watcher.Filter = "Final.txt";
+
+            if(DataStruct.ResonatorType == "Квадратный резонатор")
+            {
+                watcher.Path = @"C:\CST_Files\Results\Kvadrat";
+                watcher.Filter = "Final.txt";
+            }
+            else if (DataStruct.ResonatorType == "Круглый резонатор")
+            {
+                watcher.Path = @"C:\CST_Files\Results\Krug";
+                watcher.Filter = "Final.txt";
+            }
+            else if (DataStruct.ResonatorType == "Ромбовидный резонатор")
+            {
+                watcher.Path = @"C:\CST_Files\Results\Romb";
+                watcher.Filter = "Final.txt";
+            }
+            else
+            {
+                MessageBox.Show("Не удалось запустить объект класса FileWathcer", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             // Настройка событий
             watcher.Changed += OnFileChanged;

@@ -47,12 +47,8 @@
             руководствМПИToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             авторToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             timer1 = new System.Windows.Forms.Timer(components);
-            button1 = new System.Windows.Forms.Button();
             label1 = new System.Windows.Forms.Label();
             txtProjectName = new System.Windows.Forms.TextBox();
-            button2 = new System.Windows.Forms.Button();
-            button3 = new System.Windows.Forms.Button();
-            button4 = new System.Windows.Forms.Button();
             btnRun = new System.Windows.Forms.Button();
             progressBar1 = new System.Windows.Forms.ProgressBar();
             richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -160,7 +156,6 @@
             // 
             // стартToolStripMenuItem
             // 
-            стартToolStripMenuItem.Enabled = false;
             стартToolStripMenuItem.Name = "стартToolStripMenuItem";
             стартToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
             стартToolStripMenuItem.Text = "Выполнить проектную процедуру";
@@ -189,18 +184,6 @@
             // 
             timer1.Enabled = true;
             // 
-            // button1
-            // 
-            button1.Location = new System.Drawing.Point(296, 350);
-            button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(88, 27);
-            button1.TabIndex = 4;
-            button1.Text = "Run";
-            button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -219,39 +202,9 @@
             txtProjectName.TabIndex = 7;
             txtProjectName.Text = "Файл не выбран";
             // 
-            // button2
-            // 
-            button2.Location = new System.Drawing.Point(523, 192);
-            button2.Name = "button2";
-            button2.Size = new System.Drawing.Size(177, 49);
-            button2.TabIndex = 8;
-            button2.Text = "Заменить данные о параметрах";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
-            // 
-            // button3
-            // 
-            button3.Location = new System.Drawing.Point(523, 295);
-            button3.Name = "button3";
-            button3.Size = new System.Drawing.Size(177, 49);
-            button3.TabIndex = 9;
-            button3.Text = "Заменить данные о материалах";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
-            // 
-            // button4
-            // 
-            button4.Location = new System.Drawing.Point(625, 350);
-            button4.Name = "button4";
-            button4.Size = new System.Drawing.Size(75, 23);
-            button4.TabIndex = 10;
-            button4.Text = "button4";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
-            // 
             // btnRun
             // 
-            btnRun.Location = new System.Drawing.Point(523, 247);
+            btnRun.Location = new System.Drawing.Point(530, 35);
             btnRun.Name = "btnRun";
             btnRun.Size = new System.Drawing.Size(170, 42);
             btnRun.TabIndex = 11;
@@ -270,9 +223,10 @@
             // 
             richTextBox1.Location = new System.Drawing.Point(12, 90);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new System.Drawing.Size(505, 236);
+            richTextBox1.ReadOnly = true;
+            richTextBox1.Size = new System.Drawing.Size(505, 254);
             richTextBox1.TabIndex = 13;
-            richTextBox1.Text = "";
+            richTextBox1.Text = "Запустите выполнение проектной операции для отображения результатов";
             // 
             // Form1
             // 
@@ -282,12 +236,8 @@
             Controls.Add(richTextBox1);
             Controls.Add(progressBar1);
             Controls.Add(btnRun);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
             Controls.Add(txtProjectName);
             Controls.Add(label1);
-            Controls.Add(button1);
             Controls.Add(menuStrip2);
             Margin = new System.Windows.Forms.Padding(2);
             Name = "Form1";
@@ -318,12 +268,8 @@
         private System.Windows.Forms.ToolStripMenuItem создатьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem настройкаПараметровАнализаToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtProjectName;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btnRun;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.RichTextBox richTextBox1;
