@@ -249,6 +249,7 @@
             btn_Save.TabIndex = 32;
             btn_Save.Text = "Сохранить";
             btn_Save.UseVisualStyleBackColor = true;
+            btn_Save.Click += btn_Save_Click_1;
             // 
             // textBox2
             // 

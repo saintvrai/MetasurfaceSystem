@@ -130,7 +130,97 @@ namespace MySystem
         }
 
         // Сохранение в файл параметры структуры
-        private void btn_Save_Click(object sender, EventArgs e)
+        //private void btn_Save_Click(object sender, EventArgs e)
+        //{
+        //    // Проверка заполнения всех текстовых полей
+        //    if (string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(textBox3.Text) ||
+        //        string.IsNullOrWhiteSpace(textBox6.Text) || string.IsNullOrWhiteSpace(textBox7.Text) ||
+        //        string.IsNullOrWhiteSpace(textBox4.Text) || string.IsNullOrWhiteSpace(textBox5.Text) ||
+        //        string.IsNullOrWhiteSpace(textBox8.Text) || string.IsNullOrWhiteSpace(textBox9.Text))
+        //    {
+        //        MessageBox.Show("Заполните все текстовые поля", "Ошибка");
+        //        return;
+        //    }
+
+        //    double I_outter;
+        //    double O_outter;
+        //    double I_inner;
+        //    double O_inner;
+        //    double substrateWidth;
+        //    double substrateLength;
+        //    double hLowerbound;
+        //    double hUpperbound;
+
+        //    // Проверка корректности введенных значений
+        //    if (!double.TryParse(textBox1.Text, out substrateWidth) ||
+        //        !double.TryParse(textBox3.Text, out substrateLength) ||
+        //        !double.TryParse(textBox6.Text, out I_outter) ||
+        //        !double.TryParse(textBox7.Text, out O_outter) ||
+        //        !double.TryParse(textBox4.Text, out I_inner) ||
+        //        !double.TryParse(textBox5.Text, out O_inner) ||
+        //        !double.TryParse(textBox8.Text, out hLowerbound) ||
+        //        !double.TryParse(textBox9.Text, out hUpperbound))
+        //    {
+        //        MessageBox.Show("Проверьте правильность введенных данных(Попробуйте вместо точки использовать запятую)", "Ошибка");
+        //        return;
+        //    }
+
+        //    // Проверка перекрещивания внешнего и внутреннего кольца
+        //    if (O_inner >= I_outter || O_outter <= I_inner)
+        //    {
+        //        MessageBox.Show("Малое кольцо не должно перекрываться с большим кольцом", "Ошибка");
+        //        return;
+        //    }
+
+        //    // Проверка значений радиусов кольцевых структур
+        //    if (O_outter <= I_outter || O_inner <= I_inner)
+        //    {
+        //        MessageBox.Show("Максимальный радиус кольца должен быть больше минимального радиуса кольца", "Ошибка");
+        //        return;
+        //    }
+
+        //    // Проверка, что ни одно значение не превышает ширину подложки
+        //    if (I_outter > substrateWidth || O_outter > substrateWidth ||
+        //        I_inner > substrateWidth || O_inner > substrateWidth ||
+        //        hLowerbound > substrateWidth || hUpperbound > substrateWidth)
+        //    {
+        //        Project.MetascreenStructName = DataStruct.ResonatorType.ToString();
+        //        KrugStruct.SubstrateLength = substrateLength;
+        //        KrugStruct.I_inner = I_inner;
+        //        KrugStruct.O_inner = O_inner;
+        //        KrugStruct.O_outter = O_outter;
+        //        KrugStruct.I_outter = I_outter;
+        //        KrugStruct.Hlowerbound = hLowerbound;
+        //        KrugStruct.Hupperbound = hUpperbound;
+
+
+        //        using (StreamWriter writer = new StreamWriter(Project.Path, false))
+        //        {
+        //            writer.WriteLine("Структура:" + Project.MetascreenStructName + "\n");
+        //            writer.WriteLine("Ширина подложки W=" + KrugStruct.SubstrateWidth);
+        //            writer.WriteLine("Длина подложки S=" + KrugStruct.SubstrateLength);
+        //            writer.WriteLine("Максимальный радиус внешнего кольца O=" + KrugStruct.O_outter);
+        //            writer.WriteLine("Минимальный радиус внешнего кольца O=" + KrugStruct.I_outter);
+        //            writer.WriteLine("Максимальный радиус внутреннего кольца I=" + KrugStruct.O_inner);
+        //            writer.WriteLine("Минимальный радиус внутреннего кольца I=" + KrugStruct.I_inner);
+        //            writer.WriteLine("Максимальная длина вырезки кольца H=" + KrugStruct.Hupperbound);
+        //            writer.WriteLine("Минимальная длина вырезки кольца H=" + KrugStruct.Hlowerbound + "\n");
+        //        }
+        //        this.Close();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Значения не могут быть больше Ширина подложки W", "Ошибка");
+        //        return;
+        //    }
+        //}
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_Save_Click_1(object sender, EventArgs e)
         {
             // Проверка заполнения всех текстовых полей
             if (string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(textBox3.Text) ||
@@ -141,7 +231,6 @@ namespace MySystem
                 MessageBox.Show("Заполните все текстовые поля", "Ошибка");
                 return;
             }
-
 
             double I_outter;
             double O_outter;
@@ -166,15 +255,6 @@ namespace MySystem
                 return;
             }
 
-            // Проверка, что ни одно значение не превышает ширину подложки
-            if (I_outter > substrateWidth || O_outter > substrateWidth ||
-                I_inner > substrateWidth || O_inner > substrateWidth ||
-                hLowerbound > substrateWidth || hUpperbound > substrateWidth)
-            {
-                MessageBox.Show("Значения не могут быть больше Ширина подложки W", "Ошибка");
-                return;
-            }
-
             // Проверка перекрещивания внешнего и внутреннего кольца
             if (O_inner >= I_outter || O_outter <= I_inner)
             {
@@ -189,35 +269,41 @@ namespace MySystem
                 return;
             }
 
-
-            KrugStruct.SubstrateLength = substrateLength;
-            KrugStruct.I_inner = I_inner;
-            KrugStruct.O_inner = O_inner;
-            KrugStruct.O_outter = O_outter;
-            KrugStruct.I_outter = I_outter;
-            KrugStruct.Hlowerbound = hLowerbound;
-            KrugStruct.Hupperbound = hUpperbound;
-
-
-            using (StreamWriter writer = new StreamWriter(Project.Path, false))
+            // Проверка, что ни одно значение не превышает ширину подложки
+            if (I_outter > substrateWidth || O_outter > substrateWidth ||
+                I_inner > substrateWidth || O_inner > substrateWidth ||
+                hLowerbound > substrateWidth || hUpperbound > substrateWidth)
             {
-                writer.WriteLine("Структура:" + Project.MetascreenStructName + "\n");
-                writer.WriteLine("Ширина подложки W=" + KrugStruct.SubstrateWidth);
-                writer.WriteLine("Длина подложки S=" + KrugStruct.SubstrateLength);
-                writer.WriteLine("Максимальный радиус внешнего кольца O=" + KrugStruct.O_outter);
-                writer.WriteLine("Минимальный радиус внешнего кольца O=" + KrugStruct.I_outter);
-                writer.WriteLine("Максимальный радиус внутреннего кольца I=" + KrugStruct.O_inner);
-                writer.WriteLine("Минимальный радиус внутреннего кольца I=" + KrugStruct.I_inner);
-                writer.WriteLine("Максимальная длина вырезки кольца H=" + KrugStruct.Hupperbound);
-                writer.WriteLine("Минимальная длина вырезки кольца H=" + KrugStruct.Hlowerbound + "\n");
+                MessageBox.Show("Значения не могут быть больше Ширина подложки W", "Ошибка");
+               
             }
+            else
+            {
+                Project.MetascreenStructName = DataStruct.ResonatorType.ToString();
+                KrugStruct.SubstrateWidth = substrateWidth;
+                KrugStruct.SubstrateLength = substrateLength;
+                KrugStruct.I_inner = I_inner;
+                KrugStruct.O_inner = O_inner;
+                KrugStruct.O_outter = O_outter;
+                KrugStruct.I_outter = I_outter;
+                KrugStruct.Hlowerbound = hLowerbound;
+                KrugStruct.Hupperbound = hUpperbound;
 
-            this.Close();
-        }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
+                using (StreamWriter writer = new StreamWriter(Project.Path, false))
+                {
+                    writer.WriteLine("Структура:" + Project.MetascreenStructName + "\n");
+                    writer.WriteLine("Ширина подложки W=" + KrugStruct.SubstrateWidth);
+                    writer.WriteLine("Длина подложки S=" + KrugStruct.SubstrateLength);
+                    writer.WriteLine("Максимальный радиус внешнего кольца O=" + KrugStruct.O_outter);
+                    writer.WriteLine("Минимальный радиус внешнего кольца O=" + KrugStruct.I_outter);
+                    writer.WriteLine("Максимальный радиус внутреннего кольца I=" + KrugStruct.O_inner);
+                    writer.WriteLine("Минимальный радиус внутреннего кольца I=" + KrugStruct.I_inner);
+                    writer.WriteLine("Максимальная длина вырезки кольца H=" + KrugStruct.Hupperbound);
+                    writer.WriteLine("Минимальная длина вырезки кольца H=" + KrugStruct.Hlowerbound + "\n");
+                }
+                this.Close();
+            }
         }
     }
 }
