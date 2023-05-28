@@ -147,14 +147,14 @@
             // настройкаПараметровАнализаToolStripMenuItem
             // 
             настройкаПараметровАнализаToolStripMenuItem.Name = "настройкаПараметровАнализаToolStripMenuItem";
-            настройкаПараметровАнализаToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
+            настройкаПараметровАнализаToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
             настройкаПараметровАнализаToolStripMenuItem.Text = "Настройка параметров анализа";
             настройкаПараметровАнализаToolStripMenuItem.Click += настройкаПараметровАнализаToolStripMenuItem_Click;
             // 
             // синтезToolStripMenuItem
             // 
             синтезToolStripMenuItem.Name = "синтезToolStripMenuItem";
-            синтезToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
+            синтезToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
             синтезToolStripMenuItem.Text = "Настройка параметров синтеза";
             синтезToolStripMenuItem.Click += синтезToolStripMenuItem_Click;
             // 
@@ -162,8 +162,9 @@
             // 
             стартToolStripMenuItem.Enabled = false;
             стартToolStripMenuItem.Name = "стартToolStripMenuItem";
-            стартToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
-            стартToolStripMenuItem.Text = "Выполнить проектную операцию";
+            стартToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            стартToolStripMenuItem.Text = "Выполнить проектную процедуру";
+            стартToolStripMenuItem.Click += стартToolStripMenuItem_Click;
             // 
             // справкаToolStripMenuItem
             // 

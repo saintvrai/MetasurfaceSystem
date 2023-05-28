@@ -123,9 +123,6 @@ namespace MySystem
 
                     CheckStructureInFile(Project.Path);
 
-                    // Загрузка формы в соответствии с названием структуры
-                    // LoadStructureForm(structureName);
-
                     сохранитьToolStripMenuItem.Enabled = true;
                     удалитьToolStripMenuItem.Enabled = true;
                 }
@@ -165,62 +162,7 @@ namespace MySystem
             }
         }
         //TODO: сделать для круга и ромба, данные, параметры все дела
-        private void LoadStructureForm(string structureName)
-        {
-            //if (structureName == "Квадратный резонатор")
-            //{
-            //    Form1 form = new Form1();
-            //    form.Show();
-
-            //    // Выделение структуры
-            //    string imagePath = @"C:\CST_Files\structures\" + structureName.Trim() + ".jpg";
-            //    if (File.Exists(imagePath))
-            //    {
-            //        form.pictureBox1.ImageLocation = imagePath;
-            //        form.pictureBox1.Load(imagePath);
-            //        form.pictureBox1.Update();
-            //        form.pictureBox1.Refresh();
-            //        form.pictureBox1.Visible = true;
-            //    }
-            //}
-            //else if (structureName == "Круглый резонатор")
-            //{
-            //    Form2 form = new Form2();
-            //    form.Show();
-
-            //    // Выделение структуры
-            //    string imagePath = @"C:\CST_Files\structures\" + structureName.Trim() + ".jpg";
-            //    if (File.Exists(imagePath))
-            //    {
-            //        form.pictureBox1.ImageLocation = imagePath;
-            //        form.pictureBox1.Load(imagePath);
-            //        form.pictureBox1.Update();
-            //        form.pictureBox1.Refresh();
-            //        form.pictureBox1.Visible = true;
-            //    }
-            //}
-            //else if (structureName == "Ромбовидный резонатор")
-            //{
-            //    Form3 form = new Form3();
-            //    form.Show();
-
-            //    // Выделение структуры
-            //    string imagePath = @"C:\CST_Files\structures\" + structureName.Trim() + ".jpg";
-            //    if (File.Exists(imagePath))
-            //    {
-            //        form.pictureBox1.ImageLocation = imagePath;
-            //        form.pictureBox1.Load(imagePath);
-            //        form.pictureBox1.Update();
-            //        form.pictureBox1.Refresh();
-            //        form.pictureBox1.Visible = true;
-            //    }
-            //}
-            //else
-            //{
-            //    // Если название структуры не найдено или неизвестно, обработайте соответствующим образом
-            //}
-        }
-
+        
         private void ввестиЗначенияПараметровToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Создаём новую форму ввода данных о структуре 
@@ -234,7 +176,6 @@ namespace MySystem
             }
 
         }
-
 
         // Анализируемый метаэлемент для метаэкрана
 
@@ -302,8 +243,6 @@ namespace MySystem
                 // данныеОМатериалахToolStripMenuItem.Enabled = true;
             }
         }
-
-        //TODO: попробовать запустить скрипт
 
         private void RunVbsScript(string scriptPath)
         {
@@ -463,10 +402,46 @@ namespace MySystem
                     return false;
                 }
             }
-            MessageBox.Show("Все данные правильные");
             return true;
         }
 
+        private bool CheckKrugStructData()
+        {
+            string filePath = Project.Path;
+
+            string[] expectedLines = new string[]
+            {
+        "Структура:Квадратный резонатор",
+        "Ширина подложки W=",
+        "Длина подложки S=",
+        "Максимальный радиус внешнего кольца O=",
+        "Минимальный радиус внешнего кольца O=",
+        "Максимальный радиус внутреннего кольца I=",
+        "Минимальный радиус внутреннего кольца I=",
+        "Минимальная длина вырезки кольца H=",
+        "Максимальная длина вырезки кольца H=",
+        "Solid.ChangeMaterial \"component1:Substrate\",",
+        "Solid.ChangeMaterial \"component1:outter\",",
+        "Solid.ChangeMaterial \"component1:inner\",",
+        "Solver.FrequencyRange",
+        "PopulationNumber=",
+        "MutationChance=",
+        "CrossingChance="
+            };
+
+            string[] fileLines = File.ReadAllLines(filePath);
+
+            // Проверка построчно наличие ожидаемых строк
+            for (int i = 0; i < expectedLines.Length; i++)
+            {
+                if (!fileLines.Any(line => line.Contains(expectedLines[i])))
+                {
+                    MessageBox.Show("Неправильно в строке" + expectedLines[i].ToString());
+                    return false;
+                }
+            }
+            return true;
+        }
         private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Проверка наличия пути проекта
@@ -508,7 +483,77 @@ namespace MySystem
 
         #region Работа с параметрами в целевом файле 
         //Работа с параметрами в файле
-        private void ReplaceDataInFile()
+        private void ReplaceDataInFileKvadrat()
+        {
+            string sourceFilePath = Project.Path;
+            string targetFilePath = @"C:\CST_Files\Macros\Kvadrat\kvadrat_macros.txt"; // Укажите путь к целевому файлу
+
+            // Чтение исходного файла
+            string[] sourceLines = File.ReadAllLines(sourceFilePath);
+
+            // Значения переменных
+            string wValue = GetValueFromLine(sourceLines, "Ширина подложки W=");
+            string sValue = GetValueFromLine(sourceLines, "Длина подложки S=");
+            string lMaxValue = GetValueFromLine(sourceLines, "Максимальная длина внешнего кольца L=");
+            string lMinValue = GetValueFromLine(sourceLines, "Минимальная длина внешнего кольца L=");
+            string kMaxValue = GetValueFromLine(sourceLines, "Максимальная длина внутреннего кольца K=");
+            string kMinValue = GetValueFromLine(sourceLines, "Минимальная длина внутреннего кольца K=");
+            string hMinValue = GetValueFromLine(sourceLines, "Минимальная длина вырезки кольца H=");
+            string hMaxValue = GetValueFromLine(sourceLines, "Максимальная длина вырезки кольца H=");
+
+            // Чтение целевого файла
+            string[] targetLines = File.ReadAllLines(targetFilePath);
+
+            // Замена значений в целевом файле
+            ReplaceValueInLine(targetLines, "W=", wValue.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "S=", sValue.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "upperboundL =", lMaxValue.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "lowerboundL =", lMinValue.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "lowerboundK =", kMinValue.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "upperboundK =", kMaxValue.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "lowerboundH =", hMinValue.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "upperboundH =", hMaxValue.Replace(',', '.'));
+
+            // Запись изменений в целевой файл
+            File.WriteAllLines(targetFilePath, targetLines);
+        }
+        //Для круга замена параметров в скрипте
+        private void ReplaceDataInFileKrug()
+        {
+            string sourceFilePath = Project.Path;
+            string targetFilePath = @"C:\CST_Files\Macros\Krug\krug_macros.txt"; // Укажите путь к целевому файлу
+
+            // Чтение исходного файла
+            string[] sourceLines = File.ReadAllLines(sourceFilePath);
+
+            // Значения переменных
+            string wValue = GetValueFromLine(sourceLines, "Ширина подложки W=");
+            string sValue = GetValueFromLine(sourceLines, "Длина подложки S=");
+            string o_outter = GetValueFromLine(sourceLines, "Максимальный радиус внешнего кольца O=");
+            string i_outter = GetValueFromLine(sourceLines, "Минимальный радиус внешнего кольца O=");
+            string o_inner = GetValueFromLine(sourceLines, "Максимальный радиус внутреннего кольца I=");
+            string i_inner = GetValueFromLine(sourceLines, "Минимальный радиус внутреннего кольца I=");
+            string hMinValue = GetValueFromLine(sourceLines, "Максимальная длина вырезки кольца H=");
+            string hMaxValue = GetValueFromLine(sourceLines, "Минимальная длина вырезки кольца H=");
+
+            // Чтение целевого файла
+            string[] targetLines = File.ReadAllLines(targetFilePath);
+
+            // Замена значений в целевом файле
+            ReplaceValueInLine(targetLines, "W=", wValue.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "s=", sValue.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "o_outter=", o_outter.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "i_outter=", i_outter.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "o_inner=", o_inner.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "i_inner=", i_inner.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "upperboundH=", hMinValue.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "lowerboundH=", hMaxValue.Replace(',', '.'));
+
+            // Запись изменений в целевой файл
+            File.WriteAllLines(targetFilePath, targetLines);
+        }
+        //Для ромба замена параметров в скрипте
+        private void ReplaceDataInFileRomb()
         {
             string sourceFilePath = Project.Path;
             string targetFilePath = @"C:\CST_Files\Macros\Kvadrat\kvadrat_macros.txt"; // Укажите путь к целевому файлу
@@ -758,7 +803,7 @@ namespace MySystem
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ReplaceDataInFile();
+            ReplaceDataInFileKvadrat();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -822,7 +867,37 @@ namespace MySystem
             }
         }
 
-
+        private void стартToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (DataStruct.ResonatorType == "Квадратный резонатор")
+            {
+                if (!CheckKvadratStructData() == true)
+                {
+                    MessageBox.Show("Проверьте правильность введеных всех значений для запуска анализа");
+                }
+                ReplaceDataInFileKvadrat();
+                ReplaceDataInFileMat();
+                ReplaceDataInFileSintez();
+            }
+            else if (DataStruct.ResonatorType == "Круглый резонатор")
+            {
+                if (!CheckKrugStructData() == true)
+                {
+                    MessageBox.Show("Проверьте правильность введеных всех значений для запуска анализа");
+                }
+                ReplaceDataInFileKrug();
+                ReplaceDataInFileMat();
+                ReplaceDataInFileSintez();
+            }
+            else if (DataStruct.ResonatorType == "Ромбовидный резонатор")
+            {
+                //TODO: Сюда добавить про ромб все его проверки и тп
+            }
+            else
+            {
+                MessageBox.Show("Не удалось распознать тип структуры", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
 
