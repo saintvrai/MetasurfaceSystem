@@ -11,6 +11,7 @@ using System.ServiceModel.Channels;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.ApplicationServices;
 using MySystem.Data.Tables;
@@ -24,7 +25,7 @@ namespace MySystem
     public partial class Form1 : Form
     {
         private FileSystemWatcher watcher;
-        private Timer timer;
+        private System.Threading.Timer timer;
         private string filePath;
         public Form1()
         {
@@ -591,10 +592,10 @@ namespace MySystem
             // Замена значений в целевом файле
             ReplaceValueInLine(targetLines, "W=", wValue.Replace(',', '.'));
             ReplaceValueInLine(targetLines, "s=", sValue.Replace(',', '.'));
-            ReplaceValueInLine(targetLines, "upperboundL =", lMaxValue.Replace(',', '.'));
-            ReplaceValueInLine(targetLines, "lowerboundL =", lMinValue.Replace(',', '.'));
-            ReplaceValueInLine(targetLines, "lowerboundK =", kMinValue.Replace(',', '.'));
-            ReplaceValueInLine(targetLines, "upperboundK =", kMaxValue.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "upperboundL=", lMaxValue.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "lowerboundL=", lMinValue.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "lowerboundK=", kMinValue.Replace(',', '.'));
+            ReplaceValueInLine(targetLines, "upperboundK=", kMaxValue.Replace(',', '.'));
             ReplaceValueInLine(targetLines, "o_inner=", O_inner.Replace(',', '.'));
             ReplaceValueInLine(targetLines, "i_inner=", I_inner.Replace(',', '.'));
 
@@ -814,6 +815,59 @@ namespace MySystem
         }
         #endregion
 
+
+        //TODO: поработать над выводом результатов и над мзменением данных в скрипте для ромба
+        // Метод для настройки наблюдения за изменениями файла и копирования файла раз в 30 секунд
+        private void SetupFileMonitoring()
+        {
+            // Путь к оригинальному файлу
+            string originalFilePath = @"C:\CST_Files\Results\Krug\Final.txt";
+
+            // Путь к скопированному файлу
+            string copiedFilePath = @"C:\CST_Files\Results\Krug\FinalCopy.txt";
+
+            // Создание объекта FileSystemWatcher для наблюдения за изменениями в скопированном файле
+            FileSystemWatcher watcher = new FileSystemWatcher();
+            watcher.Path = Path.GetDirectoryName(copiedFilePath);
+            watcher.Filter = Path.GetFileName(copiedFilePath);
+
+            // Настройка обработчиков событий для отслеживания изменений
+            watcher.Changed += OnFileChanged;
+            watcher.EnableRaisingEvents = true;
+
+            // Таймер для выполнения копирования файла раз в 30 секунд
+            System.Timers.Timer timer = new System.Timers.Timer(30000); // 30000 миллисекунд = 30 секунд
+            timer.Elapsed += OnTimerElapsed;
+            timer.Start();
+
+            // Обработчик события таймера для копирования файла
+            void OnTimerElapsed(object sender, ElapsedEventArgs e)
+            {
+                try
+                {
+                    // Копирование файла
+                    File.Copy(originalFilePath, copiedFilePath, true);
+                }
+                catch (Exception ex)
+                {
+                    // Обработка ошибки копирования файла
+                    Console.WriteLine("Ошибка при копировании файла: " + ex.Message);
+                }
+            }
+
+            // Обработчик события изменения файла
+            void OnFileChanged(object sender, FileSystemEventArgs e)
+            {
+                
+                // Обновление richTextBox1 с новым содержимым файла
+                string fileContent = File.ReadAllText(e.FullPath);
+                richTextBox1.Invoke((MethodInvoker)(() =>
+                {
+                    richTextBox1.Text = fileContent;
+                }));
+            }
+        }
+
         //TODO: Попробовать сделать progress bar для скрипта
         private void btnRun_Click(object sender, EventArgs e)
         {
@@ -874,8 +928,8 @@ namespace MySystem
 
                 proc.Start();
 
-                string filePath = @"C:\CST_Files\Results\Kvadrat\Final.txt";
-                StartFileWatcher(filePath);
+                
+
             }
             else if (DataStruct.ResonatorType == "Круглый резонатор")
             {
@@ -930,7 +984,7 @@ namespace MySystem
                 proc.Start();
 
                 string filePath = @"C:\CST_Files\Results\Krug\Final.txt";
-                StartFileWatcher(filePath);
+                SetupFileMonitoring();
             }
             else if (DataStruct.ResonatorType == "Ромбовидный резонатор")
             {
@@ -1012,29 +1066,18 @@ namespace MySystem
             watcher.NotifyFilter = NotifyFilters.LastWrite;
 
             // Добавление обработчика события изменения файла
-            watcher.Changed += OnFileChanged;
+           // watcher.Changed += OnFileChanged;
 
             // Запуск отслеживания
             watcher.EnableRaisingEvents = true;
         }
 
-        private void OnFileChanged(object sender, FileSystemEventArgs e)
-        {
-            // Чтение содержимого файла
-            string content = File.ReadAllText(filePath);
-
-            // Обновление текста в RichTextBox
-            Invoke((MethodInvoker)delegate
-            {
-                richTextBox1.Text = content;
-            });
-        }
 
         public void StopFileWatcher()
         {
             // Остановка отслеживания изменений в файле
             watcher.EnableRaisingEvents = false;
-            watcher.Changed -= OnFileChanged;
+          //  watcher.Changed -= OnFileChanged;
             watcher.Dispose();
         }
     }
