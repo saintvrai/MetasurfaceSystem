@@ -18,7 +18,6 @@ namespace MySystem
         public static double Rho { get; set; }
         public static double ThermalConductivity { get; set; }
         public static double HeatCapacity { get; set; }
-       // public static double Diffusivity { get; set; }
         public static double YoungModulus { get; set; }
         public static double PoissonRatio { get; set; }
         public static double ThermalExpansionCoefficient { get; set; }

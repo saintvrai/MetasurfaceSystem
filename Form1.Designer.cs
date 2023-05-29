@@ -49,9 +49,9 @@
             timer1 = new System.Windows.Forms.Timer(components);
             label1 = new System.Windows.Forms.Label();
             txtProjectName = new System.Windows.Forms.TextBox();
-            btnRun = new System.Windows.Forms.Button();
             progressBar1 = new System.Windows.Forms.ProgressBar();
             richTextBox1 = new System.Windows.Forms.RichTextBox();
+            label2 = new System.Windows.Forms.Label();
             menuStrip2.SuspendLayout();
             SuspendLayout();
             // 
@@ -62,7 +62,7 @@
             menuStrip2.Location = new System.Drawing.Point(0, 0);
             menuStrip2.Name = "menuStrip2";
             menuStrip2.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            menuStrip2.Size = new System.Drawing.Size(700, 24);
+            menuStrip2.Size = new System.Drawing.Size(546, 24);
             menuStrip2.TabIndex = 2;
             menuStrip2.Text = "menuStrip2";
             // 
@@ -171,13 +171,13 @@
             // руководствМПИToolStripMenuItem
             // 
             руководствМПИToolStripMenuItem.Name = "руководствМПИToolStripMenuItem";
-            руководствМПИToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            руководствМПИToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             руководствМПИToolStripMenuItem.Text = "Помощь";
             // 
             // авторToolStripMenuItem
             // 
             авторToolStripMenuItem.Name = "авторToolStripMenuItem";
-            авторToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            авторToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             авторToolStripMenuItem.Text = "Автор";
             // 
             // timer1
@@ -202,21 +202,11 @@
             txtProjectName.TabIndex = 7;
             txtProjectName.Text = "Файл не выбран";
             // 
-            // btnRun
-            // 
-            btnRun.Location = new System.Drawing.Point(530, 35);
-            btnRun.Name = "btnRun";
-            btnRun.Size = new System.Drawing.Size(170, 42);
-            btnRun.TabIndex = 11;
-            btnRun.Text = "Выполнить проектную процедуру";
-            btnRun.UseVisualStyleBackColor = true;
-            btnRun.Click += btnRun_Click;
-            // 
             // progressBar1
             // 
-            progressBar1.Location = new System.Drawing.Point(49, 387);
+            progressBar1.Location = new System.Drawing.Point(256, 387);
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new System.Drawing.Size(582, 23);
+            progressBar1.Size = new System.Drawing.Size(209, 23);
             progressBar1.TabIndex = 12;
             // 
             // richTextBox1
@@ -228,14 +218,23 @@
             richTextBox1.TabIndex = 13;
             richTextBox1.Text = "Запустите выполнение проектной операции для отображения результатов";
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(72, 391);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(178, 15);
+            label2.TabIndex = 14;
+            label2.Text = "Строка состояния программы:";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(700, 422);
+            ClientSize = new System.Drawing.Size(546, 422);
+            Controls.Add(label2);
             Controls.Add(richTextBox1);
             Controls.Add(progressBar1);
-            Controls.Add(btnRun);
             Controls.Add(txtProjectName);
             Controls.Add(label1);
             Controls.Add(menuStrip2);
@@ -270,9 +269,9 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtProjectName;
-        private System.Windows.Forms.Button btnRun;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

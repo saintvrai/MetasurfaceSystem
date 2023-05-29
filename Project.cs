@@ -16,6 +16,7 @@ namespace MySystem
         public static int PopulationNumber {get; set;}
         public static double MutationChance { get; set; }
         public static double CrossingChance { get; set; }
+        public static string UnitsSettings { get; set; }
 
     }
 }

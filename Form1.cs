@@ -858,7 +858,7 @@ namespace MySystem
             // Обработчик события изменения файла
             void OnFileChanged(object sender, FileSystemEventArgs e)
             {
-                
+
                 // Обновление richTextBox1 с новым содержимым файла
                 string fileContent = File.ReadAllText(e.FullPath);
                 richTextBox1.Invoke((MethodInvoker)(() =>
@@ -928,7 +928,7 @@ namespace MySystem
 
                 proc.Start();
 
-                
+
 
             }
             else if (DataStruct.ResonatorType == "Круглый резонатор")
@@ -1066,7 +1066,7 @@ namespace MySystem
             watcher.NotifyFilter = NotifyFilters.LastWrite;
 
             // Добавление обработчика события изменения файла
-           // watcher.Changed += OnFileChanged;
+            // watcher.Changed += OnFileChanged;
 
             // Запуск отслеживания
             watcher.EnableRaisingEvents = true;
@@ -1077,7 +1077,7 @@ namespace MySystem
         {
             // Остановка отслеживания изменений в файле
             watcher.EnableRaisingEvents = false;
-          //  watcher.Changed -= OnFileChanged;
+            //  watcher.Changed -= OnFileChanged;
             watcher.Dispose();
         }
     }
