@@ -49,9 +49,7 @@
             timer1 = new System.Windows.Forms.Timer(components);
             label1 = new System.Windows.Forms.Label();
             txtProjectName = new System.Windows.Forms.TextBox();
-            progressBar1 = new System.Windows.Forms.ProgressBar();
             richTextBox1 = new System.Windows.Forms.RichTextBox();
-            label2 = new System.Windows.Forms.Label();
             menuStrip2.SuspendLayout();
             SuspendLayout();
             // 
@@ -171,13 +169,13 @@
             // руководствМПИToolStripMenuItem
             // 
             руководствМПИToolStripMenuItem.Name = "руководствМПИToolStripMenuItem";
-            руководствМПИToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            руководствМПИToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             руководствМПИToolStripMenuItem.Text = "Помощь";
             // 
             // авторToolStripMenuItem
             // 
             авторToolStripMenuItem.Name = "авторToolStripMenuItem";
-            авторToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            авторToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             авторToolStripMenuItem.Text = "Автор";
             // 
             // timer1
@@ -202,13 +200,6 @@
             txtProjectName.TabIndex = 7;
             txtProjectName.Text = "Файл не выбран";
             // 
-            // progressBar1
-            // 
-            progressBar1.Location = new System.Drawing.Point(256, 387);
-            progressBar1.Name = "progressBar1";
-            progressBar1.Size = new System.Drawing.Size(209, 23);
-            progressBar1.TabIndex = 12;
-            // 
             // richTextBox1
             // 
             richTextBox1.Location = new System.Drawing.Point(12, 90);
@@ -218,23 +209,12 @@
             richTextBox1.TabIndex = 13;
             richTextBox1.Text = "Запустите выполнение проектной операции для отображения результатов";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(72, 391);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(178, 15);
-            label2.TabIndex = 14;
-            label2.Text = "Строка состояния программы:";
-            // 
             // Form1
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(546, 422);
-            Controls.Add(label2);
+            ClientSize = new System.Drawing.Size(546, 362);
             Controls.Add(richTextBox1);
-            Controls.Add(progressBar1);
             Controls.Add(txtProjectName);
             Controls.Add(label1);
             Controls.Add(menuStrip2);
@@ -269,9 +249,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtProjectName;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Label label2;
     }
 }
 

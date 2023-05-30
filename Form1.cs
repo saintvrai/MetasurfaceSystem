@@ -343,7 +343,7 @@ namespace MySystem
                 MessageBox.Show($"Ошибка при сохранении файла: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        #region Проверка на ввод всех данных об структуре для каждого
         private bool CheckKvadratStructData()
         {
             string filePath = Project.Path;
@@ -457,6 +457,7 @@ namespace MySystem
             }
             return true;
         }
+        #endregion
         private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Проверка наличия пути проекта
