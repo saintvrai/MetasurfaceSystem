@@ -892,18 +892,7 @@ namespace MySystem
                 proc.EnableRaisingEvents = true;
                 proc.Exited += (s, ev) =>
                 {
-                    // Обновление ProgressBar после завершения скрипта
-                    progressBar1.Invoke(new Action(() =>
-                    {
-                        progressBar1.Value = 100;
-                        MessageBox.Show(
-                            "Проектная процедура завершила работу." +
-                            "Испытание пройдено",
-                            "Готово!",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information
-                        );
-                    }));
+                    
                 };
 
 
@@ -912,21 +901,6 @@ namespace MySystem
                 string cmdLine = $@"{path}\kvadrat_struct.vbs";
 
                 proc.StartInfo = new ProcessStartInfo("wscript", cmdLine);
-
-                // Обновление ProgressBar во время выполнения скрипта
-                proc.OutputDataReceived += (s, ev) =>
-                {
-                    if (!string.IsNullOrEmpty(ev.Data) && ev.Data.StartsWith("Progress:"))
-                    {
-                        string progressString = ev.Data.Substring("Progress:".Length).Trim();
-                        int progressValue = int.Parse(progressString);
-                        progressBar1.Invoke(new Action(() =>
-                        {
-                            progressBar1.Value = progressValue;
-                        }));
-                    }
-                };
-
                 proc.Start();
 
 
@@ -947,18 +921,8 @@ namespace MySystem
                 proc.EnableRaisingEvents = true;
                 proc.Exited += (s, ev) =>
                 {
-                    // Обновление ProgressBar после завершения скрипта
-                    progressBar1.Invoke(new Action(() =>
-                    {
-                        progressBar1.Value = 100;
-                        MessageBox.Show(
-                            "Проектная процедура завершила работу." +
-                            "Испытание пройдено",
-                            "Готово!",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information
-                        );
-                    }));
+                 
+                   
                 };
 
 
@@ -975,10 +939,7 @@ namespace MySystem
                     {
                         string progressString = ev.Data.Substring("Progress:".Length).Trim();
                         int progressValue = int.Parse(progressString);
-                        progressBar1.Invoke(new Action(() =>
-                        {
-                            progressBar1.Value = progressValue;
-                        }));
+                        
                     }
                 };
 
@@ -1003,18 +964,7 @@ namespace MySystem
                 proc.EnableRaisingEvents = true;
                 proc.Exited += (s, ev) =>
                 {
-                    // Обновление ProgressBar после завершения скрипта
-                    progressBar1.Invoke(new Action(() =>
-                    {
-                        progressBar1.Value = 100;
-                        MessageBox.Show(
-                            "Проектная процедура завершила работу." +
-                            "Испытание пройдено",
-                            "Готово!",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information
-                        );
-                    }));
+                    
                 };
 
 
@@ -1031,10 +981,6 @@ namespace MySystem
                     {
                         string progressString = ev.Data.Substring("Progress:".Length).Trim();
                         int progressValue = int.Parse(progressString);
-                        progressBar1.Invoke(new Action(() =>
-                        {
-                            progressBar1.Value = progressValue;
-                        }));
                     }
                 };
 

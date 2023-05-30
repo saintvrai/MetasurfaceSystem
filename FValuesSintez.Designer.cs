@@ -38,6 +38,8 @@
             btnHelp = new System.Windows.Forms.Button();
             btnCancel = new System.Windows.Forms.Button();
             btnSave = new System.Windows.Forms.Button();
+            label5 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
             SuspendLayout();
             // 
             // label1
@@ -132,11 +134,31 @@
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(301, 107);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(180, 30);
+            label5.TabIndex = 15;
+            label5.Text = "Мутация произойдет с шансом\r\nот 0 до 1 включительно\r\n";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(301, 148);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(209, 30);
+            label6.TabIndex = 16;
+            label6.Text = "Скрещивание произойдет с шансом\r\nот 0 до 1 включительно\r\n";
+            // 
             // FValuesSintez
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(489, 239);
+            ClientSize = new System.Drawing.Size(522, 239);
+            Controls.Add(label6);
+            Controls.Add(label5);
             Controls.Add(btnHelp);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
@@ -148,7 +170,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "FValuesSintez";
-            Text = "FValuesSintez";
+            Text = "Настройка параметров синтеза";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -165,5 +187,7 @@
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
