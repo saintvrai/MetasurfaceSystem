@@ -42,53 +42,6 @@ namespace MySystem
             conn = new NpgsqlConnection(connstring);
         }
 
-
-        #region Читает файл и выводит в RichTextBox
-
-        //private void StartFileMonitoring(string path)
-        //{
-        //    filePath = path;
-
-        //    // Создаем FileSystemWatcher
-        //    watcher = new FileSystemWatcher();
-        //    watcher.Path = Path.GetDirectoryName(filePath);
-        //    watcher.Filter = Path.GetFileName(filePath);
-        //    watcher.NotifyFilter = NotifyFilters.LastWrite; // Мониторим только изменения записи
-        //    watcher.EnableRaisingEvents = true;
-        //    watcher.Changed += OnFileChanged;
-
-        //    // Создаем Timer
-        //    timer = new Timer();
-        //    timer.Interval = 1000; // Интервал проверки, можно изменить по необходимости
-        //    timer.Tick += OnTimerTick;
-        //    timer.Start();
-        //}
-        //private void OnFileChanged(object sender, FileSystemEventArgs e)
-        //{
-        //    // При изменении файла останавливаем таймер
-        //    timer.Stop();
-        //}
-
-        //private void OnTimerTick(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        // Чтение содержимого файла
-        //        string fileContent = File.ReadAllText(filePath);
-
-        //        // Обновление содержимого элемента TextBox
-        //        richTextBox1.Invoke((MethodInvoker)(() =>
-        //        {
-        //            richTextBox1.Text = fileContent;
-        //        }));
-        //    }
-        //    catch (IOException ex)
-        //    {
-        //        // Файл занят другим процессом, продолжаем ожидание
-        //    }
-        //}
-        #endregion
-
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -127,6 +80,63 @@ namespace MySystem
 
         }
 
+        #region Метод для вывода результатов синтеза и анализа
+        private System.Threading.Timer timer1; // объявление таймера
+
+        private void StartFileReading()
+        {
+            // Проверка типа резонатора и запуск чтения соответствующих файлов
+            if (DataStruct.ResonatorType == "Квадратный резонатор")
+            {
+                string filePathSintez = @"C:\CST_Files\Results\Kvadrat\Values.txt";
+                string filePathAnalysis = @"C:\CST_Files\Results\Kvadrat\Result.txt";
+                timer1 = new System.Threading.Timer(state => ReadFileWithWriteLock(filePathSintez, filePathAnalysis), null, TimeSpan.Zero, TimeSpan.FromSeconds(30));
+            }
+            else if (DataStruct.ResonatorType == "Круглый резонатор")
+            {
+                string filePathSintez = @"C:\CST_Files\Results\Krug\Values.txt";
+                string filePathAnalysis = @"C:\CST_Files\Results\Krug\Result.txt";
+                timer1 = new System.Threading.Timer(state => ReadFileWithWriteLock(filePathSintez, filePathAnalysis), null, TimeSpan.Zero, TimeSpan.FromSeconds(30));
+            }
+            else if (DataStruct.ResonatorType == "Ромбовидный резонатор")
+            {
+                string filePathSintez = @"C:\CST_Files\Results\Romb\Values.txt";
+                string filePathAnalysis = @"C:\CST_Files\Results\Romb\Result.txt";
+                timer1 = new System.Threading.Timer(state => ReadFileWithWriteLock(filePathSintez, filePathAnalysis), null, TimeSpan.Zero, TimeSpan.FromSeconds(30));
+            }
+        }
+
+        private void ReadFileWithWriteLock(string filePathSintez, string filePathAnalysis)
+        {
+            // Открытие файла с блокировкой для чтения результатов синтеза
+            using (FileStream fileStream = File.Open(filePathSintez, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            using (StreamReader reader = new StreamReader(fileStream))
+            {
+                // Чтение содержимого файла
+                string fileContent = reader.ReadToEnd();
+
+                // Обновление richTextBox1 с содержимым файла
+                richTextBox1.Invoke((MethodInvoker)(() =>
+                {
+                    richTextBox1.Text = fileContent;
+                }));
+            }
+
+            // Открытие файла с блокировкой для чтения результатов анализа
+            using (FileStream fileStream = File.Open(filePathAnalysis, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            using (StreamReader reader = new StreamReader(fileStream))
+            {
+                // Чтение содержимого файла
+                string fileContent = reader.ReadToEnd();
+
+                // Обновление richTextBox2 с содержимым файла
+                richTextBox2.Invoke((MethodInvoker)(() =>
+                {
+                    richTextBox2.Text = fileContent;
+                }));
+            }
+        }
+        #endregion
         private void CheckStructureInFile(string filePath)
         {
             string fileContent = File.ReadAllText(filePath);
@@ -158,7 +168,6 @@ namespace MySystem
                 ввестиДанныеОСтруктуреToolStripMenuItem.Enabled = true;
             }
         }
-        //TODO: сделать для круга и ромба, данные, параметры все дела
 
         private void ввестиЗначенияПараметровToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -241,28 +250,6 @@ namespace MySystem
             }
         }
 
-
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var proc = new Process();
-            proc.EnableRaisingEvents = true;
-            proc.Exited += (s, ev) => MessageBox.Show(
-                "Проектная процедура завершила работу." +
-                "Испытание не пройдено",
-                "Готово!",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-             );
-
-            string path = @"C:\CST_Files\Macros";
-
-            string cmdLine = $@"{path}\kvadratik.vbs";
-
-
-            proc.StartInfo = new ProcessStartInfo("wscript", cmdLine);
-            proc.Start();
-        }
 
         private void создатьToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -493,8 +480,6 @@ namespace MySystem
 
 
         }
-
-        //TODO: сделать правильные пути, а то они сейчас захордкодены, а также парсер параметров синтеза
 
 
         #region Работа с параметрами в целевом файле 
@@ -816,60 +801,6 @@ namespace MySystem
         }
         #endregion
 
-
-        //TODO: поработать над выводом результатов и над мзменением данных в скрипте для ромба
-        // Метод для настройки наблюдения за изменениями файла и копирования файла раз в 30 секунд
-        private void SetupFileMonitoring()
-        {
-            // Путь к оригинальному файлу
-            string originalFilePath = @"C:\CST_Files\Results\Krug\Final.txt";
-
-            // Путь к скопированному файлу
-            string copiedFilePath = @"C:\CST_Files\Results\Krug\FinalCopy.txt";
-
-            // Создание объекта FileSystemWatcher для наблюдения за изменениями в скопированном файле
-            FileSystemWatcher watcher = new FileSystemWatcher();
-            watcher.Path = Path.GetDirectoryName(copiedFilePath);
-            watcher.Filter = Path.GetFileName(copiedFilePath);
-
-            // Настройка обработчиков событий для отслеживания изменений
-            watcher.Changed += OnFileChanged;
-            watcher.EnableRaisingEvents = true;
-
-            // Таймер для выполнения копирования файла раз в 30 секунд
-            System.Timers.Timer timer = new System.Timers.Timer(30000); // 30000 миллисекунд = 30 секунд
-            timer.Elapsed += OnTimerElapsed;
-            timer.Start();
-
-            // Обработчик события таймера для копирования файла
-            void OnTimerElapsed(object sender, ElapsedEventArgs e)
-            {
-                try
-                {
-                    // Копирование файла
-                    File.Copy(originalFilePath, copiedFilePath, true);
-                }
-                catch (Exception ex)
-                {
-                    // Обработка ошибки копирования файла
-                    Console.WriteLine("Ошибка при копировании файла: " + ex.Message);
-                }
-            }
-
-            // Обработчик события изменения файла
-            void OnFileChanged(object sender, FileSystemEventArgs e)
-            {
-
-                // Обновление richTextBox1 с новым содержимым файла
-                string fileContent = File.ReadAllText(e.FullPath);
-                richTextBox1.Invoke((MethodInvoker)(() =>
-                {
-                    richTextBox1.Text = fileContent;
-                }));
-            }
-        }
-
-        //TODO: Попробовать сделать progress bar для скрипта
         private void btnRun_Click(object sender, EventArgs e)
         {
             стартToolStripMenuItem_Click(sender, e);
@@ -892,18 +823,16 @@ namespace MySystem
                 proc.EnableRaisingEvents = true;
                 proc.Exited += (s, ev) =>
                 {
-                    
+
                 };
-
-
 
                 string path = @"C:\CST_Files\Macros\Kvadrat";
                 string cmdLine = $@"{path}\kvadrat_struct.vbs";
 
                 proc.StartInfo = new ProcessStartInfo("wscript", cmdLine);
                 proc.Start();
-
-
+                //Запуск метода по выводу результатов
+                StartFileReading();
 
             }
             else if (DataStruct.ResonatorType == "Круглый резонатор")
@@ -921,10 +850,9 @@ namespace MySystem
                 proc.EnableRaisingEvents = true;
                 proc.Exited += (s, ev) =>
                 {
-                 
-                   
-                };
 
+
+                };
 
 
                 string path = @"C:\CST_Files\Macros\Krug";
@@ -939,14 +867,15 @@ namespace MySystem
                     {
                         string progressString = ev.Data.Substring("Progress:".Length).Trim();
                         int progressValue = int.Parse(progressString);
-                        
+
                     }
                 };
 
                 proc.Start();
 
-                string filePath = @"C:\CST_Files\Results\Krug\Final.txt";
-                SetupFileMonitoring();
+                //Запуск метода по выводу результатов
+                StartFileReading();
+
             }
             else if (DataStruct.ResonatorType == "Ромбовидный резонатор")
             {
@@ -964,7 +893,7 @@ namespace MySystem
                 proc.EnableRaisingEvents = true;
                 proc.Exited += (s, ev) =>
                 {
-                    
+
                 };
 
 
@@ -986,8 +915,8 @@ namespace MySystem
 
                 proc.Start();
 
-                string filePath = @"C:\CST_Files\Results\Romb\Final.txt";
-                StartFileWatcher(filePath);
+                //Запуск метода по выводу результатов
+                StartFileReading();
             }
             else
             {

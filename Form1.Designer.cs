@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             menuStrip2 = new System.Windows.Forms.MenuStrip();
             проектToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,10 +45,12 @@
             справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             руководствМПИToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             авторToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            timer1 = new System.Windows.Forms.Timer(components);
             label1 = new System.Windows.Forms.Label();
             txtProjectName = new System.Windows.Forms.TextBox();
             richTextBox1 = new System.Windows.Forms.RichTextBox();
+            label2 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            richTextBox2 = new System.Windows.Forms.RichTextBox();
             menuStrip2.SuspendLayout();
             SuspendLayout();
             // 
@@ -60,7 +61,7 @@
             menuStrip2.Location = new System.Drawing.Point(0, 0);
             menuStrip2.Name = "menuStrip2";
             menuStrip2.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            menuStrip2.Size = new System.Drawing.Size(546, 24);
+            menuStrip2.Size = new System.Drawing.Size(533, 24);
             menuStrip2.TabIndex = 2;
             menuStrip2.Text = "menuStrip2";
             // 
@@ -178,10 +179,6 @@
             авторToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             авторToolStripMenuItem.Text = "Автор";
             // 
-            // timer1
-            // 
-            timer1.Enabled = true;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -202,18 +199,48 @@
             // 
             // richTextBox1
             // 
-            richTextBox1.Location = new System.Drawing.Point(12, 90);
+            richTextBox1.Location = new System.Drawing.Point(6, 106);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.ReadOnly = true;
-            richTextBox1.Size = new System.Drawing.Size(505, 254);
+            richTextBox1.Size = new System.Drawing.Size(506, 135);
             richTextBox1.TabIndex = 13;
             richTextBox1.Text = "Запустите выполнение проектной операции для отображения результатов";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(6, 244);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(186, 15);
+            label2.TabIndex = 14;
+            label2.Text = "Результаты анализа метаэкрана:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(6, 88);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(184, 15);
+            label3.TabIndex = 14;
+            label3.Text = "Результаты синтеза метаэкрана:";
+            // 
+            // richTextBox2
+            // 
+            richTextBox2.Location = new System.Drawing.Point(6, 262);
+            richTextBox2.Name = "richTextBox2";
+            richTextBox2.ReadOnly = true;
+            richTextBox2.Size = new System.Drawing.Size(506, 135);
+            richTextBox2.TabIndex = 13;
+            richTextBox2.Text = "Запустите выполнение проектной операции для отображения результатов";
             // 
             // Form1
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(546, 362);
+            ClientSize = new System.Drawing.Size(533, 411);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(richTextBox2);
             Controls.Add(richTextBox1);
             Controls.Add(txtProjectName);
             Controls.Add(label1);
@@ -246,10 +273,12 @@
         private System.Windows.Forms.ToolStripMenuItem авторToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem создатьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem настройкаПараметровАнализаToolStripMenuItem;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtProjectName;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.RichTextBox richTextBox2;
     }
 }
 

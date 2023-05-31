@@ -88,7 +88,6 @@ namespace MySystem
         {
             check_buttuns(ref sender, ref e);
         }
-        //TODO: поработать над кругом, вроде параметры то он пишет, но не записывает
 
         // Загружаем данные о проекте в форму, если там они есть
         private void LoadData()
