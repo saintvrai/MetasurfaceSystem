@@ -222,8 +222,6 @@ namespace MySystem
             {
                 MessageBox.Show("Не удалось распознать тип структуры", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
         }
 
         private void данныеОМатериалахToolStripMenuItem_Click(object sender, EventArgs e)
